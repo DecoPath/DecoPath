@@ -1,0 +1,95 @@
+{% extends "viewer/extentions/base.html" %}
+
+{% block content %}
+
+    <div class="container mx-auto">
+        <br><br>
+        <h1 class="text-center">Getting started</h1>
+        <br><br>
+
+        <p>
+            The results of various pathway analytic approaches can vary depending on the choice of pathway database.
+            Using this tool, you can identify where the differences lie by directly comparing results generated when
+            pathways from different resources are used.
+        </p>
+
+        <h1>ADD SECTION IS THIS RIGHT FOR ME?</h1>
+        <br><br>
+        <h4>In this quick primer, we cover the following topics:
+        </h4>
+        <ul>
+            <li>background</li>
+            <li>data</li>
+            <li>stats</li>
+            <li>analysis</li>
+        </ul>
+        <h2>background</h2>
+
+
+        <p>
+            Currently, high throughput (HT) technologies (where ten of thousands of samples undergo simultaneous testing
+            for
+            measurements of gene expressions levels) output such massive volumes of data, researchers are left with
+            the
+            rather daunting task of finding if there are any meaningful patterns in the data at all.
+        </p>
+        <p>
+            A whole host of datasets, resources and tools are at your disposal and imagine you want to use these to
+            answer your research questions, for example:
+        </p>
+        <ul>
+            <li>Is there a difference between two populations as opposed to none?</li>
+            <li>Why does this difference exist?</li>
+            <li>Can it also implicate something else?</li>
+            <li>Is this always the case?</li>
+            <li>What are ways we can measure this difference?</li>
+        </ul>
+        <p>
+            A crucial first step is to identify what your specific research goal is and then plan your experiment
+            accordingly. If you’re interested in studying the functional aspect of genes and what role they might
+            have
+            in a given biological process or phenotype, pathway analysis can be the way to go.
+        </p>
+        <p>
+            Earlier, one could compare two groups by looking at a single gene at a time (e.g., t-test) and determine
+            which genes are statistically significant differentially expressed and which ones are not. But this approach tended to lack
+            context;
+            what if the cumulative effect of a large number of genes that change is greater than the effect of a
+            single
+            one? How would we know that? Instead of looking at individual genes, we could consider them in sets of
+            related ones, in other words, conduct a pathway analysis [Khatri].
+        </p>
+        <h2>data</h2>
+        <p>
+            Once you have a goal in mind, choosing the appropriate HT technology and defining a good experimental
+            design
+            are crucial.
+        </p>
+        <p>
+            Types of technologies to use can include microarray and RNA-sequencing.
+        </p>
+        <p>
+            A common aim of both these technologies is gene expression (GE) profiling to determine what patterns of
+            genes are expressed at the transcription level given a certain condition.
+        </p>
+        <p>
+            In other words, what is the relative level of mRNA given a specific condition? Or, which condition
+            resulted
+            in a specific gene being expressed?
+        </p>
+        <p>
+            One of the limitations of using microarray data is that it requires prior knowledge of the genomic
+            sequence.
+            In contrast, RNA-sequencing (RNA-seq) doesn’t require this prior knowledge, is associated with
+            decreasing
+            costs, has greater sensitivity for genes expressed at both very high and very low levels and for this
+            and
+            several other advantages, has become a popular tool for gene expression studies.
+        </p>
+
+        <p>You can check out these great resources for more details:
+            https://github.com/saezlab/transcriptutorial</p>
+
+    </div>
+
+{% endblock %}

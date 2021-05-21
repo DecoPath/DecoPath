@@ -1,0 +1,227 @@
+{% extends "viewer/extentions/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <head>
+        <link href="{% static "css/custom.css" %}" rel="stylesheet">
+        <link href="{% static "css/circles.css" %}" rel="stylesheet">
+
+        {% include "viewer/dependencies/meta.html" %}
+        {% include "viewer/dependencies/jquery.html" %}
+        {% include "viewer/dependencies/bootstrap.html" %}
+        {% include "viewer/dependencies/d3.html" %}
+
+        <script type="text/javascript" src='{% static "js/circlepack-chart.min.js" %}'></script>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@8.3.2/dist/js/autoComplete.min.js"></script>
+
+
+        <script type="text/javascript">
+
+            var styleDict = {
+                'wikipathways': 'WikiPathways',
+                'kegg': 'KEGG',
+                'reactome': 'Reactome',
+                'pathbank': 'PathBank',
+            };
+
+            var method = "{{ enrichment_method }}";
+            var score = {
+                'GSEA': 'Score',
+                'ORA': 'q-value',
+            };
+
+            $(document).ready(function () {
+                var jsonData = {{ tree_json | safe }};
+                var resultId = {{ result_id }};
+
+                var w = $("#navbarSupportedContent").width()
+                var h = window.innerHeight;
+
+                var circles = CirclePack()
+                    .data(jsonData)
+                    .label('name')
+                    .width(w * 0.9)
+                    .height(h * 0.8)
+                    .size('geneset_size')
+                    .color('color')
+                    .excludeRoot(true)
+                    .tooltipContent(
+                        (function (d, node) {
+                            // node direction info
+                            if (method === "GSEA") {
+                                if (d.direction) {
+                                    return `Size: <i>${node.value}</i>` + `<br>
+                                ${score[method]}: <i>${parseFloat(d.direction).toFixed(3)}</i><br>\n
+                                q_value: <i>${parseFloat(d.fdr).toFixed(3)}</i><br>\n
+                                `
+                                }
+                                return `Size: <i>${node.value}</i>`
+                            } else {
+                                if (d.direction) {
+                                    return `Size: <i>${node.value}</i>` + `<br>
+                                ${score[method]}: <i>${parseFloat(d.direction).toFixed(3)}</i><br>\n
+                                `
+                                }
+                                return `Size: <i>${node.value}</i>`
+                            }
+                        })
+                    )
+                    .tooltipTitle(function (d, node) {
+                        if (d.name) {
+                            return d.name + " (" + d.id + ")"
+                        }
+                        return d.id + "(SuperPathway)"
+                    })
+                    .onClick(function (d, node) {
+
+                        if (d !== undefined && d !== null) {
+                            $.confirm({
+                                title: 'Confirm you want to explore this pathway',
+                                content: '',
+                                buttons: {
+                                    confirm: {
+                                        text: 'Confirm',
+                                        btnClass: 'btn-primary',
+                                        action: function () {
+                                            var href = "/viz/zoom_in/" + resultId + "/" + d.id
+                                            window.open(href)
+                                        }
+                                    },
+                                    cancel: {
+                                        text: 'Take me back',
+                                        btnClass: 'btn-danger',
+                                        action: function () {
+                                        }
+                                    },
+                                },
+                            });
+                        }
+                    })
+                    (document.getElementById('circles-viz'));
+
+                nodesToIds = {};
+
+                function allDescendants(node, array) {
+                    if (node.children !== undefined && node.children !== null) {
+                        for (var i = 0; i < node.children.length; i++) {
+                            var child = node.children[i];
+                            allDescendants(child, array);
+
+                            if (child.database) {
+                                var database = child.database;
+                            } else {
+                                var database = 'DecoPath';
+                            }
+
+                            array[child.name + " (" + styleDict[database] + ")"] = child;
+                        }
+                    }
+                }
+
+                allDescendants(circles.data(), nodesToIds)
+
+                // The autoComplete.js Engine instance creator
+                const autoCompleteJS = new autoComplete({
+                    data: {
+                        src: Object.keys(nodesToIds)
+                    },
+                    trigger: {
+                        event: ["input", "focus"]
+                    },
+                    placeHolder: "Search your pathway of interest",
+                    searchEngine: "loose",
+                    highlight: true,
+                    maxResults: 5,
+                    resultItem: {
+                        content: (data, element) => {
+                            // Modify Results Item Style
+                            element.style = "display: flex; justify-content: space-between;";
+                            // Modify Results Item Content
+                            element.innerHTML = `<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                ${data.match}</span>`;
+                        }
+                    },
+                    noResults: (dataFeedback, generateList) => {
+                        // Generate autoComplete List
+                        generateList(autoCompleteJS, dataFeedback, dataFeedback.results);
+                        // No Results List Item
+                        const result = document.createElement("li");
+                        result.setAttribute("class", "no_result");
+                        result.setAttribute("tabindex", "1");
+                        result.innerHTML = `<span style="display: flex; align-items: center; font-weight: 100; color: rgba(0,0,0,.2);">Found No Results for "${dataFeedback.query}"</span>`;
+                        document.querySelector(`#${autoCompleteJS.resultsList.idName}`)
+                            .appendChild(result);
+                    },
+                    onSelection: (feedback) => {
+                        document.querySelector("#autoComplete").blur();
+                        // Prepare User's Selected Value
+                        const selectedFeature = feedback.selection.value;
+
+                        circles.zoomToNode(nodesToIds[selectedFeature]);
+                        console.log('asdf')
+                    }
+                });
+
+                // zoomReset button
+                $('#reset-zoom').on('click', function (e) {
+                    circles.zoomReset();
+                })
+            });
+
+        </script>
+    </head>
+    <body>
+
+    <div class="container container-fluid" style="margin-bottom: 30px;">
+        <br><br>
+        <h1 class="text-center">Pathway Hierarchy</h1>
+        <br>
+        <p>With the interactive visualization below, you can explore the results of {{ enrichment_method }} for
+            <i>{{ data_filename }}</i>.
+        </p>
+        <p>
+            The largest circles represent the 7 major categories that make up the pathway hierarchy:
+            metabolism, immune, signaling, communication and transport, cell-death, disease, DNA repair and replication,
+            and others. Zoom in on the circles to explore the results yielded for each pathway in the hierarchy.
+        </p>
+
+        <div id="circlesLegend">
+            <h5>Legend</h5>
+            <hr>
+            {% if enrichment_method == 'GSEA' %}
+                <div class="circle gsea-max-legend"></div>Pathway enriched at bottom of ranked list<br>
+                <div class="circle gsea-min-legend"></div>Pathway enriched at top of ranked list<br>
+                <div class="circle gsea-insignificant-legend"></div>Pathway fails to pass significance threshold<br>
+                <div class="circle gsea-no-mapping"></div>Not included in analysis<br>
+            {% else %}
+                <div class="circle ora-max-legend"></div>Significantly enriched pathway<br>
+                <div class="circle gsea-no-mapping"></div>Pathway fails to pass significance threshold / Not included in
+                analysis<br>
+            {% endif %}
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div align="center" style="margin-top: 20px; margin-bottom: 40px">
+                <div class="autoComplete_wrapper">
+                    <input id="autoComplete" type="text" tabindex="1">
+                </div>
+            </div>
+            <div style="margin-top: 20px; margin-bottom: 40px; padding-left: 20px;">
+                <button class="btn btn-info" id="reset-zoom">Reset zoom</button>
+            </div>
+        </div>
+    </div>
+        <!-- ***** Circles Packing Viz ***** -->
+            <div class="container" id="circles-viz"></div>
+        </div>
+        <!-- ***** Circles Packing Viz ***** -->
+
+    </body>
+
+{% endblock %}

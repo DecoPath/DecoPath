@@ -1,0 +1,317 @@
+{% extends "viewer/extentions/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <head>
+
+        <style>
+
+            /* Gene Sets in table info */
+            td {
+                overflow: scroll;
+            }
+
+            /* VennDiagram CSS */
+            svg path {
+                stroke: white;
+                stroke-width: 2px;
+            }
+
+            #venn-diagram svg text {
+                fill: white;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 14px !important;
+            }
+
+            .venntooltip {
+                position: absolute;
+                text-align: center;
+                width: 128px;
+                height: 25px;
+                background: #333;
+                color: #ddd;
+                padding: 2px;
+                border: 0px;
+                border-radius: 8px;
+                opacity: 0;
+            }
+
+            /* Histogram CSS */
+            .axis--y .domain {
+                display: none;
+            }
+
+            .domain {
+                stroke: black !important;
+                stroke-width: 1px !important;
+            }
+
+        </style>
+        <link href="{% static "css/custom.css" %}" rel="stylesheet">
+
+        {% include "viewer/dependencies/meta.html" %}
+        {% include "viewer/dependencies/jquery.html" %}
+        {% include "viewer/dependencies/bootstrap.html" %}
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+        <script type="text/javascript" src='{% static "js/venn.js" %}'></script>
+
+        <script>
+            var data = {{ venn_diagram_data | safe}};
+            var foldChanges = {{ fold_changes | safe}};
+
+            function plotDensity(foldChanges) {
+
+                $('#density-plot').empty();
+
+                var svg = d3.select("#density-plot"),
+                    width = +svg.attr("width"),
+                    height = +svg.attr("height"),
+                    margin = {top: 20, right: 30, bottom: 30, left: 40};
+
+                var x = d3.scaleLinear()
+                    .domain([(Math.min(...foldChanges) - 0.5), (Math.max(...foldChanges) + 0.5)])
+                    .range([margin.left, width - margin.right]);
+
+                var y = d3.scaleLinear()
+                    .domain([0, 0.3])
+                    .range([height - margin.bottom, margin.top]);
+
+                svg.append("g")
+                    .attr("class", "axis axis--x")
+                    .attr("transform", "translate(0," + (height - margin.bottom) + ")")
+                    .call(d3.axisBottom(x))
+                    .append("text")
+                    .attr("x", width - margin.right)
+                    .attr("y", -6)
+                    .attr("text-anchor", "end")
+                    .attr("font-weight", "bold")
+                    .text("Fold change distribution");
+
+                svg.append("circle").attr("cx", 780).attr("cy", 60).attr("r", 6).style("fill", "#27528d")
+                svg.append("circle").attr("cx", 780).attr("cy", 100).attr("r", 6).style("fill", "#c25a4b")
+                svg.append("text").attr("x", 800).attr("y", 60).text("Down-regulated").style("font-size", "15px").attr("alignment-baseline", "middle")
+                svg.append("text").attr("x", 800).attr("y", 100).text("Up-regulated").style("font-size", "15px").attr("alignment-baseline", "middle")
+
+                svg.append("g")
+                    .attr("class", "axis axis--y")
+                    .attr("transform", "translate(" + margin.left + ",0)")
+                    .call(d3.axisLeft(y).ticks(null, "%"));
+
+                var n = foldChanges.length,
+                    bins = d3.histogram().domain(x.domain()).thresholds(20)(foldChanges)
+
+                svg.insert("g", "*")
+                    .selectAll("rect")
+                    .data(bins)
+                    .enter().append("rect")
+                    .attr("x", function (d) {
+                        return x(d.x0) + 1;
+                    })
+                    .attr(
+                        "fill",
+                        function (d) {
+                            if (d.x0 < 0) {
+                                return "#27528d"
+                            } else {
+                                return "#c25a4b"
+                            }
+                        }
+                    )
+                    .attr("y", function (d) {
+                        return y(d.length / n);
+                    })
+                    .attr("width", function (d) {
+                        return x(d.x1) - x(d.x0) - 1;
+                    })
+                    .attr("height", function (d) {
+                        return y(0) - y(d.length / n);
+                    });
+            }
+
+            $(document).ready(function () {
+
+                // Adjust the height depending on the size of the Euler diagram
+                var numberOfIntersections = data.length;
+
+                var height;
+
+                if (numberOfIntersections < 10) {
+                    height = 400;
+                } else if (10 <= numberOfIntersections && numberOfIntersections < 30) {
+                    height = 600;
+                } else {
+                    height = 800;
+                }
+
+                if (numberOfIntersections > 1000) {
+                    alert('You have selected a large amount of pathways, the visualization needs some time to be cooked :)')
+                }
+
+                var vennDiv = d3.select("#venn-diagram");
+
+                vennDiv.attr("align", "center"); // Align center the diagram
+
+                var diagram = venn.VennDiagram()
+                    .width($(".card-header").width() - 100) // Default width of the panel
+                    .height(height); // Plot the Venn Diagram
+                vennDiv.datum(data).call(diagram); // Stick data
+
+                // add a tooltip
+                var tooltip = d3.select("body").append("div")
+                    .attr("class", "venntooltip");
+
+                // add listeners to all the groups to display tooltip on mouseover
+                vennDiv.selectAll("g")
+                    .on("mouseover", function (d, i) {
+                        // sort all the areas relative to the current item
+                        venn.sortAreas(vennDiv, d);
+
+                        // Display a tooltip with the current size
+                        tooltip.transition().duration(400).style("opacity", .9);
+                        tooltip.text(d.size + " genes");
+
+                        // highlight the current path
+                        var selection = d3.select(this).transition("tooltip").duration(400);
+                        selection.select("path")
+                            .style("stroke-width", 3)
+                            .style("fill-opacity", d.sets.length == 1 ? .4 : .1)
+                            .style("stroke-opacity", 1);
+                    })
+
+                    .on("mousemove", function () {
+                        tooltip.style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY - 28) + "px");
+                    })
+
+                    .on("mouseout", function (d, i) {
+                        tooltip.transition().duration(400).style("opacity", 0);
+                        var selection = d3.select(this).transition("tooltip").duration(400);
+                        selection.select("path")
+                            .style("stroke-width", 0)
+                            .style("fill-opacity", d.sets.length == 1 ? .25 : .0)
+                            .style("stroke-opacity", 0);
+                    });
+
+
+                // Info box controller
+                /**
+                 * Creates a new row in Node/Edge info table
+                 * @param {object} table: table object
+                 * @param {int} row: row number
+                 * @param {string} column1: string for column1
+                 * @param {string} column2: string for column2
+                 */
+                function insertRow(table, row, column1, column2) {
+                    var row = table.insertRow(row);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    cell1.innerHTML = column1;
+                    cell2.innerHTML = column2;
+                }
+
+                /**
+                 * Renders node info table
+                 * @param {object} data object
+                 */
+                function populateInfoTable(data) {
+
+                    var dynamicTable = document.getElementById('info-table');
+
+                    while (dynamicTable.rows.length > 0) {
+                        dynamicTable.deleteRow(0);
+                    }
+                    delete data.sets;
+
+                    var tableObject = {};
+
+                    if ("intersection" in data) {
+                        tableObject["Pathway(s)"] = data["intersection"];
+                    } else {
+                        tableObject["Pathway(s)"] = data["label"];
+                    }
+
+                    tableObject["Gene Set Size"] = data["size"];
+
+                    tableObject["Gene Set"] = data["gene_set"].join(", ") + ' <a id="export-link" href="#"><span onclick="exportGenes();" class=\"glyphicon glyphicon-new-window\"></span></a>';
+
+                    window.gene_set = data["gene_set"];
+
+                    var row = 0;
+                    $.each(tableObject, function (key, value) {
+                        insertRow(dynamicTable, row, key, value);
+                        row++
+                    });
+                }
+
+                // Add table creation
+                vennDiv.selectAll("g").on("dblclick", function (d, i) {
+                    populateInfoTable(d);
+
+                    if (jQuery.isEmptyObject(foldChanges)) {
+                        alert('The distribution of fold changes will not be shown as the fold changes were not uploaded in the experiment')
+                    } else {
+                        var foldChangesToPlot = []
+
+                        d.gene_set.forEach(function (gene, index) {
+                            if (gene in foldChanges) {
+                                foldChangesToPlot.push(foldChanges[gene].toString());
+                            }
+                        });
+
+                        if ((typeof foldChangesToPlot !== 'undefined' && foldChangesToPlot.length > 0)) {
+                            plotDensity(foldChangesToPlot);
+                        } else {
+                            alert('Your fold changes uploaded do not overlap with the part of the Venn diagram you want to visualize')
+                        }
+                    }
+
+                });
+
+                function exportGenes() {
+                    var anchor = document.querySelector('#export-link');
+
+                    anchor.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(window.gene_set.join("\n"));
+                    anchor.download = 'gene_set.txt';
+                }
+            });
+
+        </script>
+    </head>
+    <body>
+
+    <div class="container container-fluid" style="margin-bottom: 30px;">
+        <br><br>
+        <h1 class="text-center">Gene-Level Analysis</h1>
+        <br>
+        <div class="card" id="box">
+            <div class="card-header">
+                <h4>Gene Set Overlap</h4>
+            </div>
+            <div class="card-body">
+                <p>
+                    The interactive Venn Diagram below shows the overlap of genes for equivalent pathways. Double click
+                    on it to display the genes in the gene set. If you have uploaded fold changes of differentially
+                    expressed genes or run differential gene expression analysis, you can also view the distribution of
+                    fold changes of genes in your dataset below.
+                </p>
+                <hr>
+                <!-- ***** Venn diagram ***** -->
+                <div class="row">
+                    <div id="venn-diagram"></div>
+                </div>
+                <table id="info-table" class="table table-bordered table-hover table-responsive"></table>
+                <!-- ***** Venn diagram ***** -->
+            </div>
+            <div>
+                <svg id="density-plot" width="960" height="500"></svg>
+            </div>
+        </div>
+    </div>
+
+
+    </body>
+
+{% endblock %}

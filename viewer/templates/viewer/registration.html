@@ -1,0 +1,18 @@
+{% extends "viewer/extentions/base.html" %}
+
+{% block content %}
+
+<div class="w-50 mx-auto">
+    <H5 style="margin-left: 10%; margin-bottom: 25px"><strong>Register a new account</strong></H5>
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-row align-items-center">
+                <label for="col-sm-1 col-form-label"><strong>{{ field.label }}</strong></label>
+                <div class="input-group mb-2 mr-sm-4 w-50 mx-auto">{{ field }}</div>
+            </div>
+        {% endfor %}
+        <button style="margin-left: 35%; margin-top: 15px" class="btn btn-primary " type="submit">Register</button>
+    </form>
+</div>
+{% endblock %}

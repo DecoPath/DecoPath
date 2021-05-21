@@ -1,0 +1,216 @@
+{
+  "name": "",
+  "color": "#6A6C6E",
+  "id": "SuperPathway",
+  "children": [
+    {
+      "name": "",
+      "color": "#6A6C6E",
+      "id": "Disease pathways",
+      "children": [
+        {
+          "name": "",
+          "color": "#6A6C6E",
+          "id": "Alzheimer disease - Homo sapiens (h (superpathway_",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Alzheimers Disease",
+              "geneset_size": 100,
+              "direction": 0.6135429452994692,
+              "color": "#de5660",
+              "id": "WP2059"
+            },
+            {
+              "database": "kegg",
+              "name": "Alzheimer disease - Homo sapiens (human)",
+              "geneset_size": 52,
+              "direction": 0.06735573693078556,
+              "color": "#f3c8cc",
+              "id": "hsa05010"
+            }
+          ]
+        },
+        {
+          "name": "",
+          "color": "#6A6C6E",
+          "id": "Fanconi anemia pathway - Homo sapiens (h (superpathway_",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Fanconi Anemia Pathway",
+              "geneset_size": 50,
+              "direction": 0.6253907008173316,
+              "color": "#de555f",
+              "id": "R-HSA-6783310"
+            },
+            {
+              "database": "kegg",
+              "name": "Fanconi anemia pathway - Homo sapiens (human)",
+              "geneset_size": 53,
+              "direction": -0.8690001597721608,
+              "color": "#5a91a2",
+              "id": "hsa03460"
+            }
+          ]
+        },
+        {
+          "name": "",
+          "color": "#6A6C6E",
+          "id": "Pathogenic Escherichia coli infection - Homo sapiens (h (superpathway_",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Pathogenic Escherichia coli infection",
+              "geneset_size": 69,
+              "direction": 0.7495930678222198,
+              "color": "#d93c47",
+              "id": "WP2272"
+            },
+            {
+              "database": "kegg",
+              "name": "Pathogenic Escherichia coli infection - Homo sapiens (human)",
+              "geneset_size": 95,
+              "direction": -0.4155662931643569,
+              "color": "#b9d2d9",
+              "id": "hsa05130"
+            }
+          ]
+        },
+        {
+          "name": "",
+          "color": "#6A6C6E",
+          "id": "Parkinson's disease - Homo sapiens (h (superpathway_",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Parkinsons Disease Pathway",
+              "geneset_size": 62,
+              "direction": -0.8015407446516305,
+              "color": "#689aaa",
+              "id": "WP2371"
+            },
+            {
+              "database": "kegg",
+              "name": "Parkinson's disease - Homo sapiens (human)",
+              "geneset_size": 69,
+              "direction": 0.29809070779784186,
+              "color": "#eb999f",
+              "id": "hsa05012"
+            }
+          ]
+        },
+        {
+          "name": "",
+          "color": "#6A6C6E",
+          "id": "Amyotrophic lateral sclerosis (ALS) - Homo sapiens (h (superpathway_",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Amyotrophic lateral sclerosis (ALS)",
+              "geneset_size": 55,
+              "direction": 0.33102224081169807,
+              "color": "#ea9298",
+              "id": "WP2447"
+            },
+            {
+              "database": "kegg",
+              "name": "Amyotrophic lateral sclerosis (ALS) - Homo sapiens (human)",
+              "geneset_size": 51,
+              "direction": -0.49468989117831774,
+              "color": "#a8c6cf",
+              "id": "hsa05014"
+            }
+          ]
+        },
+        {
+          "name": "",
+          "color": "#6A6C6E",
+          "id": "Influenza",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Influenza Infection",
+              "geneset_size": 85,
+              "direction": 0.048739084853902215,
+              "color": "#f3cdd0",
+              "id": "R-HSA-168254"
+            },
+            {
+              "database": "reactome",
+              "name": "Influenza Life Cycle",
+              "geneset_size": 60,
+              "direction": -0.7847024609443336,
+              "color": "#6c9dac",
+              "id": "R-HSA-168255"
+            },
+            {
+              "database": "kegg",
+              "name": "Influenza A - Homo sapiens (human)",
+              "geneset_size": 78,
+              "direction": 0.731436523452033,
+              "color": "#da3f4a",
+              "id": "hsa05164"
+            }
+          ]
+        },
+        {
+          "name": "",
+          "color": "#6A6C6E",
+          "id": "Type II diabetes mellitus - Homo sapiens (h (superpathway_",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Type II diabetes mellitus",
+              "geneset_size": 86,
+              "direction": -0.626066291778002,
+              "color": "#8db4bf",
+              "id": "WP1584"
+            },
+            {
+              "database": "kegg",
+              "name": "Type II diabetes mellitus - Homo sapiens (human)",
+              "geneset_size": 51,
+              "direction": -0.9972028385285006,
+              "color": "#407f93",
+              "id": "hsa04930"
+            }
+          ]
+        },
+        {
+          "database": "kegg",
+          "name": "Pathways in cancer - Homo sapiens (human)",
+          "geneset_size": 59,
+          "direction": -0.4144386074554818,
+          "color": "#b9d2d9",
+          "id": "hsa05200",
+          "children": [
+            {
+              "name": "",
+              "color": "#6A6C6E",
+              "id": "Bladder cancer - Homo sapiens (h (superpathway_",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Bladder Cancer",
+                  "geneset_size": 95,
+                  "direction": -0.6913184969348605,
+                  "color": "#7faab7",
+                  "id": "WP2828"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Bladder cancer - Homo sapiens (human)",
+                  "geneset_size": 72,
+                  "direction": 0.34731416645910596,
+                  "color": "#e98e94",
+                  "id": "hsa05219"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

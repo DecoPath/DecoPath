@@ -1,0 +1,679 @@
+/* General styles all pages */
+/* --------------------------------------------- /*
+
+/* Main styles for all pages */
+* {
+    box-sizing: border-box;
+}
+
+.flex-grow-1 {
+    background-color: #FAFAFA;
+}
+
+/* Navigation bar */
+
+.navbar {
+    background-color: #10435B;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-item {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+
+}
+
+.navbar-nav a:hover {
+    color: #c0cbcf !important;
+}
+
+.navbar-brand:hover {
+    color: #d8efff !important;
+}
+
+.jumbotron {
+    background-image: url("../img/bg.jpg");
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: white;
+    text-align: center;
+    font-size: 35px;
+    color: #00CB35;
+    background-size: 100%;
+    background-position: center;
+    height: 280px;
+    margin-bottom: 10px;
+}
+
+.resize {
+    width: 500px;
+    height: auto;
+}
+
+.resize-nav {
+    width: 120px;
+    height: auto;
+}
+
+#page-title {
+    text-align: center;
+    font-size: 70px;
+    color: #00967f;
+    font-family: 'Roboto', Helvetica Neue, Arial, Sans-serif;
+    font-weight: bold;
+}
+
+#page-subtitle {
+    font-family: 'Roboto', Helvetica Neue, Arial, Sans-serif;
+    font-weight: 500;
+    color: #205f79;
+    font-size: 24px;
+}
+
+.footer-basic {
+    background-color: #fafafa;
+    color: #4b4c4d;
+    padding-top: 80px;
+}
+
+.footer-basic ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.footer-basic li {
+    padding: 0 10px;
+}
+
+.footer-basic ul a {
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.footer-basic ul a:hover {
+    opacity: 1;
+}
+
+.footer-basic .copyright {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 0;
+}
+
+tr .tbl-left-button {
+    opacity: 0;
+}
+
+tr:hover .tbl-left-button {
+    opacity: 1;
+}
+
+.invis-button {
+    border-left-color: transparent !important;
+    border-bottom-color: transparent !important;
+    border-top-color: transparent !important;
+}
+
+#jobTable {
+    margin-left: -120px;
+}
+
+#thConsensus {
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    background-color: #0e435b;
+}
+
+#thExperiment {
+    text-align: center;
+    width: 67%;
+    color: white;
+    background-color: #0e435b;
+}
+
+.control-label.requiredField {
+    font-size: 20px;
+    color: black;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+}
+
+
+/* Home page image cards */
+
+.card.p-2 {
+    border-color: #205f79;
+    border-width: thick;
+}
+
+.choices {
+    background: #FFFFFF;
+    box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.10);
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.login-choices {
+    background: #FFFFFF;
+    box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.10);
+    border-radius: 20px;
+    padding: 40px;
+}
+
+.card-title {
+    color: #205f79;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Roboto', Helvetica Neue, Arial, Sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.card-text {
+    color: #0e435b;
+    font-size: 18px;
+    text-align: left;
+    font-family: 'Roboto', Helvetica Neue, Arial !important;
+    text-align: center;
+}
+
+.image-preview {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 93%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.container-hover:hover .image-preview {
+    opacity: 0.3;
+}
+
+.container-hover:hover .card-title {
+    opacity: 0.3;
+}
+
+.container-hover:hover .card-text {
+    opacity: 0.3;
+}
+
+.container-hover:hover .middle {
+    opacity: 1;
+}
+
+/* Home page upload forms */
+
+#taskSubmit {
+    background-color: #0e435b;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#oraOptions {
+    font-weight: bold;
+    color: #0e435b;
+    font-family: 'Roboto', Helvetica Neue, Arial, Sans-serif;
+    text-align: center;
+}
+
+#div_id_upload_gene_list {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0e435b;
+    font-family: 'Roboto', Helvetica Neue, Arial, Sans-serif;
+    line-height: 20px;
+}
+
+#div_id_run_dge_ora_genes {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0e435b;
+    font-family: 'Roboto', Helvetica Neue, Arial, Sans-serif;
+    line-height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#div_id_gene_list {
+    margin-left: 20px;
+}
+
+#div_id_run_analysis_results_ora {
+    margin-left: 20px;
+}
+
+#div_id_upload_fold_changes_ora {
+    margin-left: 20px;
+}
+
+#div_id_read_counts_file_ora {
+    margin-left: 20px;
+}
+
+#div_id_class_file_ora {
+    margin-left: 20px;
+}
+
+#div_id_significance_value_run_ora {
+    margin-left: 20px;
+}
+
+#div_id_fold_changes_file_ora {
+    margin-left: 20px;
+}
+
+#div_id_significance_value_upload_ora {
+    margin-left: 20px;
+}
+
+/*Account page CSS*/
+
+.account-header {
+    background-color: #0e435b;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+.warning-cont {
+    background-color: rgba(227, 91, 91, 0.5);
+    border: 2px solid #ff2828;
+    border-radius: 4px;
+}
+
+/* Buttons */
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: #00967f;
+    border-color: #00967f;
+    color: white;
+    font-weight: 700;
+    display: block;
+    font-family: 'Roboto', Helvetica Neue, Arial, Sans-serif;
+}
+
+.hover-btn {
+    background-color: #00967f;
+    border-color: #00967f;
+    color: white;
+    display: block;
+}
+
+/* Consensus page styling */
+
+.not-significant {
+    background-color: transparent !important;
+    border-color: #8f8e8e !important;
+    color: #8f8e8e !important;
+    font-weight: bold !important;
+}
+
+.ora-legend-concordance {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: #585858 !important;
+    font-weight: bold !important;
+}
+
+.significant-ora {
+    background-color: transparent !important;
+    border-color: #00cc33 !important;
+    color: #00cc33 !important;
+    font-weight: bold !important;
+}
+
+.significant {
+    background-color: transparent !important;
+    border-color: #0087cf !important;
+    color: #0087cf !important;
+    font-weight: bold !important;
+}
+
+.high-under-expressed {
+    background-color: transparent !important;
+    border-color: #014d8f !important;
+    color: #014d8f !important;
+    font-weight: bold !important;
+}
+
+.under-expressed {
+    background-color: transparent !important;
+    border-color: #0087cf !important;
+    color: #0087cf !important;
+    font-weight: bold !important;
+}
+
+.low-under-expressed {
+    background-color: transparent !important;
+    border-color: #4CC3F0 !important;
+    color: #4CC3F0 !important;
+    font-weight: bold !important;
+}
+
+.no-change {
+    background-color: transparent !important;
+    border-color: #00967f !important;
+    color: #00967f !important;
+    font-weight: bold !important;
+}
+
+.low-over-expressed {
+    background-color: transparent !important;
+    border-color: #ff92ad !important;
+    color: #ff92ad !important;
+    font-weight: bold !important;
+}
+
+.over-expressed {
+    background-color: transparent !important;
+    border-color: #ff416d !important;
+    color: #ff416d !important;
+    font-weight: bold !important;
+}
+
+.high-over-expressed {
+    background-color: transparent !important;
+    border-color: #db0035 !important;
+    color: #db0035 !important;
+    font-weight: bold !important;
+}
+
+.no-mapping {
+    color: #7f7e7e;
+    font-weight: bold !important;
+}
+
+.Concordant {
+    background-color: #d2f2d4 !important;
+    border-color: #d2f2d4 !important;
+    color: #00cc33 !important;
+    font-weight: bold !important;
+    cursor: default !important;
+}
+
+.Discordant {
+    background-color: #FFCCCB !important;
+    border-color: #FFCCCB !important;
+    color: #FE1A1A !important;
+    font-weight: bold !important;
+    cursor: default !important;
+}
+
+.NoMappings {
+    background-color: #FDF9DB !important;
+    border-color: #FDF9DB !important;
+    color: #FFB501 !important;
+    font-weight: bold !important;
+    cursor: default !important;
+    font-size: 15px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+.dot.concordant {
+    background-color: #00cc33;
+}
+
+.dot.discordant {
+    background-color: #FE1A1A;
+}
+
+.dot.no-mappings {
+    background-color: #FFB501;
+    border-radius: 50%;
+}
+
+.info-icon {
+    font-size: 35px;
+    padding: 2px;
+    color: #878e96;
+}
+
+/* FAQs */
+
+.card-header .fa {
+    transition: .3s transform ease-in-out;
+}
+
+.card-header .collapsed .fa {
+    transform: rotate(90deg);
+}
+
+#faqDropdown {
+    background-color: white;
+    color: #186a8f;
+    font-size: 20px;
+}
+
+/* DC genesets */
+
+#thDCgeneset {
+    text-align: left;
+    width: 25%;
+}
+
+#tdDCgeneset {
+    text-align: left;
+    width: 75%;
+}
+
+/* Results table */
+
+#ranking_table {
+    display: none;
+}
+
+table.dataTable thead .sorting::after,
+table.dataTable thead .sorting_asc::after {
+    display: none;
+}
+
+table.dataTable thead .sorting_desc::after {
+    display: none;
+}
+
+table.dataTable thead .sorting {
+    background-image: url(https://datatables.net/media/images/sort_both.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+table.dataTable thead .sorting_asc {
+    background-image: url(https://datatables.net/media/images/sort_asc.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+table.dataTable thead .sorting_desc {
+    background-image: url(https://datatables.net/media/images/sort_desc.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+table.dataTable thead {
+    text-align: center;
+    color: white;
+    background-color: #0e435b;
+}
+
+#TableLegend {
+    color: #343A40;
+    font-size: 14px;
+    line-height: 90%;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #878e96;
+    border-color: white;
+    font-family: 'Roboto', Helvetica Neue, Arial, Sans-serif;
+    font-size: 18px;
+}
+
+thead th {
+    white-space: nowrap;
+    padding: 10px;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: 100;
+!important;
+}
+
+/* Imprint */
+
+.card-title-imprint {
+    color: #205f79;
+    font-weight: bold;
+    text-align: left;
+    font-family: 'Roboto', Helvetica Neue, Arial, Sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+/* Custom mappings upload */
+
+#mappingCard {
+    padding: 20px;
+}
+
+/* Search bar tables */
+#tableInput {
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17.6px;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #5f5f5f;
+}
+
+ul {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.7em;
+}
+
+.justify-content {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.tutorial-section {
+    text-align: justify;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 1px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: grey;
+}
+
+
+::-webkit-scrollbar-track-piece {
+    height: 10px
+}
+
+.column {
+    float: left;
+    padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+/* GSEA specific results */
+
+.customButton {
+    color: #fff !important;
+    background-color: #205f79;
+    border-color: #fff;
+}

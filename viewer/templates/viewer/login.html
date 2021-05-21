@@ -1,0 +1,36 @@
+{% extends "viewer/extentions/base.html" %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="w-50 mx-auto">
+            <br><br>
+            <H3 style="margin-left: 10%; margin-bottom: 25px"><strong>Login to your account</strong></H3>
+            <br>
+            <form method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-row align-items-center">
+                        <label for="col-sm-1 col-form-label"><strong>{{ field.label }}</strong></label>
+                        <div class="input-group mb-2 mr-sm-4 w-50 mx-auto">{{ field }}</div>
+                    </div>
+                {% endfor %}
+                <button style="margin-left: 35%; margin-top: 15px" class="btn btn-primary " type="submit">Login</button>
+            </form>
+            <br>
+{#            <div style="line-height: 1em;">#}
+{#                <p style="text-align: left; line-height: 1em;">#}
+{#                    <i>*Coming soon*</i>  To test out DecoPath, you can first login with the following credentials:#}
+{#                </p>#}
+{#                <p style="text-align: left; font-size: 16px; line-height: 0.6em;">#}
+{#                    <strong>Email:</strong> testuser@user.com#}
+{#                </p>#}
+{#                <p style="text-align: left; font-size: 16px; line-height: 0.6em;">#}
+{#                    <strong>Password:</strong> password#}
+{#                </p>#}
+{#            </div>#}
+        </div>
+    </div>
+    <br>
+
+{% endblock content %}

@@ -1,0 +1,321 @@
+{% extends "viewer/extentions/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <header>
+        <div class="jumbotron">
+            <img class="resize" src="{% static 'img/logo.svg' %}">
+
+            <p id="page-subtitle">A web server to compare the results of pathway enrichment analysis</p>
+        </div>
+    </header>
+
+    {% if not user.is_authenticated %}
+        <div class="container">
+            <br>
+            <p style="font-family: 'Poppins', sans-serif; font-weight: 250; text-align: justify;">
+                Please <a href={% url 'login' %}>login</a> to run DecoPath. If this is your first time here, you can
+                take a look at the <a href={% url 'user_guide' %}>User Guide</a> and <a href={% url 'faqs' %}>FAQs</a>
+                for more information. You can also <a href={% url 'login' %}>login</a> as a test user to see some
+                examples of how this web server can be used. Once you are ready, you can register <a
+                    href={% url 'register' %}>here</a>.
+            </p>
+            <br>
+        </div>
+
+        <div class="container">
+            <div class="login-choices">
+                <div class="card-deck">
+                    <div class="card p-2">
+                        <img class="card-img-top img-fluid image-preview"
+                             src="{% static 'img/submit.png' %}" alt="results image preview">
+
+                        <h4 class="card-title">Upload results</h4>
+                        <p class="card-text">
+                            Upload and compare the results of enrichment analysis
+                        </p>
+                    </div>
+                    <div class="card p-2">
+                        <img class="card-img-top img-fluid image-preview" src="{% static 'img/ora.png' %}"
+                             alt="ora image preview">
+
+                        <h4 class="card-title">Run ORA</h4>
+                        <p class="card-text">Upload a dataset and compare the results of an over representation
+                            analysis</p>
+                    </div>
+                    <div class="card p-2">
+                        <img class="card-img-top img-fluid image-preview" src="{% static 'img/gsea.png' %}"
+                             alt="gsea image preview">
+
+                        <h4 class="card-title">Run GSEA </h4>
+                        <p class="card-text">Upload a dataset and compare the results of a gene set enrichment
+                            analysis</p><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <div class="container">
+            <div class="choices">
+                <div class="card-deck">
+
+                    <div class="card p-2 container-hover">
+                        <img class="card-img-top img-fluid image-preview"
+                             src="{% static 'img/submit.png' %}" alt="results image preview">
+
+                        <h4 class="card-title">Upload results</h4>
+                        <p class="card-text">
+                            Upload and compare the results of enrichment analysis
+                        </p>
+                        <div class="middle">
+                            <div>
+                                <a onclick="smoothScrolling('results_form');"
+                                   class="btn btn-primary stretched-link hover-btn">Upload</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card p-2 container-hover">
+                        <img class="card-img-top img-fluid image-preview" src="{% static 'img/ora.png' %}"
+                             alt="ora image preview">
+
+                        <h4 class="card-title">Run ORA</h4>
+                        <p class="card-text">Upload a dataset and compare the results of over representation
+                            analysis</p>
+                        <div class="middle">
+                            <div>
+                                <a onclick="smoothScrolling('ora_form');"
+                                   class="btn btn-primary stretched-link">Run ORA</a>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="card p-2 container-hover">
+                        <img class="card-img-top img-fluid image-preview" src="{% static 'img/gsea.png' %}"
+                             alt="gsea image preview">
+
+                        <h4 class="card-title">Run GSEA </h4>
+                        <p class="card-text">Upload a dataset and compare the results of gene set enrichment
+                            analysis</p><br>
+                        <div class="middle">
+                            <div>
+                                <a onclick="smoothScrolling('gsea_form');"
+                                   class="btn btn-primary stretched-link"
+                                >Run GSEA</a>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container" id="results_form">
+            <h1 class="card-header" id="taskSubmit">
+                Upload Results
+            </h1>
+            <div class="card-body">
+                <h4>Step 1: Download gene set files and run pathway analysis</h4>
+                <hr>
+                <ul>
+                    <li>
+                        <a href="https://gitcdn.link/repo/pathwayforte/pathway-forte/master/data/gmt_files/kegg.gmt"
+                           target="_blank" download>KEGG</a>
+                    </li>
+                    <li>
+                        <a href="https://gitcdn.link/repo/pathwayforte/pathway-forte/master/data/gmt_files/pathbank.gmt"
+                           target="_blank" download>PathBank</a>
+                    </li>
+                    <li>
+                        <a href="https://gitcdn.link/repo/pathwayforte/pathway-forte/master/data/gmt_files/reactome.gmt"
+                           target="_blank" download>Reactome</a>
+                    </li>
+                    <li>
+                        <a href="https://gitcdn.link/repo/pathwayforte/pathway-forte/master/data/gmt_files/wikipathways.gmt"
+                           target="_blank" download>WikiPathways</a>
+                    </li>
+                    <li>
+                        <a href="https://gitcdn.link/repo/pathwayforte/pathway-forte/master/data/gmt_files/decopath.gmt"
+                           target="_blank" download>DecoPath</a>
+                    </li>
+                </ul>
+                <form action="{% url "run_decopath" %}" method="POST" enctype="multipart/form-data">
+                    <h4>Step 2: Upload results of pathway analysis</h4>
+                    <hr>
+                    {% csrf_token %}
+                    {{ results_form|crispy }}
+                    <h4>Step 3: (Optional) Perform or upload results of differential gene expression analysis</h4>
+                    <hr>
+                    {% csrf_token %}
+                    {{ fold_changes_form|crispy }}
+                    <button type="submit" class="btn btn-primary" name="submit_results" value="Submit">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="container" id="ora_form">
+            <h1 class="card-header" id="taskSubmit">Over Representation Analysis</h1>
+            <div class="card-body">
+                <form action="{% url "run_decopath" %}" method="POST" enctype="multipart/form-data">
+                    <h4>Step 1: Select databases</h4>
+                    <hr>
+                    {% csrf_token %}
+                    {{ ora_db_form|crispy }}
+
+                    <h4>Step 2: (Optional) Select parameters</h4>
+                    <hr>
+                    {% csrf_token %}
+                    {{ ora_parameters_form|crispy }}
+
+                    <h4>Step 3: Run ORA</h4>
+                    <hr>
+                    {% csrf_token %}
+                    {{ ora_form|crispy }}
+
+                    <button type="submit" class="btn btn-primary" name="run_ora" value="Submit">Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="container" id="gsea_form">
+            <h1 class="card-header" id="taskSubmit">
+                Gene Set Enrichment Analysis
+            </h1>
+            <div class="card-body">
+                <form action="{% url "run_decopath" %}" method="POST" enctype="multipart/form-data">
+                    <h4>Step 1: Select databases</h4>
+                    <hr>
+                    {% csrf_token %}
+                    {{ gsea_db_form|crispy }}
+                    <h4>Step 2: Upload files</h4>
+                    <hr>
+                    {% csrf_token %}
+                    {{ gsea_form|crispy }}
+                    <h4>Step 3: (Optional) Select parameters</h4>
+                    <hr>
+                    {% csrf_token %}
+                    {{ gsea_parameters_form|crispy }}
+                    <h4>Step 4: (Optional) Perform or upload results of differential gene expression analysis</h4>
+                    <hr>
+                    {% csrf_token %}
+                    {{ fold_changes_form_gsea|crispy }}
+                    <button type="submit" class="btn btn-primary" name="run_gsea" value="Submit">Submit
+                    </button>
+                </form>
+                <p style="color: #6c757d; padding-top: 10px"><strong>Note:</strong> GSEA experiments will be cancelled
+                    if they exceed
+                    the time limit.</p>
+            </div>
+        </div>
+        </div>
+
+    {% endif %}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setTimeout(function () {
+                $(".alert").alert('close');
+            }, 3000);
+            $("[data-toggle=popover]").popover();
+        });
+
+
+        var ancestor = document.getElementById('div_id_select_databases'),
+            descendents = ancestor.getElementsByTagName('*');
+        // gets all descendent of ancestor
+
+
+    </script>
+
+    <script type="text/javascript">
+        // Show/hide fold change analysis
+        $(function () {
+            $("#div_id_read_counts_file").hide()
+            $("#div_id_class_file").hide()
+            $("#div_id_fold_changes_file").hide()
+            $("#div_id_significance_value_run").hide()
+            $("#div_id_significance_value_upload").hide()
+
+            $('#id_run_analysis').click(function () {
+                $("#div_id_read_counts_file").toggle(this.checked);
+                $("#div_id_class_file").toggle(this.checked);
+                $("#div_id_significance_value_run").toggle(this.checked);
+            });
+
+            $('#id_upload_fold_changes').click(function () {
+                $("#div_id_fold_changes_file").toggle(this.checked);
+                $("#div_id_significance_value_upload").toggle(this.checked);
+            });
+        });
+
+        $(function () {
+            $("#div_id_gene_list").hide()
+            $("#div_id_read_counts_file_ora").hide()
+            $("#div_id_class_file_ora").hide()
+            $("#div_id_fold_changes_file_ora").hide()
+            $("#div_id_significance_value_run_ora").hide()
+            $("#div_id_significance_value_upload_ora").hide()
+            $("#div_id_run_analysis_results_ora").hide()
+            $("#div_id_upload_fold_changes_ora").hide()
+
+
+            $('#id_upload_gene_list').click(function () {
+                $("#div_id_gene_list").toggle(this.checked);
+            });
+
+            $("#id_run_dge_ora_genes").click(function () {
+                $("#div_id_run_analysis_results_ora").toggle(this.checked);
+                $("#div_id_upload_fold_changes_ora").toggle(this.checked);
+            });
+        });
+
+        $(function () {
+            $("#div_id_read_counts_file_ora").hide()
+            $("#div_id_class_file_ora").hide()
+            $("#div_id_fold_changes_file_ora").hide()
+            $("#div_id_significance_value_run_ora").hide()
+            $("#div_id_significance_value_upload_ora").hide()
+
+            $('#id_run_analysis_results_ora').click(function () {
+                $("#div_id_read_counts_file_ora").toggle(this.checked);
+                $("#div_id_class_file_ora").toggle(this.checked);
+                $("#div_id_significance_value_run_ora").toggle(this.checked);
+            });
+
+            $("#id_upload_fold_changes_ora").click(function () {
+                $("#div_id_fold_changes_file_ora").toggle(this.checked);
+                $("#div_id_significance_value_upload_ora").toggle(this.checked);
+            });
+        });
+
+        $(function () {
+            $("#div_id_read_counts_file_gsea").hide()
+            $("#div_id_fold_changes_file_gsea").hide()
+            $("#div_id_significance_value_run_gsea").hide()
+            $("#div_id_significance_value_upload_gsea").hide()
+
+            $('#id_run_analysis_results_gsea').click(function () {
+                $("#div_id_read_counts_file_gsea").toggle(this.checked);
+                $("#div_id_significance_value_run_gsea").toggle(this.checked);
+            });
+
+            $('#id_upload_fold_changes_gsea').click(function () {
+                $("#div_id_fold_changes_file_gsea").toggle(this.checked);
+                $("#div_id_significance_value_upload_gsea").toggle(this.checked);
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        //smooth scrolling when anchor link is clicked
+        function smoothScrolling(anchor) {
+            var element = document.getElementById(anchor);
+            element.scrollIntoView({behavior: "smooth"});
+        }
+    </script>
+
+{% endblock content %}

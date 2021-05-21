@@ -1,0 +1,614 @@
+{% extends "viewer/extentions/base.html" %}
+
+{% block content %}
+
+    <div class="container" style="margin-bottom: 80px;">
+
+        <br><br>
+        <h1 class="text-center">Frequently Asked Questions</h1>
+        {#        <h2> TODO add links to tutorials w/ sample files</h2>#}
+        <br><br>
+
+        <h5 style="color: #505050; font-weight: bold;">Running GSEA with DecoPath</h5>
+        <hr>
+        <div id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="card">
+                <p class="card-header mb-0" role="tab" id="faqDropdown">
+                    <a class="collapsed d-block" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                       aria-expanded="true" aria-controls="collapseOne" class="d-block" id="faqDropdown">
+                        <i class="fa fa-chevron-down pull-right"></i>
+                        How can I run GSEA using DecoPath?
+                    </a>
+                </p>
+
+                <div id="collapseOne" class="collapse" role="tabpanel">
+                    <div class="card-body">
+                        <p>To run GSEA using DecoPath, you will need:
+                        <ul>
+                            <li>An expression dataset</li>
+                            <li>A file containing class labels (e.g., normal and tumor) for samples in the expression
+                                dataset.
+                            </li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <p class="card-header" role="tab" id="faqDropdown">
+                    <a class="collapsed d-block" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+                       aria-expanded="false" aria-controls="collapseThree" id="faqDropdown">
+                        <i class="fa fa-chevron-down pull-right"></i>What kind of data can I submit to run my
+                        experiments?
+                    </a>
+                </p>
+                <div id="collapseThree" class="collapse" role="tabpanel">
+                    <div class="card-body">
+                        <p>
+                            You can submit RNA-Seq, microarray, and ChIP-Seq data. Gene identifiers must be HUGO Gene
+                            Nomenclature Committee (HGNC) symbols.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <p class="card-header" role="tab" id="faqDropdown">
+                    <a class="collapsed d-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"
+                       aria-expanded="false" aria-controls="collapseFour" id="faqDropdown">
+                        <i class="fa fa-chevron-down pull-right"></i> How do I format expression data to run GSEA with
+                        DecoPath?
+                    </a>
+                </p>
+                <div id="collapseFour" class="collapse" role="tabpanel">
+                    <div class="card-body">
+                        <p>
+                            The expression data you submit to run GSEA should be in a comma-separated (*.csv) or
+                            tab-separated
+                            (*.tsv)
+                            text file. The first and second column labels should be 'name' and 'description',
+                            respectively.
+                            All
+                            subsequent column labels should be the sample identifiers. Rows should contain an HGNC
+                            symbol,
+                            a
+                            description (which can be left as NA) and all subsequent columns should contain the
+                            expression
+                            value
+                            for
+                            that gene for each of the samples:
+
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">gene_symbol</th>
+                                <th scope="col">description</th>
+                                <th scope="col">sample_1</th>
+                                <th scope="col">sample_2</th>
+                                <th scope="col">sample_3</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">TSPAN6</th>
+                                <td>NA</td>
+                                <td>17.844</td>
+                                <td>15.288</td>
+                                <td>19.747</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">CFH</th>
+                                <td>NA</td>
+                                <td>145.610</td>
+                                <td>209.655</td>
+                                <td>93.282</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">C1orf112</th>
+                                <td>NA</td>
+                                <td>0.387</td>
+                                <td>0.562</td>
+                                <td>0.144</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <p class="card-header" role="tab" id="faqDropdown">
+                    <a class="collapsed d-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFive"
+                       aria-expanded="false" aria-controls="collapseFive" id="faqDropdown">
+                        <i class="fa fa-chevron-down pull-right"></i>What is a class labels file?
+                    </a>
+                </p>
+                <div id="collapseFive" class="collapse" role="tabpanel">
+                    <div class="card-body">
+                        <p>
+                            Much like a categorical class (CLS) file format, this file (either a comma-separated (*.csv)
+                            or tab-separated (*.tsv) text file) should contain specifications on the labels for each of
+                            the samples in the dataset.
+                        </p>
+                        <p>
+                            For example, for a dataset with expression values for samples that fall into two distinct
+                            classes (e.g., normal and tumor), the class labels file should have a column with the same
+                            sample identifiers as the ones in the expression dataset file you submit and another column
+                            with their corresponding class labels. Please ensure the order of the samples in the
+                            expression dataset is the same as the order of samples in the class labels file. Below is an
+                            example of a class labels file:
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">identifier</th>
+                                <th scope="col">class_label</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>sample_1</td>
+                                <td>normal</td>
+                            </tr>
+                            <tr>
+                                <td>sample_2</td>
+                                <td>normal</td>
+                            </tr>
+                            <tr>
+                                <td>sample_3</td>
+                                <td>tumor</td>
+                            </tr>
+                            <tr>
+                                <td>sample_4</td>
+                                <td>tumor</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        {#                        You can also check our example files for more details.#}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <h5 style="color: #505050; font-weight: bold;">Running ORA with DecoPath</h5>
+            <hr>
+
+            <div class="card">
+                <p class="card-header" role="tab" id="faqDropdown">
+                    <a class="collapsed d-block" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+                       aria-expanded="false" aria-controls="collapseTwo" id="faqDropdown">
+                        <i class="fa fa-chevron-down pull-right"></i>How can I run ORA using DecoPath?
+                    </a>
+                </p>
+                <div id="collapseTwo" class="collapse" role="tabpanel">
+                    <div class="card-body">
+                        <p>To run ORA using DecoPath, you will need:
+                        <ul>
+                            <li>A gene list</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <p class="card-header" role="tab" id="faqDropdown">
+                <a class="collapsed d-block" data-toggle="collapse" href="#collapseSix" data-parent="#accordion"
+                   aria-expanded="false" aria-controls="collapseSix" class="d-block" id="faqDropdown">
+                    <i class="fa fa-chevron-down pull-right"></i> What kind of file can I submit to run ORA?
+                </a>
+            </p>
+
+            <div id="collapseSix" class="collapse" role="tabpanel">
+                <div class="card-body">
+                    <p>
+                        To run ORA, submit a file that contains a single column with HGNC symbols in a comma-separated
+                        (*.csv)
+                        or
+                        tab-separated (*.tsv) format. You can check our example files for more details.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+        <h5 style="color: #505050; font-weight: bold;">Submitting your own results</h5>
+        <hr>
+
+        <div class="card">
+            <p class="card-header" role="tab" id="faqDropdown">
+                <a class="collapsed d-block" data-toggle="collapse" data-parent="#accordion" href="#collapseEight"
+                   aria-expanded="false" aria-controls="collapseEight" class="d-block" id="faqDropdown">
+                    <i class="fa fa-chevron-down pull-right"></i>Can I submit my own ORA or GSEA results?
+                </a>
+            </p>
+
+            <div id="collapseEight" class="collapse" role="tabpanel">
+                <div class="card-body">
+                    <p>You can also submit the results of an enrichment analysis and use the DecoPath visualizations and
+                        functionalities to compare and explore the consensus around different pathway databases. If you
+                        do opt to submit your own results, you must use the databases provided in DecoPath. We strongly
+                        recommend using gene set files from the following links:
+                    </p>
+                    <ul>
+                        <li>
+                            <a href="https://raw.githubusercontent.com/pathwayforte/pathway-forte/master/data/gmt_files/kegg.gmt"
+                               target="_blank">KEGG</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/pathwayforte/pathway-forte/blob/master/data/gmt_files/pathbank.gmt"
+                               target="_blank">PathBank</a>
+                        </li>
+                        <li>
+                            <a href="https://raw.githubusercontent.com/pathwayforte/pathway-forte/master/data/gmt_files/reactome.gmt"
+                               target="_blank">Reactome</a>
+                        </li>
+                        <li>
+                            <a href="https://raw.githubusercontent.com/pathwayforte/pathway-forte/master/data/gmt_files/wikipathways.gmt"
+                               target="_blank">WikiPathways</a>
+                        </li>
+                        <li>
+                            <a href="https://raw.githubusercontent.com/pathwayforte/pathway-forte/master/data/gmt_files/decopath.gmt"
+                               target="_blank">DecoPath</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <p class="card-header" role="tab" id="faqDropdown">
+                <a class="collapsed d-block" data-toggle="collapse" data-parent="#accordion" href="#collapseNine"
+                   aria-expanded="false" aria-controls="collapseNine" class="d-block" id="faqDropdown">
+                    <i class="fa fa-chevron-down pull-right"></i>How can I submit results for ORA?
+                </a>
+            </p>
+
+            <div id="collapseNine" class="collapse" role="tabpanel">
+                <div class="card-body">
+                    <p>If you submit ORA results, ensure they are in a comma-separated (*.csv) or tab-separated (*.tsv)
+                        text file and the file contains the columns: pathway, p_value, q_value. For example:</p>
+
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col">pathway</th>
+                            <th scope="col">p_value</th>
+                            <th scope="col">q_value</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="col">WP1403</th>
+                            <td>1.18e-06</td>
+                            <td>9.35e-06</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">WP411</th>
+                            <td>2.61e-09</td>
+                            <td>5.72e-08</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">hsa04210</th>
+                            <td>0.074</td>
+                            <td>0.1</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <p class="card-header" role="tab" id="faqDropdown">
+                <a class="collapsed d-block" data-toggle="collapse" data-parent="#accordion" href="#collapseTen"
+                   aria-expanded="false" aria-controls="collapseTen" class="d-block" id="faqDropdown">
+                    <i class="fa fa-chevron-down pull-right"></i>How can I submit results for GSEA?
+                </a>
+            </p>
+
+            <div id="collapseTen" class="collapse" role="tabpanel">
+                <div class="card-body">
+                    <p>If you submit GSEA results, ensure they are in a comma-separated (*.csv) or tab-separated (*.tsv)
+                        text file and the file contains the columns: pathway, es, nes, p_value and q_value. For
+                        example:</p>
+
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col">pathway</th>
+                            <th scope="col">es</th>
+                            <th scope="col">nes</th>
+                            <th scope="col">p_value</th>
+                            <th scope="col">q_value</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="col">WP2636</th>
+                            <td>-0.25</td>
+                            <td>-0.25</td>
+                            <td>0.2</td>
+                            <td>0.22</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">hsa05031</th>
+                            <td>-0.3</td>
+                            <td>-0.13</td>
+                            <td>2.61e-07</td>
+                            <td>2.61e-09</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">hsa04210</th>
+                            <td>0.074</td>
+                            <td>0.1</td>
+                            <td>2.3e-02</td>
+                            <td>1.2e-03</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <h5 style="color: #505050; font-weight: bold;">Performing differential gene expression analysis</h5>
+        <hr>
+
+        <div class="card">
+            <p class="card-header" role="tab" id="faqDropdown">
+                <a class="collapsed d-block" data-toggle="collapse" href="#collapseEleven" data-parent="#accordion"
+                   aria-expanded="false" aria-controls="collapseEleven" class="d-block" id="faqDropdown">
+                    <i class="fa fa-chevron-down pull-right"></i>Do I need to upload fold changes or files to generate
+                    them to use DecoPath?
+                </a>
+            </p>
+
+            <div id="collapseEleven" class="collapse" role="tabpanel">
+                <div class="card-body">
+                    <p>No, this is an optional field and can be skipped.</p>
+                    <p>
+                        While you can run DecoPath without performing differential expression analysis, we also generate
+                        visualizations to identify genes that are differentially expressed according to a fold change
+                        cutoff.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <p class="card-header" role="tab" id="faqDropdown">
+                <a class="collapsed d-block" data-toggle="collapse" href="#collapseTwelve" data-parent="#accordion"
+                   aria-expanded="false" aria-controls="collapseTwelve" class="d-block" id="faqDropdown">
+                    <i class="fa fa-chevron-down pull-right"></i>What kind of format do I need to upload fold changes
+                    in?
+                </a>
+            </p>
+
+            <div id="collapseTwelve" class="collapse" role="tabpanel">
+                <div class="card-body">
+                    <p>The file you submit containing log2 fold changes should be a comma-separated (*.csv) or
+                        tab-separated (*.tsv) text file with the columns, gene_symbol, log2fc, p-value and q-value.
+                        Please ensure that the log2 fold changes of the genes uploaded correspond to the expression
+                        dataset or GSEA results file of the same experimental groups in the case of GSEA and to the log2
+                        fold changes of genes in the gene list in the case of ORA. For example:</p>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col">gene_symbol</th>
+                            <th scope="col">log2fc</th>
+                            <th scope="col">p_value</th>
+                            <th scope="col">q_value</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="col">AK2</th>
+                            <td>-0.16</td>
+                            <td>0.0017</td>
+                            <td>0.002</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">CD38</th>
+                            <td>1.97</td>
+                            <td>0.1</td>
+                            <td>0.11</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">FKBP4</th>
+                            <td>-0.79</td>
+                            <td>4.15e-5</td>
+                            <td>2.59e-4</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <p class="card-header" role="tab" id="faqDropdown">
+                <a class="collapsed d-block" data-toggle="collapse" href="#collapseThirteen" data-parent="#accordion"
+                   aria-expanded="false" aria-controls="collapseThirteen" class="d-block" id="faqDropdown">
+                    <i class="fa fa-chevron-down pull-right"></i>What kind of format do I need to upload read counts in
+                    to perform differential gene expression analysis?
+                </a>
+            </p>
+            <div id="collapseThirteen" class="collapse" role="tabpanel">
+                <div class="card-body">
+                    <p>You will require two comma-separated (*.csv) or tab-separated (*.tsv) text files:
+                    <ul>
+                        <li>un-normalized read counts in the form of a matrix of integer values</li>
+                        <li>class labels</li>
+                    </ul>
+                    </p>
+                    <p>The files must be consistently ordered such that the samples in the counts matrix are in the same
+                        order as the samples in the class labels file. If you are running GSEA, you only need to submit
+                        one class labels file corresponding to both the expression dataset to perform GSEA and the
+                        counts matrix to calculate the fold changes. Example files are given below:
+                    </p>
+                    <br>
+                    <h5>Counts matrix</h5>
+                    <hr>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th scope="col">gene_symbol</th>
+                            <th scope="col">sample_1</th>
+                            <th scope="col">sample_2</th>
+                            <th scope="col">sample_3</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">TSPAN6</th>
+                            <td>2393</td>
+                            <td>3187</td>
+                            <td>4964</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">CFH</th>
+                            <td>641</td>
+                            <td>182</td>
+                            <td>404</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">C1orf112</th>
+                            <td>321</td>
+                            <td>474</td>
+                            <td>198</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <h5>Class labels</h5>
+                    <hr>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col">identifier</th>
+                            <th scope="col">class_label</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>sample_1</td>
+                            <td>normal</td>
+                        </tr>
+                        <tr>
+                            <td>sample_2</td>
+                            <td>normal</td>
+                        </tr>
+                        <tr>
+                            <td>sample_3</td>
+                            <td>tumor</td>
+                        </tr>
+                        <tr>
+                            <td>sample_4</td>
+                            <td>tumor</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br><br>
+
+        <h5 style="color: #505050; font-weight: bold;">Running DecoPath with other databases</h5>
+        <hr>
+
+        <div class="card">
+            <p class="card-header" role="tab" id="faqDropdown">
+                <a class="collapsed d-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFourteen"
+                   aria-expanded="false" aria-controls="collapseFourteen" class="d-block" id="faqDropdown">
+                    <i class="fa fa-chevron-down pull-right"></i>
+                    Can I run DecoPath with other databases/gene sets?
+                </a>
+            </p>
+
+            <div id="collapseFourteen" class="collapse" role="tabpanel">
+                <div class="card-body">
+                    <p>
+                        Currently, we only provide 4 databases (i.e., KEGG, Reactome, WikiPathways and PathBank) to run
+                        pathway analysis. You can add more databases by uploading files in the gene matrix transposed
+                        (GMT) format containing HGNC symbols and their corresponding gene sets. You must also upload
+                        corresponding mapping files between each database you select as input.
+
+                    <p> So, if you wish to run
+                        the comparative analysis on KEGG, Reactome and your uploaded database, you need to first create
+                        mappings between KEGG and your uploaded database as well as Reactome and your uploaded
+                        database. For example, 'Citric acid cycle (TCA cycle)' pathway from
+                        Reactome is equivalent to 'TCA Cycle' from WikiPathways.
+
+                    </p>
+                    You can see example files here:
+                    <ul>
+                        <li>
+                            <a
+                                    href="https://github.com/ComPath/compath-resources/blob/master/mappings/kegg_wikipathways.csv"
+                                    target="_blank">GMT file
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                    href="https://github.com/ComPath/compath-resources/blob/master/mappings/kegg_wikipathways.csv"
+                                    target="_blank">Mapping file
+                            </a>
+                        </li>
+                    </ul>
+
+                    <p>If you have prepared these files, you can follow this
+                        <a href={% url 'mappings' %}>link
+                        </a> to run DecoPath using your preferred gene set databases.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <br><br>
+
+        <h5 style="color: #505050; font-weight: bold;">Managing your account</h5>
+        <hr>
+
+        <div class="card">
+            <p class="card-header" role="tab" id="faqDropdown">
+                <a class="collapsed d-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFifteen"
+                   aria-expanded="false" aria-controls="collapseFifteen" class="d-block" id="faqDropdown">
+                    <i class="fa fa-chevron-down pull-right"></i>
+                    Do I have to register to use DecoPath?
+                </a>
+            </p>
+
+            <div id="collapseFifteen" class="collapse" role="tabpanel">
+                <div class="card-body">
+                    <p>
+                        You must register with an email address to use DecoPath. Once you have registered, you can view
+                        the experiments you have run on the Experiments page.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <p class="card-header" role="tab" id="faqDropdown">
+                <a class="collapsed d-block" data-toggle="collapse" data-parent="#accordion" href="#collapseSixteen"
+                   aria-expanded="false" aria-controls="collapseSixteen" class="d-block" id="faqDropdown">
+                    <i class="fa fa-chevron-down pull-right"></i>
+                    How can I delete my account?
+                </a>
+            </p>
+
+            <div id="collapseSixteen" class="collapse" role="tabpanel">
+                <div class="card-body">
+                    <p>
+                        You can delete your account at anytime on the <a href={% url 'account' %}>Account</a> page.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}
