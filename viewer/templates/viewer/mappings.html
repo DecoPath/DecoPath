@@ -1,0 +1,91 @@
+{% extends "viewer/extentions/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+    <div class="container" style="margin-bottom: 80px;">
+        <br><br>
+        <h1 class="text-center">Upload Pathway Mappings</h1>
+        <br><br>
+
+        <div class="card" id="mappingCard">
+
+            <p>
+                To add your preferred gene sets to the comparison, the following files are required:
+            </p>
+            <ul>
+                <li>GMT file</li>
+                <li>Cross-database mapping file</li>
+            </ul>
+            <p>You can find an example GMT file
+                <a href="https://raw.githubusercontent.com/pathwayforte/pathway-forte/master/data/gmt_files/decopath.gmt"
+                   target="_blank">here</a>.
+                Cross-database mapping files must also be created for each pair of databases you wish to select.
+                See
+                <a href="https://raw.githubusercontent.com/ComPath/compath-resources/master/mappings/kegg_wikipathways.csv"
+                   target="_blank">here</a> for an example mapping file.
+            </p>
+
+            <p>
+                The mapping file must be a comma-separated (*.csv) or tab-separated (*.tsv) file with the columns named
+                as follows:
+            </p>
+            <ul>
+                <li>Source ID</li>
+                <li>Source Name</li>
+                <li>Source Resource</li>
+                <li>Target ID</li>
+                <li>Target Name</li>
+                <li>Target Resource</li>
+            </ul>
+
+            <p>
+                <strong>Note:</strong> A "Mapping Type" column is optional.
+            </p>
+            <hr>
+            <div>
+                <p>
+                    <strong>Note:</strong> Before selecting your files, please specify the number of files you would
+                    like to add by clicking the "Add additional file" button.
+                </p>
+                <form action="{% url "mappings" %}" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" value="false" name="addfile" id="addfile">
+                    <button class="btn btn-primary" id="addfilebutton">Add additional file</button>
+                    <br>
+                    {% csrf_token %}
+                    {{ formset.management_form }}
+                    <div id="form_set">
+                        <table>
+                            {% for form in formset %}
+                                {{ form|crispy }}
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <br>
+                    <input type="submit" value="Submit" id="submit" class="btn btn-primary">
+                    <div id="empty_form" style="display:none">
+                        <table class='no_error'>
+                            {{ formset.empty_form }}
+                        </table>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            var add_button = $("#addfilebutton");
+
+            $(add_button).click(function (e) {
+                $("#addfile").val("true");
+            });
+        });
+    </script>
+
+
+{% endblock %}

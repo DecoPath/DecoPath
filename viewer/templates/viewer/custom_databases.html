@@ -1,0 +1,69 @@
+{% extends "viewer/extentions/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="container" style="margin-bottom: 80px;">
+        <br><br>
+        <h1 class="text-center">Upload Custom Databases</h1>
+        <br><br>
+
+        <div class="card" id="mappingCard">
+
+
+            <p>The gene set file must be a comma-separated (*.csv) or tab-separated (*.tsv) file in gmt file format
+                with HGNC symbols.</p>
+
+            <p>You can see a description of the GMT file format
+                <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29"
+                   target="_blank">here</a> and a sample file
+                <a
+                        href="https://raw.githubusercontent.com/pathwayforte/pathway-forte/master/data/gmt_files/kegg.gmt"
+                        target="_blank"> here</a>.
+            <hr>
+
+            <div>
+                <p>
+                    Before selecting your files, please specify the number of files you would like to add by clicking
+                    the
+                    "Add
+                    additional file" button.
+                </p>
+                <form action="{% url "custom_databases" %}" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" value="false" name="addfile" id="addfile">
+                    <button class="btn btn-primary" id="addfilebutton">Add additional file</button>
+                <br>
+                    {% csrf_token %}
+                    {{ formset.management_form }}
+                    <div>
+                        <table>
+                            {% for form in formset %}
+                                {{ form|crispy }}
+                            {% endfor %}
+                        </table>
+                    </div>
+<br>
+                    <input type="submit" value="Submit" id="submit" class="btn btn-primary">
+                    <div id="empty_form" style="display:none">
+                        <table class='no_error'>
+                            {{ formset.empty_form }}
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+        <script>
+        $(document).ready(function () {
+            var add_button = $("#addfilebutton");
+
+            $(add_button).click(function (e) {
+                $("#addfile").val("true");
+            });
+        });
+    </script>
+
+{% endblock %}
+

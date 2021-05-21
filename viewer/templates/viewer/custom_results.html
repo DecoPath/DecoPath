@@ -1,0 +1,21 @@
+{% extends "viewer/extentions/base.html" %}
+
+{% block content %}
+
+    <h3>Upload the results of your experiments</h3>
+    <p>Please ensure you have created mappings across each of the databases you use.</p>
+
+
+    <div class="card" id="results_form">
+        <form action="{% url "custom_results" %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                {{ results_form.as_table }}
+            </table>
+            <input type="submit" name="submit_results" value="Submit">
+        </form>
+    </div>
+
+    </form>
+    </div>
+{% endblock %}

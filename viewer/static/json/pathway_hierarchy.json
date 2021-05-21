@@ -1,0 +1,4805 @@
+{
+  "name": "",
+  "color": "#6A6C6E",
+  "id": "SuperPathway",
+  "children": [
+    {
+      "database": "decopath",
+      "name": "Metabolism",
+      "geneset_size": 88,
+      "direction": -0.6211932091366059,
+      "color": "#85aeba",
+      "id": "DC1",
+      "children": [
+        {
+          "database": "decopath",
+          "name": "Amino acid metabolism and derivatives",
+          "geneset_size": 86,
+          "direction": 0.9802184032596126,
+          "color": "#da3f4a",
+          "id": "DC1-1",
+          "children": [
+            {
+              "database": "decopath",
+              "name": "Alanine, aspartate and glutamate metabolism",
+              "geneset_size": 80,
+              "direction": 0.9692769149604976,
+              "color": "#da404b",
+              "id": "DC1-1-1",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Alanine and aspartate metabolism",
+                  "geneset_size": 86,
+                  "direction": -0.14951186655700988,
+                  "color": "#d9e5e8",
+                  "id": "WP106"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Alanine, aspartate and glutamate metabolism - Homo sapiens (human)",
+                  "geneset_size": 78,
+                  "direction": -0.05544083108078146,
+                  "color": "#e8edee",
+                  "id": "hsa00250"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Cysteine and methionine metabolism",
+              "geneset_size": 88,
+              "direction": -0.8318209747772964,
+              "color": "#5e94a4",
+              "id": "DC1-1-2",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Methionine salvage pathway",
+                  "geneset_size": 98,
+                  "direction": 0.8041785161993258,
+                  "color": "#e05f68",
+                  "id": "R-HSA-1237112"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Cysteine and methionine metabolism - Homo sapiens (human)",
+                  "geneset_size": 60,
+                  "direction": -0.017237599529462244,
+                  "color": "#eff1f1",
+                  "id": "hsa00270",
+                  "children": [
+                    {
+                      "database": "wikipathways",
+                      "name": "Methionine De Novo and Salvage Pathway",
+                      "geneset_size": 91,
+                      "direction": -0.12810276074901572,
+                      "color": "#dde7ea",
+                      "id": "WP3580"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "D-Arginine and D-ornithine metabolism",
+              "geneset_size": 99,
+              "direction": -0.8794852590410864,
+              "color": "#568e9f",
+              "id": "DC1-1-3",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "D-Arginine and D-Ornithine Metabolism",
+                  "geneset_size": 55,
+                  "direction": -0.7487636767575174,
+                  "color": "#6c9dac",
+                  "id": "PW000019"
+                },
+                {
+                  "database": "kegg",
+                  "name": "D-Arginine and D-ornithine metabolism - Homo sapiens (human)",
+                  "geneset_size": 75,
+                  "direction": -0.9043346552858693,
+                  "color": "#508a9c",
+                  "id": "hsa00472",
+                  "children": [
+                    {
+                      "database": "pathbank",
+                      "name": "Protein Synthesis: Arginine",
+                      "geneset_size": 78,
+                      "direction": -0.7677103661188329,
+                      "color": "#6a9bab",
+                      "id": "PW112896"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Arginine and proline metabolism",
+              "geneset_size": 77,
+              "direction": -0.5677028433852951,
+              "color": "#8fb5c0",
+              "id": "DC1-1-4",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Arginine and Proline Metabolism",
+                  "geneset_size": 88,
+                  "direction": 0.13665822685825035,
+                  "color": "#f3d9da",
+                  "id": "PW000010"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Arginine and proline metabolism - Homo sapiens (human)",
+                  "geneset_size": 74,
+                  "direction": 0.34797002449301395,
+                  "color": "#f0b1b6",
+                  "id": "hsa00330"
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "Sulfur amino acid metabolism",
+              "geneset_size": 62,
+              "direction": -0.4698451490631519,
+              "color": "#a0c0ca",
+              "id": "R-HSA-1614635",
+              "children": [
+                {
+                  "database": "decopath",
+                  "name": "Taurine and hypotaurine metabolism",
+                  "geneset_size": 83,
+                  "direction": 0.8109542959664089,
+                  "color": "#e05d67",
+                  "id": "DC1-1-7",
+                  "children": [
+                    {
+                      "database": "pathbank",
+                      "name": "Taurine and Hypotaurine Metabolism",
+                      "geneset_size": 86,
+                      "direction": -0.44598917769273316,
+                      "color": "#a4c3cd",
+                      "id": "PW000038"
+                    },
+                    {
+                      "database": "kegg",
+                      "name": "Taurine and hypotaurine metabolism - Homo sapiens (human)",
+                      "geneset_size": 51,
+                      "direction": -0.29104174342031963,
+                      "color": "#c1d6dd",
+                      "id": "hsa00430"
+                    }
+                  ]
+                },
+                {
+                  "database": "decopath",
+                  "name": "Histidine metabolism",
+                  "geneset_size": 92,
+                  "direction": 0.3863990506417554,
+                  "color": "#efaaaf",
+                  "id": "DC1-1-15",
+                  "children": [
+                    {
+                      "database": "pathbank",
+                      "name": "Histidine Metabolism",
+                      "geneset_size": 97,
+                      "direction": -0.34757559548898964,
+                      "color": "#b7d0d7",
+                      "id": "PW000043"
+                    },
+                    {
+                      "database": "kegg",
+                      "name": "Histidine metabolism - Homo sapiens (human)",
+                      "geneset_size": 57,
+                      "direction": 0.07777725648273881,
+                      "color": "#f3e4e5",
+                      "id": "hsa00340"
+                    }
+                  ]
+                },
+                {
+                  "database": "pathbank",
+                  "name": "Sulfate/Sulfite Metabolism",
+                  "geneset_size": 76,
+                  "direction": -0.012469257375370857,
+                  "color": "#f0f1f1",
+                  "id": "PW000040"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Sulfur metabolism - Homo sapiens (human)",
+                  "geneset_size": 71,
+                  "direction": 0.5425924399450943,
+                  "color": "#e98e94",
+                  "id": "hsa00920"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Selenocompound metabolism",
+              "geneset_size": 80,
+              "direction": -0.308290499503562,
+              "color": "#bed5dc",
+              "id": "DC1-1-5",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Selenium Metabolism and Selenoproteins",
+                  "geneset_size": 64,
+                  "direction": -0.35290656730165604,
+                  "color": "#b5cfd7",
+                  "id": "WP28"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Selenocompound metabolism - Homo sapiens (human)",
+                  "geneset_size": 70,
+                  "direction": 0.6834798335168324,
+                  "color": "#e4747c",
+                  "id": "hsa00450",
+                  "children": [
+                    {
+                      "database": "pathbank",
+                      "name": "Selenoamino Acid Metabolism",
+                      "geneset_size": 100,
+                      "direction": 0.4806746168021432,
+                      "color": "#eb999f",
+                      "id": "PW000007"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Melanin biosynthesis",
+              "geneset_size": 93,
+              "direction": 0.3854166101031282,
+              "color": "#efaaaf",
+              "id": "DC1-1-6",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Melanin biosynthesis",
+                  "geneset_size": 67,
+                  "direction": 0.8176807903552035,
+                  "color": "#df5c65",
+                  "id": "R-HSA-5662702"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Melanogenesis - Homo sapiens (human)",
+                  "geneset_size": 95,
+                  "direction": 0.9844680913385255,
+                  "color": "#d93d49",
+                  "id": "hsa04916"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Thiamine metabolism",
+              "geneset_size": 53,
+              "direction": -0.9952405733628353,
+              "color": "#407f93",
+              "id": "DC1-1-8",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Thiamine metabolic pathways",
+                  "geneset_size": 85,
+                  "direction": 0.22838705479900656,
+                  "color": "#f3c7ca",
+                  "id": "WP4297"
+                },
+                {
+                  "database": "pathbank",
+                  "name": "Thiamine Metabolism",
+                  "geneset_size": 79,
+                  "direction": -0.6214931132857782,
+                  "color": "#85aeba",
+                  "id": "PW000036"
+                },
+                {
+                  "database": "reactome",
+                  "name": "Vitamin B1 (thiamin) metabolism",
+                  "geneset_size": 64,
+                  "direction": 0.2825783225128611,
+                  "color": "#f2bdc1",
+                  "id": "R-HSA-196819"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Thiamine metabolism - Homo sapiens (human)",
+                  "geneset_size": 96,
+                  "direction": -0.632739922916191,
+                  "color": "#82acb9",
+                  "id": "hsa00730"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Valine,leucine and isoleucine degradation",
+              "geneset_size": 92,
+              "direction": 0.37525316016328847,
+              "color": "#efadb2",
+              "id": "DC1-1-9",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Valine,Leucine,and Isoleucine Degradation",
+                  "geneset_size": 74,
+                  "direction": -0.9936032901727598,
+                  "color": "#407f93",
+                  "id": "PW000051"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Valine, leucine and isoleucine degradation - Homo sapiens (human)",
+                  "geneset_size": 73,
+                  "direction": -0.668563088205034,
+                  "color": "#7ca8b5",
+                  "id": "hsa00280"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Lysine degradation",
+              "geneset_size": 56,
+              "direction": -0.04943280241200565,
+              "color": "#eaeeef",
+              "id": "DC1-1-10",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Lysine catabolism",
+                  "geneset_size": 77,
+                  "direction": -0.4970637351058975,
+                  "color": "#9cbdc8",
+                  "id": "R-HSA-71064"
+                },
+                {
+                  "database": "pathbank",
+                  "name": "Lysine Degradation",
+                  "geneset_size": 81,
+                  "direction": 0.1004291234688317,
+                  "color": "#f3e0e1",
+                  "id": "PW000029"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Lysine degradation - Homo sapiens (human)",
+                  "geneset_size": 75,
+                  "direction": -0.7577485239729049,
+                  "color": "#6b9cac",
+                  "id": "hsa00310"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Urea cycle",
+              "geneset_size": 70,
+              "direction": -0.9625007470268445,
+              "color": "#468396",
+              "id": "DC1-1-11",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Urea cycle and metabolism of amino groups",
+                  "geneset_size": 99,
+                  "direction": 0.2496204928639154,
+                  "color": "#f3c4c7",
+                  "id": "WP497"
+                },
+                {
+                  "database": "reactome",
+                  "name": "Urea cycle",
+                  "geneset_size": 63,
+                  "direction": -0.6356772873277086,
+                  "color": "#82acb9",
+                  "id": "R-HSA-70635"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Arginine biosynthesis",
+              "geneset_size": 63,
+              "direction": 0.9301601282679122,
+              "color": "#db4752",
+              "id": "DC1-1-12",
+              "children": [
+                {
+                  "database": "kegg",
+                  "name": "Arginine biosynthesis - Homo sapiens (human)",
+                  "geneset_size": 82,
+                  "direction": -0.2859628938641656,
+                  "color": "#c2d7de",
+                  "id": "hsa00220"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Tyrosine metabolism",
+              "geneset_size": 63,
+              "direction": -0.925635842968807,
+              "color": "#4d889a",
+              "id": "DC1-1-13",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Tyrosine Metabolism",
+                  "geneset_size": 63,
+                  "direction": -0.9853686654801179,
+                  "color": "#428093",
+                  "id": "PW000142"
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "Tyrosine Metabolism",
+                  "geneset_size": 78,
+                  "direction": 0.6558217163768805,
+                  "color": "#e57981",
+                  "id": "WP4506"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Tyrosine metabolism - Homo sapiens (human)",
+                  "geneset_size": 97,
+                  "direction": 0.26151065514388727,
+                  "color": "#f3c1c5",
+                  "id": "hsa00350"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Tryptophan metabolism",
+              "geneset_size": 81,
+              "direction": 0.9768600269803209,
+              "color": "#da3f4a",
+              "id": "DC1-1-14",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Tryptophan Metabolism",
+                  "geneset_size": 74,
+                  "direction": -0.12575329321360984,
+                  "color": "#dde7ea",
+                  "id": "PW000163"
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "Tryptophan metabolism",
+                  "geneset_size": 95,
+                  "direction": 0.7578524132705879,
+                  "color": "#e16770",
+                  "id": "WP465"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Tryptophan metabolism - Homo sapiens (human)",
+                  "geneset_size": 88,
+                  "direction": 0.4724995507480785,
+                  "color": "#eb9aa0",
+                  "id": "hsa00380"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Glutathione metabolism",
+              "geneset_size": 58,
+              "direction": 0.7722613518839501,
+              "color": "#e1646d",
+              "id": "DC1-1-16",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Glutathione metabolism",
+                  "geneset_size": 92,
+                  "direction": 0.1566245099303929,
+                  "color": "#f3d6d8",
+                  "id": "WP100",
+                  "children": [
+                    {
+                      "database": "reactome",
+                      "name": "Glutathione conjugation",
+                      "geneset_size": 66,
+                      "direction": 0.9780582705995895,
+                      "color": "#da3f4a",
+                      "id": "R-HSA-156590"
+                    }
+                  ]
+                },
+                {
+                  "database": "pathbank",
+                  "name": "Glutathione Metabolism",
+                  "geneset_size": 91,
+                  "direction": 0.8468713757226591,
+                  "color": "#de5660",
+                  "id": "PW000004"
+                },
+                {
+                  "database": "reactome",
+                  "name": "Glutathione synthesis and recycling",
+                  "geneset_size": 53,
+                  "direction": 0.6699105323303347,
+                  "color": "#e4777f",
+                  "id": "R-HSA-174403"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Glutathione metabolism - Homo sapiens (human)",
+                  "geneset_size": 71,
+                  "direction": 0.45226095915179565,
+                  "color": "#ec9fa4",
+                  "id": "hsa00480"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Beta-Alanine metabolism",
+              "geneset_size": 83,
+              "direction": 0.08050275110427663,
+              "color": "#f3e3e4",
+              "id": "DC1-1-17",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "beta-Alanine Metabolism",
+                  "geneset_size": 83,
+                  "direction": 0.034757625671211434,
+                  "color": "#f2ecec",
+                  "id": "PW000011"
+                },
+                {
+                  "database": "kegg",
+                  "name": "beta-Alanine metabolism - Homo sapiens (human)",
+                  "geneset_size": 98,
+                  "direction": 0.46616672539340365,
+                  "color": "#ec9ca2",
+                  "id": "hsa00410"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Cysteine formation from homocysteine",
+              "geneset_size": 70,
+              "direction": 0.7106666993804165,
+              "color": "#e36f78",
+              "id": "DC1-1-18",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Trans-sulfuration pathway",
+                  "geneset_size": 87,
+                  "direction": 0.17543701480154583,
+                  "color": "#f3d1d4",
+                  "id": "WP2333"
+                },
+                {
+                  "database": "reactome",
+                  "name": "Cysteine formation from homocysteine",
+                  "geneset_size": 73,
+                  "direction": -0.07349453684662821,
+                  "color": "#e6eced",
+                  "id": "R-HSA-1614603"
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "Branched-chain amino acid catabolism",
+              "geneset_size": 87,
+              "direction": 0.907601467104699,
+              "color": "#dc4b56",
+              "id": "R-HSA-70895"
+            },
+            {
+              "database": "kegg",
+              "name": "Biosynthesis of amino acids - Homo sapiens (human)",
+              "geneset_size": 100,
+              "direction": -0.9560226252276212,
+              "color": "#478497",
+              "id": "hsa01230"
+            },
+            {
+              "database": "kegg",
+              "name": "2-Oxocarboxylic acid metabolism - Homo sapiens (human)",
+              "geneset_size": 90,
+              "direction": 0.5683187687211093,
+              "color": "#e88990",
+              "id": "hsa01210"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Carbon metabolism",
+          "geneset_size": 95,
+          "direction": -0.24735312669482612,
+          "color": "#c9dce2",
+          "id": "DC1-2",
+          "children": [
+            {
+              "database": "decopath",
+              "name": "Pentose phosphate pathway",
+              "geneset_size": 59,
+              "direction": 0.3433991275430295,
+              "color": "#f0b3b7",
+              "id": "DC1-2-1",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Pentose Phosphate Pathway",
+                  "geneset_size": 95,
+                  "direction": -0.7594854104334277,
+                  "color": "#6b9cac",
+                  "id": "PW000055"
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "Pentose Phosphate Pathway",
+                  "geneset_size": 51,
+                  "direction": 0.8057863101252143,
+                  "color": "#e05d67",
+                  "id": "WP134"
+                },
+                {
+                  "database": "reactome",
+                  "name": "Pentose phosphate pathway",
+                  "geneset_size": 50,
+                  "direction": 0.7244083367038074,
+                  "color": "#e36d75",
+                  "id": "R-HSA-71336"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Pentose phosphate pathway - Homo sapiens (human)",
+                  "geneset_size": 81,
+                  "direction": -0.7212897357649901,
+                  "color": "#72a1b0",
+                  "id": "hsa00030"
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "Pyruvate metabolism and Citric Acid (TCA) cycle",
+              "geneset_size": 85,
+              "direction": -0.3426952563929917,
+              "color": "#b7d0d7",
+              "id": "R-HSA-71406",
+              "children": [
+                {
+                  "database": "decopath",
+                  "name": "Citric acid cycle (TCA)",
+                  "geneset_size": 99,
+                  "direction": 0.2057945146826916,
+                  "color": "#f3cbce",
+                  "id": "DC1-2-2",
+                  "children": [
+                    {
+                      "database": "reactome",
+                      "name": "Citric acid cycle (TCA cycle)",
+                      "geneset_size": 69,
+                      "direction": 0.4133341802843624,
+                      "color": "#eea6ab",
+                      "id": "R-HSA-71403",
+                      "children": [
+                        {
+                          "database": "reactome",
+                          "name": "The citric acid (TCA) cycle and respiratory electron transport",
+                          "geneset_size": 70,
+                          "direction": -0.4069315759463865,
+                          "color": "#abc8d1",
+                          "id": "R-HSA-1428517"
+                        }
+                      ]
+                    },
+                    {
+                      "database": "pathbank",
+                      "name": "Citric Acid Cycle",
+                      "geneset_size": 69,
+                      "direction": -0.8534163297471324,
+                      "color": "#5a91a2",
+                      "id": "PW000005"
+                    },
+                    {
+                      "database": "wikipathways",
+                      "name": "TCA Cycle",
+                      "geneset_size": 73,
+                      "direction": 0.9812905273664922,
+                      "color": "#da3f4a",
+                      "id": "WP78"
+                    },
+                    {
+                      "database": "kegg",
+                      "name": "Citrate cycle (TCA cycle) - Homo sapiens (human)",
+                      "geneset_size": 59,
+                      "direction": 0.5098010290645643,
+                      "color": "#ea939a",
+                      "id": "hsa00020"
+                    }
+                  ]
+                },
+                {
+                  "database": "decopath",
+                  "name": "Pyruvate metabolism",
+                  "geneset_size": 93,
+                  "direction": -0.8691168487790455,
+                  "color": "#578fa0",
+                  "id": "DC1-2-0-1",
+                  "children": [
+                    {
+                      "database": "pathbank",
+                      "name": "Pyruvate Metabolism",
+                      "geneset_size": 52,
+                      "direction": 0.3030262790666314,
+                      "color": "#f2babe",
+                      "id": "PW000054"
+                    },
+                    {
+                      "database": "reactome",
+                      "name": "Pyruvate metabolism",
+                      "geneset_size": 77,
+                      "direction": -0.02847154601191071,
+                      "color": "#eef0f0",
+                      "id": "R-HSA-70268"
+                    },
+                    {
+                      "database": "kegg",
+                      "name": "Pyruvate metabolism - Homo sapiens (human)",
+                      "geneset_size": 63,
+                      "direction": -0.1406899392125418,
+                      "color": "#dae5e9",
+                      "id": "hsa00620"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Starch and sucrose metabolism",
+              "geneset_size": 54,
+              "direction": -0.07864195496692372,
+              "color": "#e5ebed",
+              "id": "DC1-2-3"
+            },
+            {
+              "database": "decopath",
+              "name": "Galactose metabolism",
+              "geneset_size": 63,
+              "direction": 0.2267655723398767,
+              "color": "#f3c8cc",
+              "id": "DC1-2-4",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Galactose Metabolism",
+                  "geneset_size": 90,
+                  "direction": -0.21407713367777292,
+                  "color": "#cedfe4",
+                  "id": "PW000159"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Galactose metabolism - Homo sapiens (human)",
+                  "geneset_size": 69,
+                  "direction": -0.8468607181111776,
+                  "color": "#5b92a2",
+                  "id": "hsa00052"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Starch and sucrose metabolism",
+              "geneset_size": 54,
+              "direction": -0.6583810778533536,
+              "color": "#7ea9b6",
+              "id": "DC1-2-5",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Starch and Sucrose Metabolism",
+                  "geneset_size": 91,
+                  "direction": -0.6283643806015529,
+                  "color": "#83adba",
+                  "id": "PW000150"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Starch and sucrose metabolism - Homo sapiens (human)",
+                  "geneset_size": 100,
+                  "direction": -0.02074552586823497,
+                  "color": "#eff1f1",
+                  "id": "hsa00500"
+                }
+              ]
+            },
+            {
+              "database": "wikipathways",
+              "name": "Trans-sulfuration and one carbon metabolism",
+              "geneset_size": 83,
+              "direction": 0.5314362631640079,
+              "color": "#e99097",
+              "id": "WP2525"
+            },
+            {
+              "database": "decopath",
+              "name": "Glycogen metabolism",
+              "geneset_size": 99,
+              "direction": -0.782925925615197,
+              "color": "#6799a9",
+              "id": "DC1-2-6",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Glycogen Metabolism",
+                  "geneset_size": 69,
+                  "direction": 0.6141552032200355,
+                  "color": "#e68188",
+                  "id": "WP500"
+                },
+                {
+                  "database": "reactome",
+                  "name": "Glycogen metabolism",
+                  "geneset_size": 60,
+                  "direction": 0.04134193155215615,
+                  "color": "#f2eaeb",
+                  "id": "R-HSA-8982491"
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "Glucose metabolism",
+              "geneset_size": 56,
+              "direction": 0.8569640432092065,
+              "color": "#de555f",
+              "id": "R-HSA-70326",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Glucose Homeostasis",
+                  "geneset_size": 99,
+                  "direction": -0.6676396467638646,
+                  "color": "#7ca8b5",
+                  "id": "WP661"
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "Glycolysis and Gluconeogenesis",
+                  "geneset_size": 55,
+                  "direction": 0.478290569722299,
+                  "color": "#eb999f",
+                  "id": "WP534"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Glycolysis / Gluconeogenesis - Homo sapiens (human)",
+                  "geneset_size": 91,
+                  "direction": -0.41110425836346787,
+                  "color": "#abc8d1",
+                  "id": "hsa00010"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Propanoate metabolism",
+              "geneset_size": 95,
+              "direction": -0.5514400715612784,
+              "color": "#92b6c2",
+              "id": "DC1-2-7",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Propanoate Metabolism",
+                  "geneset_size": 83,
+                  "direction": 0.9854559028007175,
+                  "color": "#d93d49",
+                  "id": "PW000149"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Propanoate metabolism - Homo sapiens (human)",
+                  "geneset_size": 87,
+                  "direction": 0.5351073200416889,
+                  "color": "#e98f96",
+                  "id": "hsa00640"
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "Metabolism of carbohydrates",
+              "geneset_size": 54,
+              "direction": -0.0992027133152471,
+              "color": "#e2eaec",
+              "id": "R-HSA-71387"
+            },
+            {
+              "database": "kegg",
+              "name": "Carbon metabolism - Homo sapiens (human)",
+              "geneset_size": 60,
+              "direction": 0.9058516938316954,
+              "color": "#dc4c57",
+              "id": "hsa01200"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Vitamin metabolism",
+          "geneset_size": 58,
+          "direction": -0.4747360547436066,
+          "color": "#9ebfc9",
+          "id": "DC1-5",
+          "children": [
+            {
+              "database": "decopath",
+              "name": "Folate metabolism",
+              "geneset_size": 98,
+              "direction": 0.2888077005740284,
+              "color": "#f2bdc1",
+              "id": "DC1-5-1",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Folate Metabolism",
+                  "geneset_size": 72,
+                  "direction": 0.799452868156947,
+                  "color": "#e05f68",
+                  "id": "WP176"
+                },
+                {
+                  "database": "pathbank",
+                  "name": "Folate Metabolism",
+                  "geneset_size": 63,
+                  "direction": 0.8767827085587281,
+                  "color": "#dd515b",
+                  "id": "PW000024"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Folate biosynthesis - Homo sapiens (human)",
+                  "geneset_size": 96,
+                  "direction": -0.09724432122831494,
+                  "color": "#e2eaec",
+                  "id": "hsa00790"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Pantothenate and CoA biosynthesis",
+              "geneset_size": 55,
+              "direction": 0.8006258690675525,
+              "color": "#e05f68",
+              "id": "DC1-5-2",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Pantothenate and CoA Biosynthesis",
+                  "geneset_size": 60,
+                  "direction": -0.19641987167334984,
+                  "color": "#d1e0e5",
+                  "id": "PW000032"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Pantothenate and CoA biosynthesis - Homo sapiens (human)",
+                  "geneset_size": 95,
+                  "direction": -0.7115152236988873,
+                  "color": "#74a2b1",
+                  "id": "hsa00770"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Riboflavin metabolism",
+              "geneset_size": 86,
+              "direction": 0.9675318711066914,
+              "color": "#da414d",
+              "id": "DC1-5-3",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Riboflavin Metabolism",
+                  "geneset_size": 70,
+                  "direction": 0.9836817480393478,
+                  "color": "#da3f4a",
+                  "id": "PW000035"
+                },
+                {
+                  "database": "reactome",
+                  "name": "Vitamin B2 (riboflavin) metabolism",
+                  "geneset_size": 71,
+                  "direction": -0.5082557832381602,
+                  "color": "#99bbc6",
+                  "id": "R-HSA-196843"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Riboflavin metabolism - Homo sapiens (human)",
+                  "geneset_size": 98,
+                  "direction": 0.3094450682803862,
+                  "color": "#f1b9bd",
+                  "id": "hsa00740"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Vitamin D metabolism",
+              "geneset_size": 96,
+              "direction": 0.21574729109508328,
+              "color": "#f3cacd",
+              "id": "DC1-5-4",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Vitamin D (calciferol) metabolism",
+                  "geneset_size": 57,
+                  "direction": -0.5613512419979036,
+                  "color": "#8fb5c0",
+                  "id": "R-HSA-196791"
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "Vitamin D Metabolism",
+                  "geneset_size": 60,
+                  "direction": -0.22636760892089303,
+                  "color": "#ccdee3",
+                  "id": "WP1531"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Vitamin B6 metabolism",
+              "geneset_size": 79,
+              "direction": -0.6357899794760014,
+              "color": "#82acb9",
+              "id": "DC1-5-5",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Vitamin B6 Metabolism",
+                  "geneset_size": 93,
+                  "direction": 0.10553637256655124,
+                  "color": "#f3dee0",
+                  "id": "PW000053"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Vitamin B6 metabolism - Homo sapiens (human)",
+                  "geneset_size": 94,
+                  "direction": -0.5082995411811939,
+                  "color": "#99bbc6",
+                  "id": "hsa00750"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Vitamin A and Carotenoid Metabolism",
+              "geneset_size": 90,
+              "direction": -0.893081925058494,
+              "color": "#538c9d",
+              "id": "DC1-5-6"
+            },
+            {
+              "database": "wikipathways",
+              "name": "Vitamin A and Carotenoid Metabolism",
+              "geneset_size": 100,
+              "direction": 0.9346965091802428,
+              "color": "#db4752",
+              "id": "WP716",
+              "children": [
+                {
+                  "database": "decopath",
+                  "name": "Retinol Metabolism",
+                  "geneset_size": 87,
+                  "direction": -0.9553806688941286,
+                  "color": "#478497",
+                  "id": "DC1-5-0-1",
+                  "children": [
+                    {
+                      "database": "pathbank",
+                      "name": "Retinol Metabolism",
+                      "geneset_size": 70,
+                      "direction": 0.3355569076484244,
+                      "color": "#f0b4b9",
+                      "id": "PW000164"
+                    },
+                    {
+                      "database": "kegg",
+                      "name": "Retinol metabolism - Homo sapiens (human)",
+                      "geneset_size": 52,
+                      "direction": 0.9084247717540017,
+                      "color": "#dc4b56",
+                      "id": "hsa00830"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "Metabolism of water-soluble vitamins and cofactors",
+              "geneset_size": 63,
+              "direction": -0.035156226974804694,
+              "color": "#eceff0",
+              "id": "R-HSA-196849"
+            },
+            {
+              "database": "reactome",
+              "name": "Biotin transport and metabolism",
+              "geneset_size": 58,
+              "direction": 0.13661025849046027,
+              "color": "#f3d9da",
+              "id": "R-HSA-196780",
+              "children": [
+                {
+                  "database": "decopath",
+                  "name": "Biotin Metabolism",
+                  "geneset_size": 73,
+                  "direction": -0.5169597631578895,
+                  "color": "#97bac5",
+                  "id": "DC1-5-0-2",
+                  "children": [
+                    {
+                      "database": "pathbank",
+                      "name": "Biotin Metabolism",
+                      "geneset_size": 83,
+                      "direction": 0.30512038548718823,
+                      "color": "#f2babe",
+                      "id": "PW000013"
+                    },
+                    {
+                      "database": "kegg",
+                      "name": "Biotin metabolism - Homo sapiens (human)",
+                      "geneset_size": 58,
+                      "direction": -0.15276333419308896,
+                      "color": "#d9e5e8",
+                      "id": "hsa00780"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "kegg",
+              "name": "Vitamin digestion and absorption - Homo sapiens (human)",
+              "geneset_size": 74,
+              "direction": -0.23947866202606316,
+              "color": "#cadde3",
+              "id": "hsa04977"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Other metabolic pathways",
+          "geneset_size": 70,
+          "direction": 0.9141645675886307,
+          "color": "#dc4a54",
+          "id": "DC1-6",
+          "children": [
+            {
+              "database": "decopath",
+              "name": "Heme biosynthesis",
+              "geneset_size": 89,
+              "direction": 0.7462812422550582,
+              "color": "#e26871",
+              "id": "DC1-6-1",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Heme Biosynthesis",
+                  "geneset_size": 74,
+                  "direction": 0.11722150447091306,
+                  "color": "#f3dddf",
+                  "id": "WP561"
+                },
+                {
+                  "database": "reactome",
+                  "name": "Heme biosynthesis",
+                  "geneset_size": 56,
+                  "direction": 0.2921016351456929,
+                  "color": "#f2bbbf",
+                  "id": "R-HSA-189451"
+                }
+              ]
+            },
+            {
+              "database": "wikipathways",
+              "name": "Caffeine and Theobromine metabolism",
+              "geneset_size": 91,
+              "direction": 0.7657519708948783,
+              "color": "#e1656f",
+              "id": "WP3633",
+              "children": [
+                {
+                  "database": "decopath",
+                  "name": "Caffeine metabolism",
+                  "geneset_size": 58,
+                  "direction": -0.43926899391025964,
+                  "color": "#a6c4ce",
+                  "id": "DC1-6-2-0-1",
+                  "children": [
+                    {
+                      "database": "pathbank",
+                      "name": "Caffeine Metabolism",
+                      "geneset_size": 76,
+                      "direction": -0.6678908097032414,
+                      "color": "#7ca8b5",
+                      "id": "PW000015"
+                    },
+                    {
+                      "database": "kegg",
+                      "name": "Caffeine metabolism - Homo sapiens (human)",
+                      "geneset_size": 90,
+                      "direction": 0.3192109613945677,
+                      "color": "#f1b7bb",
+                      "id": "hsa00232"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Oxidative phosphorylation",
+              "geneset_size": 51,
+              "direction": -0.5650406742592404,
+              "color": "#8fb5c0",
+              "id": "DC1-6-3",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Formation of ATP by chemiosmotic coupling",
+                  "geneset_size": 81,
+                  "direction": -0.5698898324661108,
+                  "color": "#8db4bf",
+                  "id": "R-HSA-163210"
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "Oxidative phosphorylation",
+                  "geneset_size": 88,
+                  "direction": 0.8777989951000305,
+                  "color": "#dd515b",
+                  "id": "WP623"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Oxidative phosphorylation - Homo sapiens (human)",
+                  "geneset_size": 96,
+                  "direction": 0.7044424391370316,
+                  "color": "#e36f78",
+                  "id": "hsa00190"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Electron transport chain",
+              "geneset_size": 50,
+              "direction": 0.6197398779344954,
+              "color": "#e67f87",
+              "id": "DC1-6-4",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Respiratory electron transport",
+                  "geneset_size": 69,
+                  "direction": -0.3550271581339197,
+                  "color": "#b5cfd7",
+                  "id": "R-HSA-611105"
+                },
+                {
+                  "database": "pathbank",
+                  "name": "Mitochondrial Electron Transport Chain",
+                  "geneset_size": 61,
+                  "direction": -0.7542920083699083,
+                  "color": "#6c9dac",
+                  "id": "PW000165"
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "Electron Transport Chain",
+                  "geneset_size": 57,
+                  "direction": -0.4650560985276828,
+                  "color": "#a1c1cb",
+                  "id": "WP111"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Thermogenesis",
+              "geneset_size": 75,
+              "direction": 0.1121962839918671,
+              "color": "#f3dddf",
+              "id": "DC1-6-5",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Thermogenesis",
+                  "geneset_size": 77,
+                  "direction": 0.23191535564678256,
+                  "color": "#f3c7ca",
+                  "id": "WP4321"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Thermogenesis - Homo sapiens (human)",
+                  "geneset_size": 90,
+                  "direction": -0.4078517499531116,
+                  "color": "#abc8d1",
+                  "id": "hsa04714"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Thyroid hormone synthesis",
+              "geneset_size": 74,
+              "direction": -0.0527616237028139,
+              "color": "#eaeeef",
+              "id": "DC1-6-6",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Thyroid Hormone Synthesis",
+                  "geneset_size": 54,
+                  "direction": -0.19996525085582606,
+                  "color": "#d1e0e5",
+                  "id": "PW000693"
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "Thyroxine (Thyroid Hormone) Production",
+                  "geneset_size": 84,
+                  "direction": -0.7677073821978107,
+                  "color": "#6a9bab",
+                  "id": "WP1981"
+                },
+                {
+                  "database": "reactome",
+                  "name": "Thyroxine biosynthesis",
+                  "geneset_size": 54,
+                  "direction": -0.4210124571590397,
+                  "color": "#a8c6cf",
+                  "id": "R-HSA-209968"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Thyroid hormone synthesis - Homo sapiens (human)",
+                  "geneset_size": 57,
+                  "direction": -0.5465347456564777,
+                  "color": "#92b6c2",
+                  "id": "hsa04918"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Vasopressin-regulated water reabsorption",
+              "geneset_size": 94,
+              "direction": -0.7053717401413679,
+              "color": "#75a3b1",
+              "id": "DC1-6-7",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Vasopressin Regulation of Water Homeostasis",
+                  "geneset_size": 98,
+                  "direction": -0.21810530294091834,
+                  "color": "#cddee4",
+                  "id": "PW000447"
+                },
+                {
+                  "database": "reactome",
+                  "name": "Vasopressin regulates renal water homeostasis via Aquaporins",
+                  "geneset_size": 60,
+                  "direction": 0.6686718401037361,
+                  "color": "#e4777f",
+                  "id": "R-HSA-432040"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Vasopressin-regulated water reabsorption - Homo sapiens (human)",
+                  "geneset_size": 99,
+                  "direction": 0.42590110439284246,
+                  "color": "#eda3a8",
+                  "id": "hsa04962"
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "Phase II - Conjugation of compounds",
+              "geneset_size": 51,
+              "direction": -0.1871144567976406,
+              "color": "#d2e1e6",
+              "id": "R-HSA-156580",
+              "children": [
+                {
+                  "database": "decopath",
+                  "name": "Glucuronidation",
+                  "geneset_size": 87,
+                  "direction": 0.4759706840870359,
+                  "color": "#eb9aa0",
+                  "id": "DC1-6-8",
+                  "children": [
+                    {
+                      "database": "wikipathways",
+                      "name": "Glucuronidation",
+                      "geneset_size": 92,
+                      "direction": -0.029302959591113176,
+                      "color": "#eef0f0",
+                      "id": "WP698"
+                    },
+                    {
+                      "database": "reactome",
+                      "name": "Glucuronidation",
+                      "geneset_size": 100,
+                      "direction": -0.5664795273508789,
+                      "color": "#8fb5c0",
+                      "id": "R-HSA-156588"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "pathbank",
+              "name": "Gastric Acid Production",
+              "geneset_size": 68,
+              "direction": 0.8058281962261382,
+              "color": "#e05d67",
+              "id": "PW000565",
+              "children": [
+                {
+                  "database": "decopath",
+                  "name": "Gastric acid secretion",
+                  "geneset_size": 68,
+                  "direction": -0.18240106058649985,
+                  "color": "#d4e2e6",
+                  "id": "DC1-6-0-1",
+                  "children": [
+                    {
+                      "database": "wikipathways",
+                      "name": "Secretion of Hydrochloric Acid in Parietal Cells",
+                      "geneset_size": 71,
+                      "direction": 0.7198793163929751,
+                      "color": "#e36d75",
+                      "id": "WP2597"
+                    },
+                    {
+                      "database": "kegg",
+                      "name": "Gastric acid secretion - Homo sapiens (human)",
+                      "geneset_size": 95,
+                      "direction": -0.8525876467229372,
+                      "color": "#5a91a2",
+                      "id": "hsa04971"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Proteasome",
+              "geneset_size": 79,
+              "direction": 0.9621723876094168,
+              "color": "#da414d",
+              "id": "DC1-6-10",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Proteasome Degradation",
+                  "geneset_size": 90,
+                  "direction": 0.0984147295936677,
+                  "color": "#f3e0e1",
+                  "id": "WP183"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Proteasome - Homo sapiens (human)",
+                  "geneset_size": 70,
+                  "direction": -0.3510120225034137,
+                  "color": "#b5cfd7",
+                  "id": "hsa03050",
+                  "children": [
+                    {
+                      "database": "wikipathways",
+                      "name": "Parkin-Ubiquitin Proteasomal System pathway",
+                      "geneset_size": 82,
+                      "direction": 0.0703863126532005,
+                      "color": "#f3e6e7",
+                      "id": "WP2359"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "wikipathways",
+              "name": "Dopamine metabolism",
+              "geneset_size": 83,
+              "direction": 0.08049657703217283,
+              "color": "#f3e3e4",
+              "id": "WP2436",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Amine Oxidase reactions",
+                  "geneset_size": 72,
+                  "direction": -0.3406021936711865,
+                  "color": "#b8d1d8",
+                  "id": "R-HSA-140179"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Nicotinate and nicotinamide metabolism",
+              "geneset_size": 60,
+              "direction": 0.1150328701437302,
+              "color": "#f3dddf",
+              "id": "DC1-6-9",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Nicotinate and Nicotinamide Metabolism",
+                  "geneset_size": 100,
+                  "direction": -0.2987294884296714,
+                  "color": "#bfd6dc",
+                  "id": "PW000151"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Nicotinate and nicotinamide metabolism - Homo sapiens (human)",
+                  "geneset_size": 57,
+                  "direction": 0.4550363185135935,
+                  "color": "#ec9da3",
+                  "id": "hsa00760"
+                }
+              ]
+            },
+            {
+              "database": "kegg",
+              "name": "Adipocytokine signaling pathway - Homo sapiens (human)",
+              "geneset_size": 62,
+              "direction": 0.10929511121822033,
+              "color": "#f3dee0",
+              "id": "hsa04920"
+            },
+            {
+              "database": "kegg",
+              "name": "Drug metabolism - cytochrome P450 - Homo sapiens (human)",
+              "geneset_size": 74,
+              "direction": -0.042883754550858244,
+              "color": "#ebeeef",
+              "id": "hsa00982",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Oxidation by Cytochrome P450 (Homo sapiens)",
+                  "geneset_size": 86,
+                  "direction": -0.3368118248620515,
+                  "color": "#b8d1d8",
+                  "id": "WP43",
+                  "children": [
+                    {
+                      "database": "reactome",
+                      "name": "Cytochrome P450 - arranged by substrate type",
+                      "geneset_size": 99,
+                      "direction": 0.34778835086214355,
+                      "color": "#f0b1b6",
+                      "id": "R-HSA-211897"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "database": "decopath",
+      "name": "Immune system",
+      "geneset_size": 97,
+      "direction": -0.17023214356954752,
+      "color": "#d5e3e7",
+      "id": "DC2",
+      "children": [
+        {
+          "database": "decopath",
+          "name": "Adaptive immune system",
+          "geneset_size": 87,
+          "direction": 0.2471481694944173,
+          "color": "#f3c4c7",
+          "id": "DC2-1",
+          "children": [
+            {
+              "database": "decopath",
+              "name": "BCR Signaling Pathway SUPER",
+              "geneset_size": 70,
+              "direction": -0.5392675212647726,
+              "color": "#93b7c3",
+              "id": "DC2-1-1",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "BCR Signaling Pathway",
+                  "geneset_size": 55,
+                  "direction": -0.2849908928369278,
+                  "color": "#c2d7de",
+                  "id": "PW070885"
+                },
+                {
+                  "database": "reactome",
+                  "name": "Signaling by the B Cell Receptor (BCR)",
+                  "geneset_size": 100,
+                  "direction": 0.6710825720256293,
+                  "color": "#e4777f",
+                  "id": "R-HSA-983705"
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "B Cell Receptor Signaling Pathway",
+                  "geneset_size": 56,
+                  "direction": -0.11969716431829802,
+                  "color": "#dee7ea",
+                  "id": "WP23"
+                },
+                {
+                  "database": "kegg",
+                  "name": "B cell receptor signaling pathway - Homo sapiens (human)",
+                  "geneset_size": 70,
+                  "direction": 0.5600455358078786,
+                  "color": "#e88b92",
+                  "id": "hsa04662"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Allograft Rejection SUPER",
+              "geneset_size": 90,
+              "direction": 0.9395033817226972,
+              "color": "#db4550",
+              "id": "DC2-1-2",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Allograft Rejection",
+                  "geneset_size": 50,
+                  "direction": 0.6507530656154774,
+                  "color": "#e57981",
+                  "id": "WP2328"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Allograft rejection - Homo sapiens (human)",
+                  "geneset_size": 80,
+                  "direction": -0.796930222501967,
+                  "color": "#6497a7",
+                  "id": "hsa05330"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Rap1 signalling SUPER",
+              "geneset_size": 62,
+              "direction": 0.9905789172220298,
+              "color": "#d93d49",
+              "id": "DC2-1-3",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Rap1 signalling",
+                  "geneset_size": 75,
+                  "direction": 0.577897072502666,
+                  "color": "#e8888f",
+                  "id": "R-HSA-392517"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Rap1 signaling pathway - Homo sapiens (human)",
+                  "geneset_size": 63,
+                  "direction": -0.2687625004097598,
+                  "color": "#c5d9e0",
+                  "id": "hsa04015"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "T Cell Receptor Signaling Pathway SUPER",
+              "geneset_size": 95,
+              "direction": -0.4547823982982542,
+              "color": "#a3c2cc",
+              "id": "DC2-1-4",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "T Cell Receptor Signaling Pathway",
+                  "geneset_size": 61,
+                  "direction": -0.42596551773244484,
+                  "color": "#a8c6cf",
+                  "id": "PW067987"
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "T-Cell antigen Receptor (TCR) Signaling Pathway",
+                  "geneset_size": 62,
+                  "direction": -0.6946138957582402,
+                  "color": "#76a4b2",
+                  "id": "WP69"
+                },
+                {
+                  "database": "kegg",
+                  "name": "T cell receptor signaling pathway - Homo sapiens (human)",
+                  "geneset_size": 75,
+                  "direction": -0.0910792643220153,
+                  "color": "#e3eaec",
+                  "id": "hsa04660",
+                  "children": [
+                    {
+                      "database": "wikipathways",
+                      "name": "T-Cell Receptor and Co-stimulatory Signaling",
+                      "geneset_size": 98,
+                      "direction": 0.8359998140523381,
+                      "color": "#de5861",
+                      "id": "WP2583"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Antigen processing-Cross presentation SUPER",
+              "geneset_size": 79,
+              "direction": -0.03258598537808832,
+              "color": "#eceff0",
+              "id": "DC2-1-5",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Antigen processing-Cross presentation",
+                  "geneset_size": 62,
+                  "direction": -0.6678369694814357,
+                  "color": "#7ca8b5",
+                  "id": "R-HSA-1236975"
+                },
+                {
+                  "database": "reactome",
+                  "name": "Class I MHC mediated antigen processing & presentation",
+                  "geneset_size": 71,
+                  "direction": 0.25404192169057227,
+                  "color": "#f3c3c6",
+                  "id": "R-HSA-983169"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Antigen processing and presentation - Homo sapiens (human)",
+                  "geneset_size": 85,
+                  "direction": 0.9268402257522077,
+                  "color": "#db4853",
+                  "id": "hsa04612"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Innate immune system",
+          "geneset_size": 59,
+          "direction": -0.4176380881601185,
+          "color": "#aac7d0",
+          "id": "DC2-2",
+          "children": [
+            {
+              "database": "decopath",
+              "name": "RIG-I-like receptor signaling pathway",
+              "geneset_size": 66,
+              "direction": 0.19595911863893178,
+              "color": "#f3ced1",
+              "id": "DC2-2-1",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "RIG-I-like Receptor Signaling",
+                  "geneset_size": 74,
+                  "direction": -0.6184133654353412,
+                  "color": "#85aeba",
+                  "id": "WP3865"
+                },
+                {
+                  "database": "kegg",
+                  "name": "RIG-I-like receptor signaling pathway - Homo sapiens (human)",
+                  "geneset_size": 78,
+                  "direction": 0.9605514495022895,
+                  "color": "#da434e",
+                  "id": "hsa04622"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Toll-like receptor (TLR) signaling pathway",
+              "geneset_size": 98,
+              "direction": -0.8980533536350963,
+              "color": "#518b9d",
+              "id": "DC2-2-2",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Toll-Like Receptors Cascades",
+                  "geneset_size": 85,
+                  "direction": -0.05488077401541336,
+                  "color": "#e8edee",
+                  "id": "R-HSA-168898"
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "Toll-like Receptor Signaling",
+                  "geneset_size": 59,
+                  "direction": -0.7425535946836064,
+                  "color": "#6e9ead",
+                  "id": "WP3858"
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "Toll-like Receptor Signaling Pathway",
+                  "geneset_size": 51,
+                  "direction": -0.822037313327384,
+                  "color": "#6095a5",
+                  "id": "WP75"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Toll-like receptor signaling pathway - Homo sapiens (human)",
+                  "geneset_size": 53,
+                  "direction": 0.7028611245531424,
+                  "color": "#e37179",
+                  "id": "hsa04620"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Complement and coagulation cascades",
+              "geneset_size": 70,
+              "direction": -0.5744000513163179,
+              "color": "#8db4bf",
+              "id": "DC2-2-3",
+              "children": [
+                {
+                  "database": "decopath",
+                  "name": "Complement activation",
+                  "geneset_size": 53,
+                  "direction": -0.25984612333489454,
+                  "color": "#c6dae1",
+                  "id": "DC2-2-3-1",
+                  "children": [
+                    {
+                      "database": "wikipathways",
+                      "name": "Complement Activation",
+                      "geneset_size": 70,
+                      "direction": 0.6173660290577241,
+                      "color": "#e68188",
+                      "id": "WP545"
+                    },
+                    {
+                      "database": "reactome",
+                      "name": "Complement cascade",
+                      "geneset_size": 89,
+                      "direction": -0.20780868007895714,
+                      "color": "#d0e0e5",
+                      "id": "R-HSA-166658"
+                    },
+                    {
+                      "database": "pathbank",
+                      "name": "Complement Pathway",
+                      "geneset_size": 74,
+                      "direction": -0.8434767336780242,
+                      "color": "#5b92a2",
+                      "id": "PW064819",
+                      "children": [
+                        {
+                          "database": "pathbank",
+                          "name": "Classical Complement Pathway",
+                          "geneset_size": 98,
+                          "direction": 0.8795646957156982,
+                          "color": "#dd515b",
+                          "id": "PW065057"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "Complement and Coagulation Cascades",
+                  "geneset_size": 79,
+                  "direction": 0.7413574538122216,
+                  "color": "#e26a73",
+                  "id": "WP558"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Complement and coagulation cascades - Homo sapiens (human)",
+                  "geneset_size": 60,
+                  "direction": -0.7577165214329105,
+                  "color": "#6b9cac",
+                  "id": "hsa04610"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Fc epsilon RI signaling pathway SUPER",
+              "geneset_size": 99,
+              "direction": 0.7197056273503593,
+              "color": "#e36d75",
+              "id": "DC2-2-4",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Fc Epsilon Receptor I Signaling in Mast Cells",
+                  "geneset_size": 84,
+                  "direction": 0.4558780823711608,
+                  "color": "#ec9da3",
+                  "id": "PW000453"
+                },
+                {
+                  "database": "reactome",
+                  "name": "Fc epsilon receptor (FCERI) signaling",
+                  "geneset_size": 51,
+                  "direction": 0.3455695605652245,
+                  "color": "#f0b1b6",
+                  "id": "R-HSA-2454202"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Fc epsilon RI signaling pathway - Homo sapiens (human)",
+                  "geneset_size": 76,
+                  "direction": -0.5341693668398564,
+                  "color": "#94b8c4",
+                  "id": "hsa04664"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Fcgamma receptor (FCGR) dependent phagocytosis SUPER",
+              "geneset_size": 64,
+              "direction": -0.5984990980767879,
+              "color": "#89b1bd",
+              "id": "DC2-2-5",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Fcgamma receptor (FCGR) dependent phagocytosis",
+                  "geneset_size": 83,
+                  "direction": 0.7671278090320539,
+                  "color": "#e1646d",
+                  "id": "R-HSA-2029480"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Fc gamma R-mediated phagocytosis - Homo sapiens (human)",
+                  "geneset_size": 98,
+                  "direction": -0.012665638234558907,
+                  "color": "#f0f1f1",
+                  "id": "hsa04666"
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "Autophagy",
+              "geneset_size": 55,
+              "direction": -0.40211712413349243,
+              "color": "#adc9d2",
+              "id": "R-HSA-9612973",
+              "children": [
+                {
+                  "database": "decopath",
+                  "name": "Macroautophagy",
+                  "geneset_size": 87,
+                  "direction": -0.7862646515768419,
+                  "color": "#6598a8",
+                  "id": "DC2-2-0-1",
+                  "children": [
+                    {
+                      "database": "reactome",
+                      "name": "Macroautophagy",
+                      "geneset_size": 52,
+                      "direction": -0.7427666703160574,
+                      "color": "#6e9ead",
+                      "id": "R-HSA-1632852"
+                    },
+                    {
+                      "database": "kegg",
+                      "name": "Autophagy - other - Homo sapiens (human)",
+                      "geneset_size": 96,
+                      "direction": -0.796079499687036,
+                      "color": "#6497a7",
+                      "id": "hsa04136"
+                    }
+                  ]
+                },
+                {
+                  "database": "decopath",
+                  "name": "Mitophagy",
+                  "geneset_size": 55,
+                  "direction": -0.48933964036269306,
+                  "color": "#9dbec9",
+                  "id": "DC2-2-0-2",
+                  "children": [
+                    {
+                      "database": "reactome",
+                      "name": "Mitophagy",
+                      "geneset_size": 85,
+                      "direction": 0.19846226581965642,
+                      "color": "#f3cdd0",
+                      "id": "R-HSA-5205647"
+                    },
+                    {
+                      "database": "kegg",
+                      "name": "Mitophagy - animal - Homo sapiens (human)",
+                      "geneset_size": 66,
+                      "direction": -0.9966694272837426,
+                      "color": "#407f93",
+                      "id": "hsa04137"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Cytokine signaling pathway",
+          "geneset_size": 82,
+          "direction": -0.09561690126483713,
+          "color": "#e2eaec",
+          "id": "DC2-3",
+          "children": [
+            {
+              "database": "decopath",
+              "name": "Interleukin signaling pathway",
+              "geneset_size": 72,
+              "direction": 0.746110447429922,
+              "color": "#e26871",
+              "id": "DC2-3-1",
+              "children": [
+                {
+                  "database": "decopath",
+                  "name": "IL-1 signaling pathway",
+                  "geneset_size": 73,
+                  "direction": 0.01965016405209452,
+                  "color": "#f2efef",
+                  "id": "DC2-3-1-1",
+                  "children": [
+                    {
+                      "database": "reactome",
+                      "name": "Interleukin-1 family signaling",
+                      "geneset_size": 91,
+                      "direction": 0.5815213972471629,
+                      "color": "#e8868d",
+                      "id": "R-HSA-446652"
+                    },
+                    {
+                      "database": "wikipathways",
+                      "name": "IL-1 signaling pathway",
+                      "geneset_size": 71,
+                      "direction": -0.7422443909134047,
+                      "color": "#6e9ead",
+                      "id": "WP195"
+                    }
+                  ]
+                },
+                {
+                  "database": "decopath",
+                  "name": "IL-17 signaling pathway",
+                  "geneset_size": 71,
+                  "direction": 0.11849601588447767,
+                  "color": "#f3dddf",
+                  "id": "DC2-3-1-6",
+                  "children": [
+                    {
+                      "database": "reactome",
+                      "name": "Interleukin-17 signaling",
+                      "geneset_size": 73,
+                      "direction": -0.12887761434680467,
+                      "color": "#dde7ea",
+                      "id": "R-HSA-448424"
+                    },
+                    {
+                      "database": "wikipathways",
+                      "name": "IL17 signaling pathway",
+                      "geneset_size": 61,
+                      "direction": -0.306394638815229,
+                      "color": "#bed5dc",
+                      "id": "WP2112"
+                    },
+                    {
+                      "database": "kegg",
+                      "name": "IL-17 signaling pathway - Homo sapiens (human)",
+                      "geneset_size": 75,
+                      "direction": -0.987900297191699,
+                      "color": "#428093",
+                      "id": "hsa04657"
+                    }
+                  ]
+                },
+                {
+                  "database": "decopath",
+                  "name": "IL-6 signaling pathway",
+                  "geneset_size": 76,
+                  "direction": 0.3342271989863326,
+                  "color": "#f0b4b9",
+                  "id": "DC2-3-1-3",
+                  "children": [
+                    {
+                      "database": "reactome",
+                      "name": "Interleukin-6 signaling",
+                      "geneset_size": 95,
+                      "direction": -0.7369250984653697,
+                      "color": "#6f9fae",
+                      "id": "R-HSA-1059683"
+                    },
+                    {
+                      "database": "wikipathways",
+                      "name": "IL-6 signaling pathway",
+                      "geneset_size": 51,
+                      "direction": 0.8003770283613634,
+                      "color": "#e05f68",
+                      "id": "WP364"
+                    }
+                  ]
+                },
+                {
+                  "database": "decopath",
+                  "name": "IL-2 signaling pathway",
+                  "geneset_size": 99,
+                  "direction": 0.4117431998882539,
+                  "color": "#eea6ab",
+                  "id": "DC2-3-1-2",
+                  "children": [
+                    {
+                      "database": "reactome",
+                      "name": "Interleukin-2 family signaling",
+                      "geneset_size": 98,
+                      "direction": 0.8710069593786112,
+                      "color": "#dd525c",
+                      "id": "R-HSA-451927"
+                    },
+                    {
+                      "database": "reactome",
+                      "name": "Interleukin-2 signaling",
+                      "geneset_size": 97,
+                      "direction": 0.023344867732781216,
+                      "color": "#f2efef",
+                      "id": "R-HSA-9020558"
+                    }
+                  ]
+                },
+                {
+                  "database": "decopath",
+                  "name": "IL-7 signaling pathway",
+                  "geneset_size": 76,
+                  "direction": 0.6578701132643876,
+                  "color": "#e57880",
+                  "id": "DC2-3-1-4",
+                  "children": [
+                    {
+                      "database": "wikipathways",
+                      "name": "IL-7 Signaling Pathway",
+                      "geneset_size": 96,
+                      "direction": 0.6782375558246325,
+                      "color": "#e4757d",
+                      "id": "WP205"
+                    },
+                    {
+                      "database": "reactome",
+                      "name": "Interleukin-7 signaling",
+                      "geneset_size": 55,
+                      "direction": -0.7564747825920783,
+                      "color": "#6b9cac",
+                      "id": "R-HSA-1266695"
+                    }
+                  ]
+                },
+                {
+                  "database": "decopath",
+                  "name": "IL-9 signaling pathway",
+                  "geneset_size": 66,
+                  "direction": -0.7466480391286783,
+                  "color": "#6e9ead",
+                  "id": "DC2-3-1-5",
+                  "children": [
+                    {
+                      "database": "wikipathways",
+                      "name": "IL-9 Signaling Pathway",
+                      "geneset_size": 50,
+                      "direction": 0.18567006855346002,
+                      "color": "#f3d0d2",
+                      "id": "WP22"
+                    },
+                    {
+                      "database": "reactome",
+                      "name": "Interleukin-9 signaling",
+                      "geneset_size": 54,
+                      "direction": -0.5692831164362957,
+                      "color": "#8db4bf",
+                      "id": "R-HSA-8985947"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Interferon gamma signaling ",
+              "geneset_size": 82,
+              "direction": 0.6923145993745614,
+              "color": "#e4727b",
+              "id": "DC2-3-2",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Type II interferon signaling (IFNG)",
+                  "geneset_size": 77,
+                  "direction": -0.581950527550996,
+                  "color": "#8cb3bf",
+                  "id": "WP619"
+                },
+                {
+                  "database": "reactome",
+                  "name": "Interferon gamma signaling",
+                  "geneset_size": 80,
+                  "direction": -0.5253620752115165,
+                  "color": "#96b9c4",
+                  "id": "R-HSA-877300"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Chemokine signaling pathway",
+              "geneset_size": 52,
+              "direction": -0.8576208221440995,
+              "color": "#5990a1",
+              "id": "DC2-3-3",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Chemokine signaling pathway",
+                  "geneset_size": 56,
+                  "direction": 0.049191165624822064,
+                  "color": "#f2e9e9",
+                  "id": "WP3929"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Chemokine signaling pathway - Homo sapiens (human)",
+                  "geneset_size": 68,
+                  "direction": -0.6471601414844828,
+                  "color": "#7faab7",
+                  "id": "hsa04062"
+                }
+              ]
+            },
+            {
+              "database": "wikipathways",
+              "name": "Cytokines and Inflammatory Response",
+              "geneset_size": 97,
+              "direction": 0.2261980235750105,
+              "color": "#f3c8cc",
+              "id": "WP530"
+            },
+            {
+              "database": "reactome",
+              "name": "Cytokine Signaling in Immune system",
+              "geneset_size": 76,
+              "direction": 0.9495585121748893,
+              "color": "#db444f",
+              "id": "R-HSA-1280215"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "database": "decopath",
+      "name": "Signaling pathways",
+      "geneset_size": 60,
+      "direction": -0.4013675799091536,
+      "color": "#adc9d2",
+      "id": "DC3",
+      "children": [
+        {
+          "database": "decopath",
+          "name": "Signaling by NOTCH SUPER",
+          "geneset_size": 63,
+          "direction": 0.4868479496306317,
+          "color": "#eb989e",
+          "id": "DC3-1",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Canonical  and Non-canonical Notch signaling",
+              "geneset_size": 95,
+              "direction": -0.05150799349857271,
+              "color": "#eaeeef",
+              "id": "WP3845"
+            },
+            {
+              "database": "wikipathways",
+              "name": "Canonical and Non-Canonical TGF-B signaling",
+              "geneset_size": 83,
+              "direction": -0.3014998916298186,
+              "color": "#bfd6dc",
+              "id": "WP3874"
+            },
+            {
+              "database": "reactome",
+              "name": "Signaling by TGF-beta Receptor Complex",
+              "geneset_size": 66,
+              "direction": -0.04079831628697539,
+              "color": "#ebeeef",
+              "id": "R-HSA-170834"
+            },
+            {
+              "database": "wikipathways",
+              "name": "Notch Signaling Pathway",
+              "geneset_size": 94,
+              "direction": -0.4326501626160193,
+              "color": "#a7c5ce",
+              "id": "WP61"
+            },
+            {
+              "database": "reactome",
+              "name": "Signaling by NOTCH",
+              "geneset_size": 50,
+              "direction": 0.9174654301359515,
+              "color": "#dc4a54",
+              "id": "R-HSA-157118"
+            },
+            {
+              "database": "kegg",
+              "name": "Notch signaling pathway - Homo sapiens (human)",
+              "geneset_size": 58,
+              "direction": -0.5186436974232265,
+              "color": "#97bac5",
+              "id": "hsa04330"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Signaling by Hedgehog SUPER",
+          "geneset_size": 68,
+          "direction": -0.035171664503578004,
+          "color": "#eceff0",
+          "id": "DC3-2",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Signaling by Hedgehog",
+              "geneset_size": 91,
+              "direction": -0.640847592154923,
+              "color": "#80abb8",
+              "id": "R-HSA-5358351"
+            },
+            {
+              "database": "wikipathways",
+              "name": "Hedgehog Signaling Pathway",
+              "geneset_size": 84,
+              "direction": 0.21160347685433556,
+              "color": "#f3cbce",
+              "id": "WP47"
+            },
+            {
+              "database": "wikipathways",
+              "name": "Hedgehog Signaling Pathway",
+              "geneset_size": 95,
+              "direction": -0.44585040316767865,
+              "color": "#a4c3cd",
+              "id": "WP4249"
+            },
+            {
+              "database": "kegg",
+              "name": "Hedgehog signaling pathway - Homo sapiens (human)",
+              "geneset_size": 93,
+              "direction": 0.44272952153800804,
+              "color": "#eda0a6",
+              "id": "hsa04340"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Hippo signaling pathway",
+          "geneset_size": 78,
+          "direction": 0.7012252872710594,
+          "color": "#e37179",
+          "id": "DC3-3",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Signaling by Hippo",
+              "geneset_size": 93,
+              "direction": 0.998115875013798,
+              "color": "#d93c47",
+              "id": "R-HSA-2028269"
+            },
+            {
+              "database": "kegg",
+              "name": "Hippo signaling pathway - multiple species - Homo sapiens (human)",
+              "geneset_size": 86,
+              "direction": -0.7393274344744607,
+              "color": "#6e9ead",
+              "id": "hsa04392"
+            },
+            {
+              "database": "kegg",
+              "name": "Hippo signaling pathway - Homo sapiens (human)",
+              "geneset_size": 58,
+              "direction": 0.9883125100512897,
+              "color": "#d93d49",
+              "id": "hsa04390"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "PI3K-AKT-mTOR signaling pathway ",
+          "geneset_size": 82,
+          "direction": 0.4298017879198759,
+          "color": "#eda3a8",
+          "id": "DC3-4",
+          "children": [
+            {
+              "database": "decopath",
+              "name": "PI3K-Akt Signaling Pathway SUPER",
+              "geneset_size": 92,
+              "direction": 0.26448672702906273,
+              "color": "#f3c1c5",
+              "id": "DC3-4-1",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "PI3K-Akt Signaling Pathway",
+                  "geneset_size": 54,
+                  "direction": 0.389927952306782,
+                  "color": "#efaaaf",
+                  "id": "WP4172"
+                },
+                {
+                  "database": "reactome",
+                  "name": "PI3K/AKT activation",
+                  "geneset_size": 71,
+                  "direction": -0.34460904664083936,
+                  "color": "#b7d0d7",
+                  "id": "R-HSA-198203"
+                },
+                {
+                  "database": "kegg",
+                  "name": "PI3K-Akt signaling pathway - Homo sapiens (human)",
+                  "geneset_size": 98,
+                  "direction": 0.8016675610102988,
+                  "color": "#e05f68",
+                  "id": "hsa04151"
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "mTOR signalling",
+              "geneset_size": 58,
+              "direction": 0.3056734055241108,
+              "color": "#f2babe",
+              "id": "R-HSA-165159"
+            },
+            {
+              "database": "wikipathways",
+              "name": "Target Of Rapamycin (TOR) Signaling",
+              "geneset_size": 69,
+              "direction": -0.7194113040488783,
+              "color": "#72a1b0",
+              "id": "WP1471"
+            },
+            {
+              "database": "kegg",
+              "name": "mTOR signaling pathway - Homo sapiens (human)",
+              "geneset_size": 71,
+              "direction": 0.2502402116326061,
+              "color": "#f3c4c7",
+              "id": "hsa04150"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "TNF signaling pathway",
+          "geneset_size": 99,
+          "direction": -0.518264072234037,
+          "color": "#97bac5",
+          "id": "DC3-5",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "TNF signaling",
+              "geneset_size": 98,
+              "direction": -0.8288191372005791,
+              "color": "#5e94a4",
+              "id": "R-HSA-75893"
+            },
+            {
+              "database": "pathbank",
+              "name": "TNF/Stress Related Signaling",
+              "geneset_size": 89,
+              "direction": -0.920793092540424,
+              "color": "#4d889a",
+              "id": "PW064784"
+            },
+            {
+              "database": "reactome",
+              "name": "Death Receptor Signalling",
+              "geneset_size": 81,
+              "direction": -0.6733886039862533,
+              "color": "#7ba7b5",
+              "id": "R-HSA-73887"
+            },
+            {
+              "database": "kegg",
+              "name": "TNF signaling pathway - Homo sapiens (human)",
+              "geneset_size": 70,
+              "direction": 0.692032253082336,
+              "color": "#e4727b",
+              "id": "hsa04668"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "TGF-beta signaling pathway SUPER",
+          "geneset_size": 83,
+          "direction": 0.25358349911139166,
+          "color": "#f3c3c6",
+          "id": "DC3-6",
+          "children": [
+            {
+              "database": "decopath",
+              "name": "TGF-beta receptor signaling in Epithelial to Mesenchymal Transition (EMT) SUPER",
+              "geneset_size": 58,
+              "direction": -0.44933166506567246,
+              "color": "#a4c3cd",
+              "id": "DC3-6-1",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "TGF-B Signaling in Thyroid Cells for Epithelial-Mesenchymal Transition",
+                  "geneset_size": 50,
+                  "direction": 0.8511141561724511,
+                  "color": "#de5660",
+                  "id": "WP3859"
+                },
+                {
+                  "database": "reactome",
+                  "name": "TGF-beta receptor signaling in EMT (epithelial to mesenchymal transition)",
+                  "geneset_size": 79,
+                  "direction": -0.8645738918497017,
+                  "color": "#578fa0",
+                  "id": "R-HSA-2173791"
+                }
+              ]
+            },
+            {
+              "database": "wikipathways",
+              "name": "TGF-beta Receptor Signaling",
+              "geneset_size": 98,
+              "direction": 0.6640510558082469,
+              "color": "#e57880",
+              "id": "WP560"
+            },
+            {
+              "database": "wikipathways",
+              "name": "TGF-beta Signaling Pathway",
+              "geneset_size": 99,
+              "direction": 0.2739061439763184,
+              "color": "#f3c0c3",
+              "id": "WP366"
+            },
+            {
+              "database": "reactome",
+              "name": "Signaling by TGF-beta family members",
+              "geneset_size": 95,
+              "direction": 0.1830317039369438,
+              "color": "#f3d0d2",
+              "id": "R-HSA-9006936"
+            },
+            {
+              "database": "kegg",
+              "name": "TGF-beta signaling pathway - Homo sapiens (human)",
+              "geneset_size": 55,
+              "direction": 0.9227047970879523,
+              "color": "#db4853",
+              "id": "hsa04350"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "VEGFA-VEGFR2 Pathway SUPER",
+          "geneset_size": 85,
+          "direction": 0.5132052657356148,
+          "color": "#ea939a",
+          "id": "DC3-7",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "VEGFA-VEGFR2 Signaling Pathway",
+              "geneset_size": 57,
+              "direction": -0.09541961587141956,
+              "color": "#e2eaec",
+              "id": "WP3888",
+              "children": [
+                {
+                  "database": "kegg",
+                  "name": "VEGF signaling pathway - Homo sapiens (human)",
+                  "geneset_size": 57,
+                  "direction": 0.0060634700503319205,
+                  "color": "#f2f2f2",
+                  "id": "hsa04370",
+                  "children": [
+                    {
+                      "database": "wikipathways",
+                      "name": "Robo4 and VEGF Signaling Pathways Crosstalk",
+                      "geneset_size": 93,
+                      "direction": -0.8055164455792425,
+                      "color": "#6296a7",
+                      "id": "WP3943"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "VEGFA-VEGFR2 Pathway",
+              "geneset_size": 95,
+              "direction": -0.09983482249465614,
+              "color": "#e1e9eb",
+              "id": "R-HSA-4420097"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Aryl hydrocarbon receptor signaling pathway",
+          "geneset_size": 95,
+          "direction": -0.9410103108629484,
+          "color": "#4a8698",
+          "id": "DC3-8",
+          "children": [
+            {
+              "database": "pathbank",
+              "name": "Ahr Signal Transduction Pathway",
+              "geneset_size": 59,
+              "direction": -0.5056089367034649,
+              "color": "#99bbc6",
+              "id": "PW064763"
+            },
+            {
+              "database": "wikipathways",
+              "name": "Aryl Hydrocarbon Receptor",
+              "geneset_size": 60,
+              "direction": 0.6579153548495695,
+              "color": "#e57880",
+              "id": "WP2586"
+            },
+            {
+              "database": "wikipathways",
+              "name": "Aryl Hydrocarbon Receptor Pathway",
+              "geneset_size": 53,
+              "direction": 0.592534739018568,
+              "color": "#e7858c",
+              "id": "WP2873"
+            },
+            {
+              "database": "reactome",
+              "name": "Aryl hydrocarbon receptor signalling",
+              "geneset_size": 81,
+              "direction": -0.6043933289600101,
+              "color": "#88b0bc",
+              "id": "R-HSA-8937144"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "MAP kinse (MAPK) signaling pathway",
+          "geneset_size": 60,
+          "direction": -0.10466909714133665,
+          "color": "#e1e9eb",
+          "id": "DC3-9",
+          "children": [
+            {
+              "database": "decopath",
+              "name": "p38 MAPK signaling pathway",
+              "geneset_size": 73,
+              "direction": 0.21068900545997038,
+              "color": "#f3cbce",
+              "id": "DC3-9-1",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "p38MAPK events",
+                  "geneset_size": 68,
+                  "direction": -0.3145680868987222,
+                  "color": "#bcd4db",
+                  "id": "R-HSA-171007"
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "p38 MAPK Signaling Pathway",
+                  "geneset_size": 93,
+                  "direction": 0.43495229262286683,
+                  "color": "#eda2a7",
+                  "id": "WP400"
+                }
+              ]
+            },
+            {
+              "database": "wikipathways",
+              "name": "MAPK Cascade",
+              "geneset_size": 65,
+              "direction": -0.6690132375298747,
+              "color": "#7ca8b5",
+              "id": "WP422"
+            },
+            {
+              "database": "wikipathways",
+              "name": "MAPK Signaling Pathway",
+              "geneset_size": 52,
+              "direction": -0.7689034492947662,
+              "color": "#6a9bab",
+              "id": "WP382"
+            },
+            {
+              "database": "reactome",
+              "name": "MAPK family signaling cascades",
+              "geneset_size": 93,
+              "direction": -0.5829760998098124,
+              "color": "#8cb3bf",
+              "id": "R-HSA-5683057"
+            },
+            {
+              "database": "kegg",
+              "name": "MAPK signaling pathway - Homo sapiens (human)",
+              "geneset_size": 67,
+              "direction": 0.9021845770842114,
+              "color": "#dc4c57",
+              "id": "hsa04010"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Signaling by Leptin SUPER",
+          "geneset_size": 52,
+          "direction": -0.6618519612631037,
+          "color": "#7ca8b5",
+          "id": "DC3-10",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Signaling by Leptin",
+              "geneset_size": 65,
+              "direction": -0.7981208316970287,
+              "color": "#6497a7",
+              "id": "R-HSA-2586552"
+            },
+            {
+              "database": "wikipathways",
+              "name": "Leptin signaling pathway",
+              "geneset_size": 89,
+              "direction": 0.16923310234171773,
+              "color": "#f3d3d5",
+              "id": "WP2034"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Signaling by WNT SUPER",
+          "geneset_size": 77,
+          "direction": -0.43367960256931837,
+          "color": "#a7c5ce",
+          "id": "DC3-11",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Signaling by WNT",
+              "geneset_size": 76,
+              "direction": 0.5924395020039994,
+              "color": "#e7858c",
+              "id": "R-HSA-195721"
+            },
+            {
+              "database": "wikipathways",
+              "name": "Wnt signaling pathway",
+              "geneset_size": 54,
+              "direction": -0.8042742696476464,
+              "color": "#6296a7",
+              "id": "WP428"
+            },
+            {
+              "database": "wikipathways",
+              "name": "Wnt signaling pathway",
+              "geneset_size": 64,
+              "direction": 0.9351033639731863,
+              "color": "#db4752",
+              "id": "WP363"
+            },
+            {
+              "database": "wikipathways",
+              "name": "Wnt Signaling Pathway and Pluripotency",
+              "geneset_size": 58,
+              "direction": 0.6744489873905479,
+              "color": "#e4757d",
+              "id": "WP399"
+            },
+            {
+              "database": "pathbank",
+              "name": "WNT Signaling Pathway",
+              "geneset_size": 82,
+              "direction": -0.21154349311647547,
+              "color": "#cedfe4",
+              "id": "PW078607"
+            },
+            {
+              "database": "kegg",
+              "name": "Wnt signaling pathway - Homo sapiens (human)",
+              "geneset_size": 54,
+              "direction": -0.10938807969883291,
+              "color": "#dfe8eb",
+              "id": "hsa04310"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Oxytocin signaling pathway",
+          "geneset_size": 87,
+          "direction": -0.26147197507959685,
+          "color": "#c6dae1",
+          "id": "DC3-12",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Oxytocin signaling",
+              "geneset_size": 78,
+              "direction": 0.4282033910803025,
+              "color": "#eda3a8",
+              "id": "WP2889"
+            },
+            {
+              "database": "kegg",
+              "name": "Oxytocin signaling pathway - Homo sapiens (human)",
+              "geneset_size": 89,
+              "direction": 0.7594200300744074,
+              "color": "#e1656f",
+              "id": "hsa04921"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "p53 signaling pathway",
+          "geneset_size": 86,
+          "direction": 0.7807356774407228,
+          "color": "#e1636c",
+          "id": "DC3-13",
+          "children": [
+            {
+              "database": "pathbank",
+              "name": "P53 Signaling Pathway",
+              "geneset_size": 78,
+              "direction": 0.2552144801016303,
+              "color": "#f3c3c6",
+              "id": "PW064774"
+            },
+            {
+              "database": "kegg",
+              "name": "p53 signaling pathway - Homo sapiens (human)",
+              "geneset_size": 73,
+              "direction": -0.36952578820458215,
+              "color": "#b2cdd5",
+              "id": "hsa04115"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Olfactory signaling pathway",
+          "geneset_size": 59,
+          "direction": -0.4008700872058242,
+          "color": "#adc9d2",
+          "id": "DC3-14",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Olfactory Signaling Pathway",
+              "geneset_size": 86,
+              "direction": 0.6771537764556259,
+              "color": "#e4757d",
+              "id": "R-HSA-381753"
+            },
+            {
+              "database": "kegg",
+              "name": "Olfactory transduction - Homo sapiens (human)",
+              "geneset_size": 87,
+              "direction": 0.09190936912384995,
+              "color": "#f3e1e3",
+              "id": "hsa04740"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Prolactin receptor signaling pathway",
+          "geneset_size": 83,
+          "direction": -0.3413700321265696,
+          "color": "#b8d1d8",
+          "id": "DC3-15",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Prolactin Signaling Pathway",
+              "geneset_size": 76,
+              "direction": -0.03452709750341465,
+              "color": "#eceff0",
+              "id": "WP2037"
+            },
+            {
+              "database": "reactome",
+              "name": "Prolactin receptor signaling",
+              "geneset_size": 90,
+              "direction": 0.5697636349051987,
+              "color": "#e88990",
+              "id": "R-HSA-1170546"
+            },
+            {
+              "database": "kegg",
+              "name": "Prolactin signaling pathway - Homo sapiens (human)",
+              "geneset_size": 53,
+              "direction": -0.3125130851837501,
+              "color": "#bcd4db",
+              "id": "hsa04917"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "AMP-activated protein kinase (AMPK) signaling pathway",
+          "geneset_size": 90,
+          "direction": 0.891870034135686,
+          "color": "#dd4e58",
+          "id": "DC3-16",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "AMP-activated Protein Kinase (AMPK) Signaling",
+              "geneset_size": 92,
+              "direction": -0.5726873261763754,
+              "color": "#8db4bf",
+              "id": "WP1403"
+            },
+            {
+              "database": "kegg",
+              "name": "AMPK signaling pathway - Homo sapiens (human)",
+              "geneset_size": 80,
+              "direction": -0.9088978770735456,
+              "color": "#508a9c",
+              "id": "hsa04152"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "PPA receptor signaling pathway",
+          "geneset_size": 68,
+          "direction": -0.8866223805159672,
+          "color": "#548d9e",
+          "id": "DC3-17",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "PPAR signaling pathway",
+              "geneset_size": 68,
+              "direction": 0.5929945227676103,
+              "color": "#e7858c",
+              "id": "WP3942"
+            },
+            {
+              "database": "kegg",
+              "name": "PPAR signaling pathway - Homo sapiens (human)",
+              "geneset_size": 53,
+              "direction": -0.6801095488615365,
+              "color": "#79a6b4",
+              "id": "hsa03320"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Bone morphogenic protein (BMP) signaling pathway",
+          "geneset_size": 60,
+          "direction": 0.7907052377944166,
+          "color": "#e06069",
+          "id": "DC3-18",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Bone Morphogenic Protein (BMP) Signalling and Regulation",
+              "geneset_size": 85,
+              "direction": -0.5868483213783842,
+              "color": "#8ab2be",
+              "id": "WP1425"
+            },
+            {
+              "database": "reactome",
+              "name": "Signaling by BMP",
+              "geneset_size": 51,
+              "direction": -0.11280344307976731,
+              "color": "#dfe8eb",
+              "id": "R-HSA-201451"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "ErbB signaling pathway",
+          "geneset_size": 94,
+          "direction": 0.4365379102026816,
+          "color": "#eda2a7",
+          "id": "DC3-19",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "ErbB Signaling Pathway",
+              "geneset_size": 51,
+              "direction": 0.6841498700404833,
+              "color": "#e4747c",
+              "id": "WP673"
+            },
+            {
+              "database": "kegg",
+              "name": "ErbB signaling pathway - Homo sapiens (human)",
+              "geneset_size": 92,
+              "direction": -0.8192463872496349,
+              "color": "#6095a5",
+              "id": "hsa04012"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Ras signaling pathway",
+          "geneset_size": 93,
+          "direction": 0.08911222609104485,
+          "color": "#f3e1e3",
+          "id": "DC3-20",
+          "children": [
+            {
+              "database": "pathbank",
+              "name": "Ras Signaling Pathway",
+              "geneset_size": 100,
+              "direction": 0.3645176058011299,
+              "color": "#efafb3",
+              "id": "PW064776"
+            },
+            {
+              "database": "kegg",
+              "name": "Ras signaling pathway - Homo sapiens (human)",
+              "geneset_size": 95,
+              "direction": -0.7121821558755361,
+              "color": "#74a2b1",
+              "id": "hsa04014"
+            }
+          ]
+        },
+        {
+          "database": "reactome",
+          "name": "Signaling by GPCR",
+          "geneset_size": 83,
+          "direction": 0.6167772534444529,
+          "color": "#e68188",
+          "id": "R-HSA-372790",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "GPCRs, Other",
+              "geneset_size": 92,
+              "direction": -0.7429307332463118,
+              "color": "#6e9ead",
+              "id": "WP117"
+            },
+            {
+              "database": "reactome",
+              "name": "GPCR ligand binding",
+              "geneset_size": 81,
+              "direction": -0.16738445426176152,
+              "color": "#d6e3e7",
+              "id": "R-HSA-500792"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Estrogen signaling pathway",
+          "geneset_size": 58,
+          "direction": -0.23679779541618506,
+          "color": "#cadde3",
+          "id": "DC3-25",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Estrogen signaling pathway",
+              "geneset_size": 58,
+              "direction": -0.7726537292289306,
+              "color": "#689aaa",
+              "id": "WP712"
+            },
+            {
+              "database": "kegg",
+              "name": "Estrogen signaling pathway - Homo sapiens (human)",
+              "geneset_size": 71,
+              "direction": -0.1815477048504588,
+              "color": "#d4e2e6",
+              "id": "hsa04915"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "GnRH signaling pathway",
+          "geneset_size": 62,
+          "direction": 0.0887239118137988,
+          "color": "#f3e1e3",
+          "id": "DC3-26",
+          "children": [
+            {
+              "database": "pathbank",
+              "name": "GnRH Signaling Pathway",
+              "geneset_size": 70,
+              "direction": -0.13727598890535964,
+              "color": "#dbe6e9",
+              "id": "PW064816"
+            },
+            {
+              "database": "kegg",
+              "name": "GnRH signaling pathway - Homo sapiens (human)",
+              "geneset_size": 95,
+              "direction": 0.37772093541336615,
+              "color": "#efacb1",
+              "id": "hsa04912"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "GPCRs, Class A Rhodopsin-like pathway",
+          "geneset_size": 91,
+          "direction": -0.014175224301544054,
+          "color": "#eff1f1",
+          "id": "DC3-27",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "GPCRs, Class A Rhodopsin-like",
+              "geneset_size": 92,
+              "direction": 0.2529940481594384,
+              "color": "#f3c3c6",
+              "id": "WP455"
+            },
+            {
+              "database": "reactome",
+              "name": "Class A/1 (Rhodopsin-like receptors)",
+              "geneset_size": 80,
+              "direction": -0.5216753485333041,
+              "color": "#96b9c4",
+              "id": "R-HSA-373076",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Monoamine GPCRs",
+                  "geneset_size": 96,
+                  "direction": -0.9069372026254328,
+                  "color": "#508a9c",
+                  "id": "WP58",
+                  "children": [
+                    {
+                      "database": "reactome",
+                      "name": "G alpha (i) signalling events",
+                      "geneset_size": 77,
+                      "direction": -0.4405323068156324,
+                      "color": "#a6c4ce",
+                      "id": "R-HSA-418594",
+                      "children": [
+                        {
+                          "database": "reactome",
+                          "name": "Visual phototransduction",
+                          "geneset_size": 56,
+                          "direction": -0.0814591723562037,
+                          "color": "#e5ebed",
+                          "id": "R-HSA-2187338",
+                          "children": [
+                            {
+                              "database": "kegg",
+                              "name": "Phototransduction - Homo sapiens (human)",
+                              "geneset_size": 66,
+                              "direction": -0.23294518653486596,
+                              "color": "#cadde3",
+                              "id": "hsa04744"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "GPCRs, Class B Secretin-like pathway",
+          "geneset_size": 74,
+          "direction": 0.19323368743170422,
+          "color": "#f3ced1",
+          "id": "DC3-28",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "GPCRs, Class B Secretin-like",
+              "geneset_size": 67,
+              "direction": -0.039141642625417195,
+              "color": "#ebeeef",
+              "id": "WP334"
+            },
+            {
+              "database": "reactome",
+              "name": "Class B/2 (Secretin family receptors)",
+              "geneset_size": 76,
+              "direction": -0.4998083572405092,
+              "color": "#9abcc7",
+              "id": "R-HSA-373080"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "GPCRs, Class C Metabotropic glutamate pathway",
+          "geneset_size": 56,
+          "direction": -0.2803904746410719,
+          "color": "#c2d7de",
+          "id": "DC3-29",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "GPCRs, Class C Metabotropic glutamate, pheromone",
+              "geneset_size": 58,
+              "direction": -0.5382438187578071,
+              "color": "#93b7c3",
+              "id": "WP501"
+            },
+            {
+              "database": "reactome",
+              "name": "Class C/3 (Metabotropic glutamate/pheromone receptors)",
+              "geneset_size": 54,
+              "direction": -0.1042906134399455,
+              "color": "#e1e9eb",
+              "id": "R-HSA-420499"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "GPR40 signaling pathway",
+          "geneset_size": 84,
+          "direction": -0.6789744123780244,
+          "color": "#79a6b4",
+          "id": "DC3-30",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "GPR40 Pathway",
+              "geneset_size": 100,
+              "direction": 0.7657876077580947,
+              "color": "#e1656f",
+              "id": "WP3958"
+            },
+            {
+              "database": "reactome",
+              "name": "Fatty Acids bound to GPR40 (FFAR1) regulate insulin secretion",
+              "geneset_size": 67,
+              "direction": -0.947958441575184,
+              "color": "#498598",
+              "id": "R-HSA-434316"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Insulin signaling pathway SUPER",
+          "geneset_size": 73,
+          "direction": 0.6870347274133655,
+          "color": "#e4747c",
+          "id": "DC3-31",
+          "children": [
+            {
+              "database": "pathbank",
+              "name": "Insulin Signalling",
+              "geneset_size": 52,
+              "direction": 0.03491490675037201,
+              "color": "#f2ecec",
+              "id": "PW000454"
+            },
+            {
+              "database": "wikipathways",
+              "name": "Insulin signalling in human adipocytes (normal condition)",
+              "geneset_size": 87,
+              "direction": 0.5100751187059989,
+              "color": "#ea939a",
+              "id": "WP3634"
+            },
+            {
+              "database": "kegg",
+              "name": "Insulin signaling pathway - Homo sapiens (human)",
+              "geneset_size": 96,
+              "direction": -0.8623255881288876,
+              "color": "#5990a1",
+              "id": "hsa04910"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "NF-kappa B signaling pathway",
+          "geneset_size": 54,
+          "direction": 0.725848102171613,
+          "color": "#e36d75",
+          "id": "DC3-32",
+          "children": [
+            {
+              "database": "pathbank",
+              "name": "NF-kB Signaling Pathway",
+              "geneset_size": 89,
+              "direction": 0.4472085619722823,
+              "color": "#ec9fa4",
+              "id": "PW064818"
+            },
+            {
+              "database": "kegg",
+              "name": "NF-kappa B signaling pathway - Homo sapiens (human)",
+              "geneset_size": 61,
+              "direction": 0.9085338963123022,
+              "color": "#dc4b56",
+              "id": "hsa04064"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Glucagon signaling pathway",
+          "geneset_size": 99,
+          "direction": 0.5741801517040079,
+          "color": "#e8888f",
+          "id": "DC3-33",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Glucagon signaling in metabolic regulation",
+              "geneset_size": 73,
+              "direction": -0.9432862625736009,
+              "color": "#498598",
+              "id": "R-HSA-163359"
+            },
+            {
+              "database": "kegg",
+              "name": "Glucagon signaling pathway - Homo sapiens (human)",
+              "geneset_size": 58,
+              "direction": -0.5280250786016676,
+              "color": "#96b9c4",
+              "id": "hsa04922"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "GABA receptor activation pathway",
+          "geneset_size": 64,
+          "direction": -0.677913332623391,
+          "color": "#79a6b4",
+          "id": "DC3-34",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "GABA receptor Signaling",
+              "geneset_size": 56,
+              "direction": 0.021077198969213562,
+              "color": "#f2efef",
+              "id": "WP4159",
+              "children": [
+                {
+                  "database": "kegg",
+                  "name": "GABAergic synapse - Homo sapiens (human)",
+                  "geneset_size": 79,
+                  "direction": 0.5898446906867398,
+                  "color": "#e7858c",
+                  "id": "hsa04727"
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "GABA receptor activation",
+              "geneset_size": 63,
+              "direction": 0.3494876584705482,
+              "color": "#f0b1b6",
+              "id": "R-HSA-977443"
+            }
+          ]
+        },
+        {
+          "database": "reactome",
+          "name": "Signaling by Nuclear Receptors",
+          "geneset_size": 89,
+          "direction": 0.8001515077841794,
+          "color": "#e05f68",
+          "id": "R-HSA-9006931"
+        },
+        {
+          "database": "reactome",
+          "name": "Signaling by Receptor Tyrosine Kinases",
+          "geneset_size": 86,
+          "direction": 0.9477088770514064,
+          "color": "#db444f",
+          "id": "R-HSA-9006934",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Signaling by NTRKs",
+              "geneset_size": 98,
+              "direction": 0.6329421907544268,
+              "color": "#e67e85",
+              "id": "R-HSA-166520",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Signaling by NTRK1 (TRKA)",
+                  "geneset_size": 62,
+                  "direction": 0.3999109736838298,
+                  "color": "#eea7ad",
+                  "id": "R-HSA-187037",
+                  "children": [
+                    {
+                      "database": "reactome",
+                      "name": "Signalling to ERKs",
+                      "geneset_size": 70,
+                      "direction": -0.1640797919717205,
+                      "color": "#d6e3e7",
+                      "id": "R-HSA-187687",
+                      "children": [
+                        {
+                          "database": "reactome",
+                          "name": "Signalling to RAS",
+                          "geneset_size": 79,
+                          "direction": 0.02082931470731575,
+                          "color": "#f2efef",
+                          "id": "R-HSA-167044"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "Signaling by EGFR",
+              "geneset_size": 63,
+              "direction": -0.24904693557816393,
+              "color": "#c8dbe1",
+              "id": "R-HSA-177929"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "database": "decopath",
+      "name": "Communication and transport pathways",
+      "geneset_size": 61,
+      "direction": 0.17773901423361127,
+      "color": "#f3d1d4",
+      "id": "DC-4",
+      "children": [
+        {
+          "database": "decopath",
+          "name": "Cell-cell communication",
+          "geneset_size": 100,
+          "direction": -0.9936900035514964,
+          "color": "#407f93",
+          "id": "DC-4-1",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Cell-cell junction organization",
+              "geneset_size": 77,
+              "direction": 0.3965275610669581,
+              "color": "#eea9ae",
+              "id": "R-HSA-421270",
+              "children": [
+                {
+                  "database": "decopath",
+                  "name": "Tight junctions",
+                  "geneset_size": 65,
+                  "direction": -0.8958806756858759,
+                  "color": "#518b9d",
+                  "id": "DC-4-0-1",
+                  "children": [
+                    {
+                      "database": "reactome",
+                      "name": "Tight junction interactions",
+                      "geneset_size": 58,
+                      "direction": 0.4962083142814617,
+                      "color": "#eb969c",
+                      "id": "R-HSA-420029"
+                    },
+                    {
+                      "database": "kegg",
+                      "name": "Tight junction - Homo sapiens (human)",
+                      "geneset_size": 65,
+                      "direction": -0.5072877791846038,
+                      "color": "#99bbc6",
+                      "id": "hsa04530"
+                    }
+                  ]
+                },
+                {
+                  "database": "reactome",
+                  "name": "Adherens junctions interactions",
+                  "geneset_size": 93,
+                  "direction": -0.9302094130604188,
+                  "color": "#4c8799",
+                  "id": "R-HSA-418990"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Cell adhesion molecules (CAMs) - Homo sapiens (human)",
+                  "geneset_size": 57,
+                  "direction": -0.7499528758075245,
+                  "color": "#6c9dac",
+                  "id": "hsa04514"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Adherens junction - Homo sapiens (human)",
+                  "geneset_size": 91,
+                  "direction": 0.46159477757185763,
+                  "color": "#ec9da3",
+                  "id": "hsa04520"
+                }
+              ]
+            },
+            {
+              "database": "wikipathways",
+              "name": "Focal Adhesion",
+              "geneset_size": 71,
+              "direction": -0.3680625539073159,
+              "color": "#b2cdd5",
+              "id": "WP306"
+            },
+            {
+              "database": "kegg",
+              "name": "Focal adhesion - Homo sapiens (human)",
+              "geneset_size": 61,
+              "direction": 0.9997676432125722,
+              "color": "#d93c47",
+              "id": "hsa04510"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Transport-related pathways",
+          "geneset_size": 65,
+          "direction": 0.1550725836682194,
+          "color": "#f3d6d8",
+          "id": "DC-4-2",
+          "children": [
+            {
+              "database": "decopath",
+              "name": "ABC transporters",
+              "geneset_size": 58,
+              "direction": -0.13973851400252713,
+              "color": "#dae5e9",
+              "id": "DC-4-2-1",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "ABC-family proteins mediated transport",
+                  "geneset_size": 67,
+                  "direction": 0.7075298704784381,
+                  "color": "#e36f78",
+                  "id": "R-HSA-382556"
+                },
+                {
+                  "database": "kegg",
+                  "name": "ABC transporters - Homo sapiens (human)",
+                  "geneset_size": 80,
+                  "direction": -0.3026924706694023,
+                  "color": "#bed5dc",
+                  "id": "hsa02010"
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "Transport of small molecules",
+              "geneset_size": 87,
+              "direction": 0.22484195518954708,
+              "color": "#f3c8cc",
+              "id": "R-HSA-382551",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Aquaporin-mediated transport",
+                  "geneset_size": 72,
+                  "direction": -0.6123287649871598,
+                  "color": "#86afbb",
+                  "id": "R-HSA-445717"
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "Vesicle-mediated transport",
+              "geneset_size": 54,
+              "direction": 0.11671220212558908,
+              "color": "#f3dddf",
+              "id": "R-HSA-5653656"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "database": "decopath",
+      "name": "Programmed and cell death pathway",
+      "geneset_size": 53,
+      "direction": -0.7029663537866087,
+      "color": "#75a3b1",
+      "id": "DC-5",
+      "children": [
+        {
+          "database": "decopath",
+          "name": "Necrosis pathway",
+          "geneset_size": 55,
+          "direction": 0.8913468110862277,
+          "color": "#dd4e58",
+          "id": "DC-5-1",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Regulation of necroptotic cell death",
+              "geneset_size": 97,
+              "direction": -0.6812927566462341,
+              "color": "#79a6b4",
+              "id": "R-HSA-5675482"
+            },
+            {
+              "database": "reactome",
+              "name": "Regulated Necrosis",
+              "geneset_size": 100,
+              "direction": 0.9768487984416931,
+              "color": "#da3f4a",
+              "id": "R-HSA-5218859",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "RIPK1-mediated regulated necrosis",
+                  "geneset_size": 82,
+                  "direction": -0.9116813281463609,
+                  "color": "#4f899b",
+                  "id": "R-HSA-5213460"
+                }
+              ]
+            },
+            {
+              "database": "kegg",
+              "name": "Necroptosis - Homo sapiens (human)",
+              "geneset_size": 79,
+              "direction": 0.6657502135688831,
+              "color": "#e4777f",
+              "id": "hsa04217"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Apoptosis pathway",
+          "geneset_size": 54,
+          "direction": 0.6707270893774697,
+          "color": "#e4777f",
+          "id": "DC-5-2",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Apoptosis",
+              "geneset_size": 58,
+              "direction": 0.13960543984395657,
+              "color": "#f3d9da",
+              "id": "WP254"
+            },
+            {
+              "database": "reactome",
+              "name": "Apoptosis",
+              "geneset_size": 98,
+              "direction": 0.7393915554040076,
+              "color": "#e26a73",
+              "id": "R-HSA-109581",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Regulation of Apoptosis",
+                  "geneset_size": 74,
+                  "direction": -0.23343503243875885,
+                  "color": "#cadde3",
+                  "id": "R-HSA-169911"
+                }
+              ]
+            },
+            {
+              "database": "kegg",
+              "name": "Apoptosis - Homo sapiens (human)",
+              "geneset_size": 57,
+              "direction": 0.8170556923906813,
+              "color": "#df5c65",
+              "id": "hsa04210",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Apoptosis Modulation and Signaling",
+                  "geneset_size": 60,
+                  "direction": -0.2506111724989062,
+                  "color": "#c8dbe1",
+                  "id": "WP1772"
+                }
+              ]
+            },
+            {
+              "database": "kegg",
+              "name": "Apoptosis - multiple species - Homo sapiens (human)",
+              "geneset_size": 67,
+              "direction": 0.543365696360883,
+              "color": "#e98e94",
+              "id": "hsa04215"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Ferroptosis pathway",
+          "geneset_size": 73,
+          "direction": 0.28739773847971617,
+          "color": "#f2bdc1",
+          "id": "DC-5-3",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Oxysterols derived from cholesterol",
+              "geneset_size": 99,
+              "direction": 0.8175207413663304,
+              "color": "#df5c65",
+              "id": "WP4545"
+            },
+            {
+              "database": "kegg",
+              "name": "Ferroptosis - Homo sapiens (human)",
+              "geneset_size": 88,
+              "direction": 0.6917734142889542,
+              "color": "#e4727b",
+              "id": "hsa04216"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "database": "decopath",
+      "name": "Disease pathways",
+      "geneset_size": 89,
+      "direction": 0.46537018485488457,
+      "color": "#ec9ca2",
+      "id": "DC-6",
+      "children": [
+        {
+          "database": "decopath",
+          "name": "Type II diabetes mellitus",
+          "geneset_size": 58,
+          "direction": 0.3409073363701487,
+          "color": "#f0b3b7",
+          "id": "DC-6-1",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Type II diabetes mellitus",
+              "geneset_size": 84,
+              "direction": -0.2919136286098891,
+              "color": "#c1d6dd",
+              "id": "WP1584"
+            },
+            {
+              "database": "kegg",
+              "name": "Type II diabetes mellitus - Homo sapiens (human)",
+              "geneset_size": 71,
+              "direction": 0.07265419833194309,
+              "color": "#f3e4e5",
+              "id": "hsa04930"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Influenza",
+          "geneset_size": 53,
+          "direction": -0.40340469975615134,
+          "color": "#adc9d2",
+          "id": "DC-6-2",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Influenza Life Cycle",
+              "geneset_size": 78,
+              "direction": 0.3377479577533813,
+              "color": "#f0b3b7",
+              "id": "R-HSA-168255"
+            },
+            {
+              "database": "reactome",
+              "name": "Influenza Infection",
+              "geneset_size": 94,
+              "direction": -0.3110597335789447,
+              "color": "#bcd4db",
+              "id": "R-HSA-168254"
+            },
+            {
+              "database": "kegg",
+              "name": "Influenza A - Homo sapiens (human)",
+              "geneset_size": 88,
+              "direction": -0.9637896724376367,
+              "color": "#468396",
+              "id": "hsa05164"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Pathogenic Escherichia coli infection",
+          "geneset_size": 60,
+          "direction": 0.13910408829021814,
+          "color": "#f3d9da",
+          "id": "DC-6-3",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Pathogenic Escherichia coli infection",
+              "geneset_size": 91,
+              "direction": 0.5628720891590449,
+              "color": "#e88b92",
+              "id": "WP2272"
+            },
+            {
+              "database": "kegg",
+              "name": "Pathogenic Escherichia coli infection - Homo sapiens (human)",
+              "geneset_size": 93,
+              "direction": 0.47616012852263045,
+              "color": "#eb9aa0",
+              "id": "hsa05130"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Amyotrophic lateral sclerosis",
+          "geneset_size": 93,
+          "direction": 0.6611586571570134,
+          "color": "#e57880",
+          "id": "DC-6-4",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Amyotrophic lateral sclerosis (ALS)",
+              "geneset_size": 93,
+              "direction": 0.5119230431928827,
+              "color": "#ea939a",
+              "id": "WP2447"
+            },
+            {
+              "database": "kegg",
+              "name": "Amyotrophic lateral sclerosis (ALS) - Homo sapiens (human)",
+              "geneset_size": 88,
+              "direction": 0.3441748240360458,
+              "color": "#f0b3b7",
+              "id": "hsa05014"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Prion disease",
+          "geneset_size": 97,
+          "direction": 0.9201155063781605,
+          "color": "#dc4a54",
+          "id": "DC-6-5",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Prion disease pathway",
+              "geneset_size": 62,
+              "direction": 0.8322217228477395,
+              "color": "#df5963",
+              "id": "WP3995"
+            },
+            {
+              "database": "kegg",
+              "name": "Prion diseases - Homo sapiens (human)",
+              "geneset_size": 58,
+              "direction": 0.4883060932897505,
+              "color": "#eb989e",
+              "id": "hsa05020"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Arrhythmogenic right ventricular cardiomyopathy",
+          "geneset_size": 92,
+          "direction": -0.635482763349225,
+          "color": "#82acb9",
+          "id": "DC-6-6",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Arrhythmogenic Right Ventricular Cardiomyopathy",
+              "geneset_size": 79,
+              "direction": 0.9706001150930708,
+              "color": "#da404b",
+              "id": "WP2118"
+            },
+            {
+              "database": "kegg",
+              "name": "Arrhythmogenic right ventricular cardiomyopathy (ARVC) - Homo sapiens (human)",
+              "geneset_size": 65,
+              "direction": 0.07850373525621479,
+              "color": "#f3e4e5",
+              "id": "hsa05412"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Fanconi anemia",
+          "geneset_size": 78,
+          "direction": -0.6339630270337941,
+          "color": "#82acb9",
+          "id": "DC-6-7",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Fanconi Anemia Pathway",
+              "geneset_size": 92,
+              "direction": -0.5755139771242688,
+              "color": "#8db4bf",
+              "id": "R-HSA-6783310"
+            },
+            {
+              "database": "kegg",
+              "name": "Fanconi anemia pathway - Homo sapiens (human)",
+              "geneset_size": 76,
+              "direction": -0.5610626781360317,
+              "color": "#8fb5c0",
+              "id": "hsa03460"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Parkinson's disease",
+          "geneset_size": 73,
+          "direction": 0.7036463970652578,
+          "color": "#e36f78",
+          "id": "DC-6-8",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Parkinsons Disease Pathway",
+              "geneset_size": 99,
+              "direction": -0.449306452630428,
+              "color": "#a4c3cd",
+              "id": "WP2371"
+            },
+            {
+              "database": "kegg",
+              "name": "Parkinson's disease - Homo sapiens (human)",
+              "geneset_size": 66,
+              "direction": 0.1741675475497515,
+              "color": "#f3d1d4",
+              "id": "hsa05012"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Alzheimer's disease",
+          "geneset_size": 72,
+          "direction": 0.03149739079739411,
+          "color": "#f2eded",
+          "id": "DC-6-9",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Alzheimers Disease",
+              "geneset_size": 76,
+              "direction": 0.48377535780787073,
+              "color": "#eb999f",
+              "id": "WP2059"
+            },
+            {
+              "database": "kegg",
+              "name": "Alzheimer disease - Homo sapiens (human)",
+              "geneset_size": 83,
+              "direction": -0.13515080687366887,
+              "color": "#dbe6e9",
+              "id": "hsa05010"
+            }
+          ]
+        },
+        {
+          "database": "reactome",
+          "name": "Diseases of carbohydrate metabolism",
+          "geneset_size": 71,
+          "direction": -0.8117985677912711,
+          "color": "#6195a6",
+          "id": "R-HSA-5663084",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Pentose phosphate pathway disease",
+              "geneset_size": 57,
+              "direction": 0.24487971880896664,
+              "color": "#f3c4c7",
+              "id": "R-HSA-6791465"
+            }
+          ]
+        },
+        {
+          "database": "kegg",
+          "name": "Pathways in cancer - Homo sapiens (human)",
+          "geneset_size": 76,
+          "direction": 0.7452786467819985,
+          "color": "#e26871",
+          "id": "hsa05200",
+          "children": [
+            {
+              "database": "decopath",
+              "name": "Bladder cancer",
+              "geneset_size": 85,
+              "direction": -0.10355196489481377,
+              "color": "#e1e9eb",
+              "id": "DC-6-0-1",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Bladder Cancer",
+                  "geneset_size": 68,
+                  "direction": -0.5587313683058699,
+                  "color": "#90b6c1",
+                  "id": "WP2828"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Bladder cancer - Homo sapiens (human)",
+                  "geneset_size": 70,
+                  "direction": 0.9595897233593453,
+                  "color": "#da434e",
+                  "id": "hsa05219"
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "Signaling by Overexpressed Wild-Type EGFR in Cancer",
+              "geneset_size": 90,
+              "direction": -0.09460992388090883,
+              "color": "#e2eaec",
+              "id": "R-HSA-5638302",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Inhibition of Signaling by Overexpressed EGFR",
+                  "geneset_size": 59,
+                  "direction": 0.5490354264952202,
+                  "color": "#e98c93",
+                  "id": "R-HSA-5638303"
+                }
+              ]
+            },
+            {
+              "database": "wikipathways",
+              "name": "Endometrial cancer",
+              "geneset_size": 65,
+              "direction": 0.3135641050719722,
+              "color": "#f1b7bb",
+              "id": "WP4155"
+            },
+            {
+              "database": "kegg",
+              "name": "Endometrial cancer - Homo sapiens (human)",
+              "geneset_size": 52,
+              "direction": -0.982265718375182,
+              "color": "#428093",
+              "id": "hsa05213"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "database": "decopath",
+      "name": "DNA repair and replication",
+      "geneset_size": 74,
+      "direction": 0.9836538526155745,
+      "color": "#da3f4a",
+      "id": "DC7",
+      "children": [
+        {
+          "database": "decopath",
+          "name": "DNA repair",
+          "geneset_size": 53,
+          "direction": 0.7254667998686684,
+          "color": "#e36d75",
+          "id": "DC7-1",
+          "children": [
+            {
+              "database": "decopath",
+              "name": "Nucleotide excision repair",
+              "geneset_size": 77,
+              "direction": 0.9094468194253094,
+              "color": "#dc4b56",
+              "id": "DC7-1-1",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Nucleotide Excision Repair",
+                  "geneset_size": 73,
+                  "direction": 0.7010319372125962,
+                  "color": "#e37179",
+                  "id": "R-HSA-5696398"
+                },
+                {
+                  "database": "pathbank",
+                  "name": "Nucleotide Excision Repair",
+                  "geneset_size": 61,
+                  "direction": 0.16736303297665112,
+                  "color": "#f3d3d5",
+                  "id": "PW000457"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Nucleotide excision repair - Homo sapiens (human)",
+                  "geneset_size": 51,
+                  "direction": -0.3605664035847551,
+                  "color": "#b4ced6",
+                  "id": "hsa03420"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Mismatch repair",
+              "geneset_size": 61,
+              "direction": 0.9674911554168799,
+              "color": "#da414d",
+              "id": "DC7-1-2",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Mismatch Repair",
+                  "geneset_size": 67,
+                  "direction": -0.2690331773625312,
+                  "color": "#c5d9e0",
+                  "id": "R-HSA-5358508"
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "Mismatch repair",
+                  "geneset_size": 86,
+                  "direction": -0.45134881845839825,
+                  "color": "#a3c2cc",
+                  "id": "WP531"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Mismatch repair - Homo sapiens (human)",
+                  "geneset_size": 94,
+                  "direction": 0.23615610178329827,
+                  "color": "#f3c5c9",
+                  "id": "hsa03430"
+                }
+              ]
+            },
+            {
+              "database": "reactome",
+              "name": "DNA Double-Strand Break Repair",
+              "geneset_size": 74,
+              "direction": 0.45531156236738,
+              "color": "#ec9da3",
+              "id": "R-HSA-5693532",
+              "children": [
+                {
+                  "database": "decopath",
+                  "name": "Non-homologous end joining",
+                  "geneset_size": 63,
+                  "direction": 0.158947354413971,
+                  "color": "#f3d4d6",
+                  "id": "DC7-1-0-1",
+                  "children": [
+                    {
+                      "database": "wikipathways",
+                      "name": "Non-homologous end joining",
+                      "geneset_size": 92,
+                      "direction": -0.17496827468216547,
+                      "color": "#d5e3e7",
+                      "id": "WP438"
+                    },
+                    {
+                      "database": "reactome",
+                      "name": "Nonhomologous End-Joining (NHEJ)",
+                      "geneset_size": 80,
+                      "direction": -0.5845025036907812,
+                      "color": "#8ab2be",
+                      "id": "R-HSA-5693571"
+                    },
+                    {
+                      "database": "kegg",
+                      "name": "Non-homologous end-joining - Homo sapiens (human)",
+                      "geneset_size": 94,
+                      "direction": 0.019774206227628044,
+                      "color": "#f2efef",
+                      "id": "hsa03450"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Homologous recombination",
+              "geneset_size": 74,
+              "direction": 0.8933431409032968,
+              "color": "#dd4e58",
+              "id": "DC7-1-3",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Homologous recombination",
+                  "geneset_size": 74,
+                  "direction": 0.449729748695719,
+                  "color": "#ec9fa4",
+                  "id": "WP186"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Homologous recombination - Homo sapiens (human)",
+                  "geneset_size": 81,
+                  "direction": 0.15580942695629862,
+                  "color": "#f3d6d8",
+                  "id": "hsa03440"
+                }
+              ]
+            },
+            {
+              "database": "decopath",
+              "name": "Base excision repair",
+              "geneset_size": 78,
+              "direction": -0.12162696428101527,
+              "color": "#dee7ea",
+              "id": "DC7-1-4",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Base Excision Repair",
+                  "geneset_size": 57,
+                  "direction": -0.5336088054558394,
+                  "color": "#94b8c4",
+                  "id": "R-HSA-73884"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Base excision repair - Homo sapiens (human)",
+                  "geneset_size": 96,
+                  "direction": 0.5764902970318111,
+                  "color": "#e8888f",
+                  "id": "hsa03410"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "DNA replication",
+          "geneset_size": 53,
+          "direction": 0.7353343307696956,
+          "color": "#e26a73",
+          "id": "DC7-2",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "DNA Replication",
+              "geneset_size": 57,
+              "direction": -0.5942195001986394,
+              "color": "#89b1bd",
+              "id": "WP466"
+            },
+            {
+              "database": "reactome",
+              "name": "DNA Replication",
+              "geneset_size": 87,
+              "direction": 0.5079354740549116,
+              "color": "#ea959b",
+              "id": "R-HSA-69306"
+            },
+            {
+              "database": "kegg",
+              "name": "DNA replication - Homo sapiens (human)",
+              "geneset_size": 55,
+              "direction": 0.549281122758897,
+              "color": "#e98c93",
+              "id": "hsa03030"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "database": "decopath",
+      "name": "Others",
+      "geneset_size": 82,
+      "direction": 0.6951771809801282,
+      "color": "#e4727b",
+      "id": "DC8",
+      "children": [
+        {
+          "database": "reactome",
+          "name": "Muscle contraction",
+          "geneset_size": 84,
+          "direction": -0.7995983657506269,
+          "color": "#6497a7",
+          "id": "R-HSA-397014",
+          "children": [
+            {
+              "database": "decopath",
+              "name": "Striated muscle contraction",
+              "geneset_size": 59,
+              "direction": -0.24501826654369308,
+              "color": "#c9dce2",
+              "id": "DC8-1",
+              "children": [
+                {
+                  "database": "pathbank",
+                  "name": "Striated Muscle Contraction",
+                  "geneset_size": 54,
+                  "direction": 0.7705266862792102,
+                  "color": "#e1646d",
+                  "id": "PW000564"
+                },
+                {
+                  "database": "wikipathways",
+                  "name": "Striated Muscle Contraction",
+                  "geneset_size": 62,
+                  "direction": 0.25905971686133844,
+                  "color": "#f3c1c5",
+                  "id": "WP383"
+                },
+                {
+                  "database": "reactome",
+                  "name": "Striated Muscle Contraction",
+                  "geneset_size": 53,
+                  "direction": -0.6784355329679448,
+                  "color": "#79a6b4",
+                  "id": "R-HSA-390522"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Developmental biology and cell differentiation",
+          "geneset_size": 90,
+          "direction": -0.22076722113420577,
+          "color": "#cddee4",
+          "id": "DC8-2",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Nervous system development",
+              "geneset_size": 100,
+              "direction": -0.10397928482729268,
+              "color": "#e1e9eb",
+              "id": "R-HSA-9675108",
+              "children": [
+                {
+                  "database": "decopath",
+                  "name": "Axon guidance",
+                  "geneset_size": 62,
+                  "direction": 0.5177326953567842,
+                  "color": "#ea9298",
+                  "id": "DC8-2-0-1",
+                  "children": [
+                    {
+                      "database": "reactome",
+                      "name": "Axon guidance",
+                      "geneset_size": 88,
+                      "direction": 0.4266233306753977,
+                      "color": "#eda3a8",
+                      "id": "R-HSA-422475"
+                    },
+                    {
+                      "database": "kegg",
+                      "name": "Axon guidance - Homo sapiens (human)",
+                      "geneset_size": 50,
+                      "direction": 0.04283117064725794,
+                      "color": "#f2eaeb",
+                      "id": "hsa04360"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "database": "wikipathways",
+              "name": "White fat cell differentiation",
+              "geneset_size": 93,
+              "direction": 0.6944598431244979,
+              "color": "#e4727b",
+              "id": "WP4149",
+              "children": [
+                {
+                  "database": "reactome",
+                  "name": "Transcriptional regulation of white adipocyte differentiation",
+                  "geneset_size": 57,
+                  "direction": 0.5990022783338289,
+                  "color": "#e7848b",
+                  "id": "R-HSA-381340",
+                  "children": [
+                    {
+                      "database": "wikipathways",
+                      "name": "Transcription factor regulation in adipogenesis",
+                      "geneset_size": 72,
+                      "direction": 0.18696464267001778,
+                      "color": "#f3d0d2",
+                      "id": "WP3599"
+                    },
+                    {
+                      "database": "wikipathways",
+                      "name": "Transcriptional cascade regulating adipogenesis",
+                      "geneset_size": 62,
+                      "direction": -0.9114177816210762,
+                      "color": "#4f899b",
+                      "id": "WP4211"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Ubiquitin-proteasome pathway",
+          "geneset_size": 99,
+          "direction": 0.36307026424828925,
+          "color": "#efafb3",
+          "id": "DC8-3",
+          "children": [
+            {
+              "database": "pathbank",
+              "name": "Ubiquitin-Proteasome Pathway",
+              "geneset_size": 60,
+              "direction": 0.09144903027888307,
+              "color": "#f3e1e3",
+              "id": "PW064821"
+            },
+            {
+              "database": "kegg",
+              "name": "Ubiquitin mediated proteolysis - Homo sapiens (human)",
+              "geneset_size": 71,
+              "direction": -0.16123491717343308,
+              "color": "#d7e4e8",
+              "id": "hsa04120"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Regulation of actin cytoskeleton",
+          "geneset_size": 97,
+          "direction": -0.4188886548231312,
+          "color": "#aac7d0",
+          "id": "DC8-4",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Regulation of Actin Cytoskeleton",
+              "geneset_size": 68,
+              "direction": 0.4279167224130844,
+              "color": "#eda3a8",
+              "id": "WP51"
+            },
+            {
+              "database": "kegg",
+              "name": "Regulation of actin cytoskeleton - Homo sapiens (human)",
+              "geneset_size": 88,
+              "direction": -0.04226800284452348,
+              "color": "#ebeeef",
+              "id": "hsa04810"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Neuronal System",
+          "geneset_size": 74,
+          "direction": 0.894365927180891,
+          "color": "#dd4e58",
+          "id": "DC8-5",
+          "children": [
+            {
+              "database": "decopath",
+              "name": "Synaptic vesicle cycle",
+              "geneset_size": 73,
+              "direction": -0.12683772348923017,
+              "color": "#dde7ea",
+              "id": "DC8-5-1",
+              "children": [
+                {
+                  "database": "wikipathways",
+                  "name": "Synaptic Vesicle Pathway",
+                  "geneset_size": 56,
+                  "direction": -0.5191076076343506,
+                  "color": "#97bac5",
+                  "id": "WP2267"
+                },
+                {
+                  "database": "kegg",
+                  "name": "Synaptic vesicle cycle - Homo sapiens (human)",
+                  "geneset_size": 68,
+                  "direction": 0.23839118377870072,
+                  "color": "#f3c5c9",
+                  "id": "hsa04721"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Cell cycle",
+          "geneset_size": 97,
+          "direction": 0.3112074617153364,
+          "color": "#f1b9bd",
+          "id": "DC8-6",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Cell Cycle",
+              "geneset_size": 66,
+              "direction": 0.8940012147208125,
+              "color": "#dd4e58",
+              "id": "WP179"
+            },
+            {
+              "database": "reactome",
+              "name": "Cell Cycle",
+              "geneset_size": 54,
+              "direction": -0.2297262382787577,
+              "color": "#ccdee3",
+              "id": "R-HSA-1640170"
+            },
+            {
+              "database": "kegg",
+              "name": "Cell cycle - Homo sapiens (human)",
+              "geneset_size": 59,
+              "direction": 0.8741493416766515,
+              "color": "#dd525c",
+              "id": "hsa04110"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Cellular senescence",
+          "geneset_size": 73,
+          "direction": -0.05518912690009059,
+          "color": "#e8edee",
+          "id": "DC8-7",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Cellular Senescence",
+              "geneset_size": 60,
+              "direction": -0.6241612942747197,
+              "color": "#83adba",
+              "id": "R-HSA-2559583"
+            },
+            {
+              "database": "kegg",
+              "name": "Cellular senescence - Homo sapiens (human)",
+              "geneset_size": 56,
+              "direction": 0.16453373574503583,
+              "color": "#f3d4d6",
+              "id": "hsa04218"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Circadian rhythms",
+          "geneset_size": 82,
+          "direction": -0.652076590997211,
+          "color": "#7faab7",
+          "id": "DC8-8",
+          "children": [
+            {
+              "database": "pathbank",
+              "name": "Circadian Rhythms",
+              "geneset_size": 71,
+              "direction": -0.8759098997041586,
+              "color": "#568e9f",
+              "id": "PW091851"
+            },
+            {
+              "database": "kegg",
+              "name": "Circadian rhythm - Homo sapiens (human)",
+              "geneset_size": 58,
+              "direction": -0.9891254837176542,
+              "color": "#407f93",
+              "id": "hsa04710"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Insulin secretion",
+          "geneset_size": 51,
+          "direction": -0.3078883286994005,
+          "color": "#bed5dc",
+          "id": "DC8-9",
+          "children": [
+            {
+              "database": "reactome",
+              "name": "Regulation of insulin secretion",
+              "geneset_size": 83,
+              "direction": -0.3488249788090214,
+              "color": "#b7d0d7",
+              "id": "R-HSA-422356"
+            },
+            {
+              "database": "kegg",
+              "name": "Insulin secretion - Homo sapiens (human)",
+              "geneset_size": 90,
+              "direction": 0.6027516541127265,
+              "color": "#e78289",
+              "id": "hsa04911"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "miRNA biogenesis",
+          "geneset_size": 80,
+          "direction": 0.9123736782295981,
+          "color": "#dc4b56",
+          "id": "DC8-10",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "miRNA Biogenesis",
+              "geneset_size": 51,
+              "direction": -0.7922137462514112,
+              "color": "#6598a8",
+              "id": "WP2338"
+            },
+            {
+              "database": "reactome",
+              "name": "MicroRNA (miRNA) biogenesis",
+              "geneset_size": 62,
+              "direction": -0.8453111643132052,
+              "color": "#5b92a2",
+              "id": "R-HSA-203927"
+            }
+          ]
+        },
+        {
+          "database": "decopath",
+          "name": "Methylation",
+          "geneset_size": 85,
+          "direction": -0.6702986536734525,
+          "color": "#7ba7b5",
+          "id": "DC8-11",
+          "children": [
+            {
+              "database": "wikipathways",
+              "name": "Methylation Pathways",
+              "geneset_size": 77,
+              "direction": -0.5755956825635553,
+              "color": "#8cb3bf",
+              "id": "WP704"
+            },
+            {
+              "database": "reactome",
+              "name": "Methylation",
+              "geneset_size": 100,
+              "direction": -0.18239620790852729,
+              "color": "#d4e2e6",
+              "id": "R-HSA-156581"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

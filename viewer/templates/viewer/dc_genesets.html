@@ -1,0 +1,91 @@
+{% extends "viewer/extentions/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+        <br><br>
+        <h1 class="text-center">{{ pathway_name }}</h1>
+        <br>
+        <p class="text-center">This DecoPath gene set contains genes from pathways equivalent to
+            the {{ pathway_name }}</p>
+        <br>
+
+        <div class="table-responsive-lg">
+
+            <table class="table table-hover table-bordered"
+                   id="decopath-geneset-table">
+                <tbody>
+                <tr>
+                    <th id="thDCgeneset">Pathway</th>
+                    <td id="tdDCgeneset">{{ pathway_name }}</td>
+                </tr>
+                <tr>
+                    <th id="thDCgeneset">Identifier</th>
+                    <td id="tdDCgeneset">{{ pathway_id }}</td>
+                </tr>
+                <tr>
+                    <th id="thDCgeneset">Resource</th>
+                    <td id="tdDCgeneset">{{ resources }}</td>
+                </tr>
+                <tr>
+                    <th id="thDCgeneset">Equivalent pathways</th>
+                    <td id="tdDCgeneset"></td>
+                </tr>
+                <tr>
+                    <th id="thDCgeneset">Gene set size</th>
+                    <td id="tdDCgeneset">{{ geneset_size }}</td>
+                </tr>
+                <tr>
+                    <th id="thDCgeneset">Genes</th>
+                    <td id="tdDCgeneset"></td>
+                </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+        var source_pathways = [];
+        var genes = [];
+        var geneset = {{ geneset|safe }};
+        var source_ids = {{ source_ids|safe }};
+
+        var table = document.getElementById("decopath-geneset-table");
+
+        source_ids.forEach(AddLinkDatabase);
+        geneset.forEach(AddLinkGene);
+
+        var source_pathways_str = source_pathways.join('|')
+        var genes_str = genes.toString()
+
+        table.rows[3].cells[1].innerHTML = source_pathways_str;
+        table.rows[5].cells[1].innerHTML = genes_str;
+
+
+        function AddLinkGene(gene_symbol) {
+            link = '<a href="https://www.genecards.org/cgi-bin/carddisp.pl?gene=' + gene_symbol + '"target="_blank" > ' + gene_symbol + '</a>';
+            genes.push(link);
+        }
+
+        function AddLinkDatabase(identifier) {
+            if (identifier.startsWith("hsa")) {
+                link = '<a href="https://www.genome.jp/dbget-bin/www_bget?pathway+' + identifier + '" target="_blank" > ' + identifier + ' </a>';
+            } else if (identifier.startsWith("PW")) {
+                link = '<a href="https://pathbank.org/pathwhiz/pathways/' + identifier + '" target="_blank"> ' + identifier + ' </a>';
+            } else if (identifier.startsWith('R-HSA')) {
+                link = '<a href="https://reactome.org/PathwayBrowser/#/' + identifier + '" target="_blank"> ' + identifier + ' </a>';
+            } else if (identifier.startsWith("WP")) {
+                link = '<a href="https://www.wikipathways.org/index.php/Pathway:' + identifier + '" target="_blank"> ' + identifier + ' </a>';
+            }
+            source_pathways.push(link)
+        }
+
+    </script>
+
+{% endblock %}

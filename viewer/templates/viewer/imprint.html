@@ -1,0 +1,163 @@
+{% extends "viewer/extentions/base.html" %}
+
+{% block content %}
+
+    <div class="container container-fluid" style="margin-top: 50px; margin-bottom: 50px;">
+        <h1 class="pb-2 mt-4 mb-2 text-center">
+            Legal Notice
+        </h1>
+
+        <div class="card" style="margin-top: 15px">
+            <div class="card-body">
+                <h4 class="card-title-imprint">Imprint and Publishing Notes</h4>
+                <div class="card-text">See the
+                    <a href="https://www.scai.fraunhofer.de/en/publishing-notes.html" target="_blank">imprint and publishing notes
+                    </a> for this web application and other Fraunhofer SCAI web applications.
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 15px">
+            <div class="card-body">
+                <h4 class="card-title-imprint">Fraunhofer SCAI Terms and Conditions</h4>
+                <div class="card-text">By using any services of this web application, you accept our
+                        <a href="https://www.scaiview.com/en/terms-and-conditions.html" target="_blank">Terms and Conditions of Use
+                        </a>.
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 15px">
+            <div class="card-body">
+                <h4 class="card-title-imprint">Policies of Other Resources</h4>
+                <div class="card-text">
+                    <p>
+                        Resources from <a href="http://www.kegg.jp/" target="_blank">KEGG</a>,
+                        <a href="https://reactome.org/" target="_blank">Reactome</a>,
+                        <a href="https://www.wikipathways.org/">WikiPathways</a>, and
+                        <a href="https://pathbank.org/" target="_blank">PathBank</a>
+                        have been used to build this package and application.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 15px">
+                <div class="card-body">
+
+                    <h4 class="card-title-imprint" style="color: #3d3b3b; text-transform:none"><b>KEGG</b></h4>
+
+                    <h5 class="card-title-imprint">License</h5>
+                    <p>KEGG KGML files are downloaded via the <a href="http://www.kegg.jp/kegg/rest/" target="_blank">KEGG
+                        API</a>
+                        for
+                        academic purposes (<a href="http://www.kegg.jp/kegg/legal.html" target="_blank">Terms and
+                            conditions</a>). More info at <a href="https://github.com/bio2bel/kegg" target="_blank">Bio2BEL
+                            KEGG</a>.
+                    </p>
+
+                    <h5 class="card-title-imprint">References</h5>
+                    <ul>
+                        <li>Kanehisa, M., Sato, Y., Furumichi, M., Morishima, K., and Tanabe, M.; New approach
+                            for
+                            understanding genome variations in KEGG. Nucleic Acids Res. 47, D590-D595 (2019).
+                        </li>
+                        <li>Kanehisa, M; Toward understanding the origin and evolution of cellular organisms.
+                            Protein
+                            Sci. 28, 1947-1951 (2019).
+                        </li>
+                        <li>Kanehisa, Furumichi, M., Tanabe, M., Sato, Y., and Morishima, K.; KEGG: new
+                            perspectives
+                            on
+                            genomes, pathways, diseases and drugs. Nucleic Acids Res. 45, D353-D361 (2017).
+                        </li>
+                        <li>Kanehisa, M., Sato, Y., Kawashima, M., Furumichi, M., and Tanabe, M.; KEGG as a
+                            reference
+                            resource for gene and protein annotation. Nucleic Acids Res. 44, D457-D462 (2016).
+                        </li>
+                        <li> Kanehisa, M. and Goto, S.; KEGG: Kyoto Encyclopedia of Genes and Genomes. Nucleic
+                            Acids
+                            Research. 28, 27-30 (2000).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 15px">
+                <div class="card-body">
+
+                    <h4 class="card-title-imprint" style="color: #3d3b3b; text-transform:none"><b>Reactome</b></h4>
+
+                    <h5 class="card-title-imprint">License</h5>
+                    <p>Reactome RDF files are downloaded via the <a href="https://reactome.org/download-data" target="_blank">Reactome
+                        API</a> for academic purposes (<a
+                            href="https://reactome.org/ContentService/about/license-agreement" target="_blank">Terms and
+                        conditions</a>).
+                    </p>
+                    <h5 class="card-title-imprint">References</h5>
+                    <ul>
+                        <li>
+                            Jassal B, et al. The reactome pathway knowledgebase. Nucleic Acids Research. 48(D1),
+                            D498-D503 (2020).
+                        </li>
+                        <li>Fabregat A, et al. The Reactome Pathway Knowledgebase, Nucleic Acids Research.
+                            46(D1),
+                            D649–D655 (2018).
+                        </li>
+                        <li>Croft D, et al. “The Reactome Pathway Knowledgebase.” Nucleic Acids Research.
+                            42(Database
+                            issue), D472–D477 (2014).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 15px">
+                <div class="card-body">
+
+                    <h4 class="card-title-imprint" style="color: #3d3b3b; text-transform:none"><b>WikiPathways</b></h4>
+
+                    <h5 class="card-title-imprint">License</h5>
+                    <p>WikiPathways RDF files are downloaded via <a href="http://data.wikipathways
+                        .org/current/rdf/" target="_blank">WikiPathways FTP server</a> for academic purposes (<a
+                            href="https://www.wikipathways.org/index.php/WikiPathways:License_Terms" target="_blank">Terms and
+                        conditions</a>).
+                    </p>
+                    <h5 class="card-title-imprint">References</h5>
+
+                    <ul>
+                        <li>Slenter DN, et al. WikiPathways: a multifaceted pathway database bridging
+                            metabolomics
+                            to
+                            other omics research. Nucleic Acids Research. 46(D1), D661-D667 (2017).
+                        </li>
+                        <li>Kutmon M, , et al. WikiPathways: capturing the full diversity of pathway knowledge
+                            Nucl.
+                            Acids Research. 44, D488-D494 (2016)
+                        </li>
+                        <li>Kelder T, van Iersel MP, Hanspers K, Kutmon M, Conklin BR, Evelo C, Pico AR.
+                            WikiPathways: building research communities on biological pathways. Nucleic Acids
+                            Research. 40(Database issue):D1301-7 (2012).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 15px">
+                <div class="card-body">
+                    <h4 class="card-title-imprint" style="color: #3d3b3b; text-transform:none"><b>PathBank</b></h4>
+                    <h5 class="card-title-imprint">License</h5>
+                    <p>PathBank pathways and their associated genes are downloaded via their <a
+                            href="https://pathbank.org/downloads" target="_blank">download</a> page. Visit their <a
+                            href="https://pathbank.org/about/" target="_blank">website</a>
+                        for details on the terms and conditions of its use.
+                    </p>
+                    <h5 class="card-title-imprint">References</h5>
+                    <p>Wishart DS, Li C, Marcu A, et al. PathBank: A Comprehensive Pathway Database for Model
+                        Organisms.
+                        Nucleic Acids Res. 2020 Jan 8;48(D1):D470-D478.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

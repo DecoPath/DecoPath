@@ -1,0 +1,110 @@
+{% extends "viewer/extentions/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link href="{% static "css/custom.css" %}" rel="stylesheet">
+    {% include "viewer/dependencies/datatables.html" %}
+
+    <br><br>
+    <div class="container container-fluid choices" id="GseaResultsPage" style="margin-bottom: 30px;">
+        <div class="card">
+            <div class="card-header" style="background-color: white">
+                <br>
+                <h2><strong>{{ enrichment_method }} Results</strong></h2>
+            </div>
+            <div class="card-body" style="margin-bottom: 50px;">
+                <p>
+                    Here, you can view and download the complete set of enrichment results for {{ enrichment_method }}
+                    for the file <i>{{ data_filename }}</i>.
+                </p>
+                <hr>
+
+                <div class="row">
+                    <div class="btn-group col" role="group">
+                        {% for database in databases %}
+                            <button type="button" class="btn customButton"
+                                    value="{{ database }}">{{ database }}</button>
+                        {% endfor %}
+                    </div>
+                </div>
+                <hr>
+                <div class="ranking_table">
+                    {% for table_id, df_table in ranking_tables.items %}
+                        {{ df_table|safe }}
+                    {% endfor %}
+                </div>
+                <hr>
+                <p id="TableLegend"><strong>*ES: </strong>Enrichment Score</p>
+                <p id="TableLegend"><strong>*NES: </strong>Normalized Enrichment Score</p>
+                <p id="TableLegend"><strong><i>*p</i>-value: </strong>Significance value</p>
+                <p id="TableLegend"><strong><i>*q</i>-value: </strong>Adjusted <i>p</i>-value</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        var databases = {{ ranking_tables|safe }};
+
+        $(document).ready(function () {
+            var dtable = $('.datatable-display').DataTable({
+                dom: '<"top"Blf>rt<"bottom"ip><"clear">',
+                buttons: ['copy', 'excelHtml5', 'csvHtml5'],
+                order: [[1, 'asc']], // order by NES or p-val
+                "scrollX": true,
+                fixedHeader: true,
+                columnDefs: [
+                    {
+                        "targets": [2],
+                        "visible": false
+                    },
+                    {
+                        "targets": 0, // apply function to ID column to render hyperlinks
+                        "render": function (data) {
+                            if (data.startsWith("hsa") == true) {
+                                return '<a href="https://www.genome.jp/dbget-bin/www_bget?pathway+' + data + '" target="_blank">' + data + '</a>';
+                            } else if (data.startsWith("PW") == true) {
+                                return '<a href="https://pathbank.org/pathwhiz/pathways/' + data + '" target="_blank">' + data + '</a>';
+                            } else if (data.startsWith('R-HSA') == true) {
+                                return '<a href="https://reactome.org/PathwayBrowser/#/' + data + '" target="_blank">' + data + '</a>';
+                            } else if (data.startsWith("WP") == true) {
+                                return '<a href="https://www.wikipathways.org/index.php/Pathway:' + data + '" target="_blank">' + data + '</a>';
+                            } else if (data.startsWith("DC") == true) {
+                                return '<a href="../dc_genesets/' + data + '" target="_blank">' + data + '</a>';
+                            } else return data
+                        }
+                    },
+                ],
+                "initComplete": function () {
+                    $('.datatable-display').show();
+                },
+            });
+            $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+        });
+
+        var table_ids = Object.keys(databases);
+
+        $(".customButton").click(function (e, d) {
+
+            var database = $(this).val();
+
+            $(".datatable-display").each(function (index) {
+                if ($(this).attr('id') === database) {
+                    $('#' + $(this).attr('id') + '_wrapper').show();
+                } else {
+                    $('#' + $(this).attr('id') + '_wrapper').hide();
+                }
+            });
+        });
+
+    </script>
+
+{% endblock %}

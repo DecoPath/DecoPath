@@ -1,0 +1,76 @@
+{% extends "viewer/extentions/base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <br><br>
+        <h1 class="text-center">Account</h1>
+        <div class="container">
+            <div class="container">
+                <h1 class="card-header account-header">
+                    Details
+                </h1>
+                <div class="card-body">
+                    {% for key, value in details.items %}
+                        <div class="form-row align-items-center">
+                            {% if key == "Password" %}
+                                <label for="col-sm-1 col-form-label"><strong>{{ key }}</strong></label>
+                                <input type="password" class="input-group mb-2 mr-sm-4 w-50 mx-auto" value=
+                                        {{ value|truncatechars:8 }} id="pass" disabled>
+                            {% else %}
+                                <label for="col-sm-1 col-form-label"><strong>{{ key }}</strong></label>
+                                <div class="input-group mb-2 mr-sm-4 w-50 mx-auto">{{ value }}</div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="container">
+                <h1 class="card-header account-header">
+                    Update Password
+                </h1>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% for field in pass_form %}
+                            <div class="form-row align-items-center">
+                                <label for="col-sm-1 col-form-label"><strong>{{ field.label }}</strong></label>
+                                <div class="input-group mb-2 mr-sm-4 w-50 mx-auto">{{ field }}</div>
+                            </div>
+                        {% endfor %}
+                        <button style="margin-left: 52%; margin-top: 15px" class="btn btn-primary " type="submit"
+                                name="pass_change">Save changes</button>
+                    </form>
+                </div>
+            </div>
+            <div class="container">
+                <h1 class="card-header account-header">
+                    Delete Account
+                </h1>
+                <div class="card-body">
+                    <button style="width: 20%; margin-left: 40%; margin-right: 30%;" class="btn btn-danger"
+                            type="submit" id="del-acc-btn" onclick="show_form()">Delete
+                            Account</button>
+                    <form method="POST" id="del-acc-form" style="display: none">
+                        {% csrf_token %}
+                        {% for field in del_acc_form %}
+                            <div class="form-row align-items-center">
+                                <label for="col-sm-1 col-form-label"><strong>{{ field.label }}</strong></label>
+                                <div class="input-group mb-2 mr-sm-4 w-50 mx-auto">{{ field }}</div>
+                            </div>
+                        {% endfor %}
+                        <button style="margin-left: 52%; margin-top: 15px" class="btn btn-danger" name="del_acc"
+                                type="submit">Delete Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function show_form() {
+            $('#del-acc-btn').hide(15);
+            $('#del-acc-form').show(15);
+        }
+    </script>
+
+{% endblock %}

@@ -1,0 +1,284 @@
+{% extends "viewer/extentions/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.11/c3.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.11/c3.min.js"></script>
+
+    <link href="{% static "css/custom.css" %}" rel="stylesheet">
+    {% include "viewer/dependencies/datatables.html" %}
+    <br><br>
+    <div class="container container-fluid choices" style="margin-bottom: 30px;">
+        <div class="card">
+            <div class="card-header" style="background-color: white">
+                <br>
+                <h2><strong>GSEA Consensus Results</strong></h2>
+            </div>
+            <div class="card-body" style="margin-bottom: 50px;">
+                <p>
+                    View and download the consensus results for the file <i>{{ data_filename }}</i>
+                </p>
+                <p class="justify-content">
+                    The table below shows the consensus results of gene set enrichment analysis (GSEA) across
+                    several databases. Values reported in the table correspond to a normalized enrichment score (NES).
+                    See further details in the
+                    <a data-toggle="modal"
+                       type="button" data-target="#LegendModalGSEA" style="color: #0000cc">table legend.</a>
+                </p>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8 text-center">
+                        <strong>Summary of the results</strong>
+                        <div id="pie-chart"></div>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+                <div>
+                    {{ full_consensus_df | safe }}
+                    <p id="legend-modal" type="button" data-toggle="modal" data-target="#LegendModalGSEA"
+                       style="color: #666c72; font-size: 18px;">
+                        <i style="font-size:25px; color:#999" class="fa fa-info-circle info-icon"></i>
+                        &nbsp;Table legend
+                    </p>
+                </div>
+                <hr>
+                <input type="text" id="tableInput" onkeyup="filterGseaTable()" placeholder="Search pathways..."
+                       title="Type in a name" style="margin:auto;max-width:300px">&nbsp;
+                <i class="fa fa-search" style="font-size:22px; color:#999"></i>
+                <br><br>
+
+                <div class="table-outer" style="overflow-x:scroll; height: 100vh;">
+
+                    <table class="table table-hover table-bordered consensus-table-gsea" id="consensus-table-gsea">
+                        <thead>
+                        {% for header in table_header %}
+                            <th id="thConsensus" scope="col">{{ header }}</th>
+                        {% endfor %}
+                        </thead>
+                        <tbody>
+                        {% for row in table_body %}
+                            <tr>
+                                {% for val in row %}
+                                    {% if row.0 == val or val == 'No mapping' %}
+                                        <td style="color: #454343; text-align: left">{{ val|safe }}</td>
+                                    {% elif row.1 == val %}
+                                        <td style="text-align: center">{{ val|safe }}</td>
+                                    {% else %}
+                                        <td style="text-align: right">{{ val|safe }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Modal -->
+        </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="LegendModalGSEA" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="text-align:center;"><strong>Legend</strong></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table table-responsive">
+                        <tbody>
+                        <tr>
+                            <td><a class="btn btn-primary ' + Concordant + '">Concordant</a></td>
+                            <td>Primary database* results are concordant
+                            </td>
+                        <tr></tr>
+                        <td><a class="btn btn-primary ' + NoMappings + '">No mappings</a></td>
+                        <td>Pathways could not be mapped
+                        </td>
+                        <tr></tr>
+                        <td><a class="btn btn-primary ' + Discordant + '">Discordant</a></td>
+                        <td>Primary database* results are discordant
+                        </td>
+                        <tr></tr>
+                        <td><a class="btn btn-primary ' + over-expressed + '"
+                               style="cursor: default !important;">NES*</a></td>
+                        <td>Enriched at top
+                            of ranked list
+                        </td>
+                        <tr></tr>
+                        <td><a class="btn btn-primary ' + under-expressed + '"
+                               style="cursor: default !important;">NES*</a></td>
+                        <td>Enriched at
+                            bottom of ranked list
+                        </td>
+                        <tr></tr>
+                        <td><a class="btn btn-primary ' + not-significant + '"
+                               style="cursor: default !important;">NES*</a></td>
+                        <td>Fails to pass significance
+                            threshold
+                        </td>
+                        <tr>
+                            <td><a class="btn btn-primary ' + no-change + '"
+                                   style="cursor: default !important;">NES*</a></td>
+                            <td>No change
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <td>
+                            <p>
+                                <span style="float: left; background-color: #00cc33;" class="dot"></span>
+                                <a class="btn btn-primary ora-legend-concordance" style="cursor: default !important;">NES*</a>
+                            </p>
+                        </td>
+                        <td>DecoPath results are concordant with other databases
+                        </td>
+                        <tr></tr>
+                        <td>
+                            <p>
+                                <span style="float: left; background-color: #FE1A1A;" class="dot"></span>
+                                <a class="btn btn-primary ora-legend-concordance" style="cursor: default !important;">NES*</a>
+                            </p>
+                        <td>DecoPath results are discordant with other databases
+                        </td>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <p><strong>*Primary database: </strong>All pathway databases except DecoPath</p>
+                    <p><strong>*NES: </strong>Normalized Enrichment Score </p>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{% static 'js/consensus.js' %}"></script>
+    <script type="text/javascript">
+
+        var header = {{ header|safe }};
+        var identifiers = {{ metadata_ids|safe }}; // array of db specific ids
+        var qvals = {{ metadata_qvals|safe }}; // array of q values for each score
+        var default_qval = {{ default_qval }}; // default q-value
+        var consensus = {{ metadata_consensus }}; // array with consensus or disagreement
+        var dc_consensus = {{ metadata_dc_consensus|safe }}; // array with dc consensus to dbs
+        var scores = document.getElementById("consensus-table-gsea");
+        var df_list = {{ df_list | safe }};
+        var pie_chart_data = {{ pie_chart_data | safe }}; // dict of consensus type and associated pathways
+
+        $(document).ready(function () {
+
+            var chart = c3.generate({
+                padding: {
+                    bottom: 35,
+                    left: 20,
+                    right: 20
+                },
+                data: {
+                    columns: pie_chart_data,
+                    type: 'pie',
+                },
+                size: {
+                    width: 400,
+                    height: 400
+                },
+                bindto: "#pie-chart",
+                legend: {
+                    show: true
+                },
+                pie: {
+                    label: {
+                        format: function (value) {
+                            return "";
+                        }
+                    }
+                },
+                oninit: function () {
+                    this.svg.attr('id', 'svg-element')
+                },
+                tooltip: {
+                    format: {
+                        title: function (d) {
+                            return 'Type details';
+                        },
+                        value: function (value, ratio, id) {
+                            return value + " Pathways (" + d3.format('.1%')(ratio) + ")";
+                        }
+                    }
+                }
+            });
+
+            $('#svg-element').attr('height', '500');
+
+            $('#full_consensus_gsea_df').DataTable({
+                "columnDefs": [
+                    {
+                        "targets": df_list,
+                        "visible": false,
+                        "searchable": false
+                    },
+                ],
+                dom: 'B',
+                buttons: ['copy', 'excelHtml5', 'csvHtml5'],
+                order: [[1, 'asc']], // order by NES or p-val
+            });
+        });
+
+        for (var i = 1, row; row = scores.rows[i]; i++) {
+            for (var j = 2, col; col = row.cells[j]; j++) {
+                var table_id = addLinkGsea(
+                    identifiers[i - 1][j - 2],
+                    col.innerHTML,
+                    qvals[i - 1][j - 2],
+                    dc_consensus[i - 1]
+                );
+                col.innerHTML = table_id;
+            }
+        }
+
+        for (var i = 1, row; row = scores.rows[i]; i++) {
+            col = row.cells[1];
+            var consensus_colour = getConsensus(col.innerHTML, consensus[i - 1]);
+            col.innerHTML = consensus_colour;
+        }
+
+        function filterGseaTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("tableInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("consensus-table-gsea");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+{% endblock %}

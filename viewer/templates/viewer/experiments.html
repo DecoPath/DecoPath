@@ -1,0 +1,229 @@
+{% extends "viewer/extentions/base.html" %}
+{% load zip_filter %}
+
+{% block content %}
+
+    <div class="container" id="jobPage">
+        <br><br>
+        <h1 class="text-center">DecoPath Experiments</h1>
+
+        <div class="container">
+            <br>
+
+            <h5>
+                Here, you can view details of your experiments, explore results and cancel or delete experiments.
+            </h5>
+            <br>
+            <p style="color: black">The status of the experiment is indicated in the "Status" column as follows:</p>
+            <ul>
+                <li><span class="fas fa-check" style="color: #49e52d"></span>
+                    The experiment has run successfully. Results are ready for viewing, exploring and downloading.
+                </li>
+                <li><span class="fas fa-redo" style="color: #fce702"></span> The experiment is in progress. <a
+                        href="#results-pending">*</a>
+                </li>
+                <li><span class="fas fa-times" style="color: #ff0000"></span>&nbsp; The experiment has failed. <a
+                        href="#analysis-failed">†</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="table-responsive-lg">
+            <table class="table table-bordered table-hover" id="jobTable">
+                <thead>
+                <th class="invis-button" style="border-right-color: transparent; text-align: center" scope="col"></th>
+                <th class="invis-button" style="text-align: center" scope="col"></th>
+                <th id="thExperiment" scope="col">{{ headers.0 }}</th>
+                {% for header in headers|slice:"3:11" %}
+                    <th id="thExperiment" style="text-align: center" scope="col">{{ header }}</th>
+                {% endfor %}
+                </thead>
+                <tbody>
+                {% for data in body %}
+                    <tr>
+                        <td style="border-right-color: transparent; text-align: center" class="invis-button">
+                            <div class="tbl-left-button">
+                                <button type="button" class="btn btn-outline-info"
+                                        onclick="show_info('{{ forloop.counter0 }}')"><i class="fas
+                                fa-info"></i></button>
+                            </div>
+                        </td>
+                        {% if data.1 != 1 %}
+                            <td style="text-align: center" class="invis-button">
+                                <div class="tbl-left-button">
+                                    <button class="btn btn-outline-danger"
+                                            data-toggle="modal" data-target="#Modal_{{ forloop.counter0 }}">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <form action="{% url "experiments" %}" method="post">
+                                {% csrf_token %}
+                                <div class="modal fade" id="Modal_{{ forloop.counter0 }}" tabindex="-1"
+                                     aria-labelledby="Label_{{ forloop.counter0 }}" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="Label_{{ forloop.counter0 }}">
+                                                    Are you sure you want to delete experiment
+                                                    number {{ forloop.counter }}?
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">
+                                                    Cancel
+                                                </button>
+                                                <button type="submit" class="btn btn-primary"
+                                                        name="Delete_{{ forloop.counter0 }}"
+                                                        value="Delete_{{ forloop.counter0 }}">
+                                                    Confirm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        {% else %}
+                            <td style="text-align: center" class="invis-button">
+                                <div class="tbl-left-button">
+                                    <button class="btn btn-outline-warning"
+                                            data-toggle="modal" data-target="#Modal_{{ forloop.counter0 }}">
+                                        <i class="fas fa-stop"></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <form action="{% url "experiments" %}" method="post">
+                                {% csrf_token %}
+                                <div class="modal fade" id="Modal_{{ forloop.counter0 }}" tabindex="-1"
+                                     aria-labelledby="Label_{{ forloop.counter0 }}" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="Label_{{ forloop.counter0 }}">
+                                                    Are you sure you want to stop experiment
+                                                    number {{ forloop.counter }}?
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">
+                                                    Cancel
+                                                </button>
+                                                <button type="submit" class="btn btn-primary"
+                                                        name="Stop_{{ forloop.counter0 }}"
+                                                        value="Stop_{{ forloop.counter0 }}">
+                                                    Confirm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        {% endif %}
+                        <th style="text-align: center" scope="row">{{ data.0 }}</th>
+                        {% if data.1 == 0 %}
+                            <td style="text-align: center">
+                                <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                        data-target="#errorModal">
+                                    {{ data.3|safe }}
+                                </button>
+                            </td>
+                            <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Job Error</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>{{ data.2|safe }}.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary"
+                                                    data-dismiss="modal">Okay
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <td style="text-align: center">{{ data.3|safe }}</td>
+                        {% endif %}
+
+                        {% for row in data|slice:"4:11" %}
+                            <td style="text-align: center">{{ row|safe }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% for data in body %}
+        <div class="container" id="{{ forloop.counter0 }}_infoPage" style="display: none">
+            <br><br>
+            <h1 class="text-center">Experiment information</h1>
+            <button type="button" class="btn btn-outline-primary" onclick="hide_info('{{ forloop.counter0 }}')"><i
+                    class='fas fa-arrow-left'></i>
+            </button>
+            <br><br>
+            <div class="table-responsive-lg">
+                <table class="table table-bordered table-hover">
+                    <thead style="position: static !important;">
+                    <th style="position: static !important;">Parameter</th>
+                    <th style="position: static !important;">Value</th>
+                    </thead>
+                    <tbody>
+                    {% for a, b in headers|zip:data %}
+                        {% if a|safe != 'Status code' %}
+                            <tr>
+                                <td>
+                                    {{ a|safe }}
+                                </td>
+                                <td>
+                                    {{ b|safe }}
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="container" id="legendFooter">
+        <p id="results-pending" style="font-size: 14px;">* Please refresh this page to view the latest status. Note that
+            the analyses can take some time to run.</p>
+        <p id="analysis-failed" style="font-size: 14px;">† Please check the
+            FAQs, tutorials page and the sample files to ensure correctly formatted data files were submitted.
+            If GSEA was performed, you may have been timed out. In this case, consider uploading the results of
+            GSEA to use the visualization and exploration tools. Contact the site administrator if the problem
+            persists.</p>
+    </div>
+    <script>
+        function show_info(id_pref) {
+            $('#jobPage').hide(15);
+            $('#legendFooter').hide(15);
+            $('#' + id_pref + '_infoPage').show(15);
+        }
+
+        function hide_info(id_pref) {
+            $('#jobPage').show(15);
+            $('#legendFooter').show(15);
+            $('#' + id_pref + '_infoPage').hide(15);
+        }
+    </script>
+
+{% endblock %}
