@@ -1,0 +1,37 @@
+version: "3.7"
+services:
+    decopath:
+        container_name: decopath
+        image: decopath:latest
+        command: bash -c "
+            python3.7 manage.py makemigrations viewer
+            && python3.7 manage.py migrate
+            && python3.7 manage.py load_db
+            && python3.7 manage.py init_user --superuser "sarah.mubeen@scai.fraunhofer.de"
+            && python3.7 manage.py collectstatic --no-input
+            && python3.7 manage.py runserver 0.0.0.0:8000
+            "
+#           && python3.7 manage.py collectstatic --no-input
+        volumes:
+            - ${PWD}/local.sqlite3:/opt/decopath/db.sqlite3
+        ports:
+            - 8000:8000
+
+    rabbitmq:
+        container_name: rabbitmq
+        image: rabbitmq:management
+        environment:
+            RABBITMQ_DEFAULT_USER: user
+            RABBITMQ_DEFAULT_PASS: password
+            RABBITMQ_DEFAULT_VHOST: vhost
+        ports:
+            - 5672:5672
+            - 8080:15672
+
+    worker:
+        container_name: celery-worker
+        image: decopath:latest
+        command: bash -c "python3.7 -m celery -A DecoPath worker -l info"
+        working_dir: /opt/decopath
+        depends_on:
+            - rabbitmq
