@@ -2,10 +2,6 @@
   <img src="viewer/static/img/decopath_logo.png">
 </p>
 
-<h1 align="center">
-  DecoPath
-</h1>
-
 ## Table of Contents
 
 * [General Info](#general-info)
