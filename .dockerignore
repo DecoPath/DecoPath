@@ -1,0 +1,16 @@
+# Folders
+.git
+logs/
+results/
+viewer/migrations/
+
+# File extensions
+*.env
+*.md
+*.yml
+*.sqlite3
+
+# Files
+.venv
+README.md
+Dockerfile
