@@ -29,7 +29,7 @@ def email(subject: str, message: str, sender: str, recipient_list: List[str]):
     return None
 
 
-@shared_task(soft_time_limit=28800)
+# @shared_task(soft_time_limit=28800)
 def deploy_gsea(
     data_path: str,
     class_labels_path: str,
@@ -161,7 +161,7 @@ def deploy_gsea(
     return err
 
 
-@shared_task(soft_time_limit=28800)
+# @shared_task(soft_time_limit=28800)
 def deploy_ora(
     gmt_file_path: str,
     min_size: int,
@@ -325,7 +325,7 @@ def deploy_ora(
     return err
 
 
-@shared_task(soft_time_limit=28800)
+# @shared_task(soft_time_limit=28800)
 def deploy_deseq(
     read_counts_path: str,
     read_counts_filename: str,
