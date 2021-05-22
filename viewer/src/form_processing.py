@@ -163,7 +163,8 @@ def process_user_results(
         )
 
         # Run DESeq2
-        task = deploy_deseq.delay(
+        # task = deploy_deseq.delay(
+        task = deploy_deseq(
             read_counts_path=read_counts_path,
             design_matrix_path=class_label_path,
             design_matrix_filename=str(clean_class_labels),
@@ -330,7 +331,8 @@ def process_files_run_ora(
             read_counts_path=None,
         )
 
-        task = deploy_ora.delay(
+        # task = deploy_ora.delay(
+        task = deploy_ora(
             gmt_file_path=gmt_file_path,
             min_size=min_size,
             max_size=max_size,
@@ -363,7 +365,8 @@ def process_files_run_ora(
             read_counts_path=None,
         )
 
-        task = deploy_ora.delay(
+        # task = deploy_ora.delay(
+        task = deploy_ora(
             gmt_file_path=gmt_file_path,
             min_size=min_size,
             max_size=max_size,
@@ -397,7 +400,8 @@ def process_files_run_ora(
             read_counts_path=read_counts_path,
         )
 
-        task = deploy_ora.delay(
+        # task = deploy_ora.delay(
+        task = deploy_ora(
             gmt_file_path=gmt_file_path,
             min_size=min_size,
             max_size=max_size,
@@ -552,7 +556,8 @@ def process_files_run_gsea(
             read_counts_path=None,
         )
         # Run GSEA and load results to enrichment results model
-        task = deploy_gsea.delay(
+        # task = deploy_ora.delay(
+        task = deploy_gsea(
             data_path=data_path,
             class_labels_path=class_path,
             data_filename=str(clean_exp_data),
@@ -592,7 +597,8 @@ def process_files_run_gsea(
         )
 
         # Run GSEA and load results to enrichment results model
-        task = deploy_gsea.delay(
+        # task = deploy_ora.delay(
+        task = deploy_gsea(
             data_path=data_path,
             class_labels_path=class_path,
             data_filename=str(clean_exp_data),
