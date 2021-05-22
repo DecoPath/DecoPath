@@ -2,6 +2,9 @@
   <img src="viewer/static/img/decopath_logo.png">
 </p>
 
+A web application for visualizing and exploring the results of pathway enrichment analysis.
+
+
 ## Table of Contents
 
 * [General Info](#general-info)
@@ -12,8 +15,6 @@
 * [Citation](#citation)
 * [Disclaimer](#disclaimer)
 
-## General Info
-DecoPath is a web application for decoding pathway enrichment analysis...
 
 ## Installation
 
