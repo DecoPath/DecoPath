@@ -32,6 +32,6 @@ def perform_gsea(
         method=method,
         outdir=output_dir,
         no_plot=True,  # Skip plotting
-        processes=1,
+        processes=2,
         format='png',
     )
