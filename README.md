@@ -63,13 +63,22 @@ BiocManager::install("DESeq2")
 ## GSEA and large gene sets
 
 To speed up a GSEA run with large gene sets, you can clone this
-[branch](https://github.com/DecoPath/DecoPath/tree/increase_processes) to enable multi-processing. Then, alter the 
+[branch](https://github.com/DecoPath/DecoPath/tree/increase_processes) to enable multi-processing. Then, alter the
 number of processes [here](https://github.com/DecoPath/DecoPath/blob/increase_processes/viewer/src/gsea.py).
 
 ## Issues
 
 If you have difficulties using DecoPath, please open an issue at our bug-tracker
 on [GitHub](https://github.com/DecoPath/DecoPath/issues/new).
+
+## Citation
+
+If you have found DecoPath useful in your work, please consider citing:
+
+Mubeen, S., Bharadhwaj, V. S., Gadiya, Y., Hofmann-Apitius, M., & Domingo-Fernández, D. (2021). DecoPath: A web
+application for decoding pathway enrichment analysis. bioRxiv. https://doi.org/10.1101/2021.05.22.445243
+
+
 
 ## Disclaimer
 
