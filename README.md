@@ -21,13 +21,15 @@ A web application for visualizing and exploring the results of pathway enrichmen
 You can host DecoPath using Docker. To do so, run the following commands,
 
 ```bash
+$ git clone https://github.com/decopath/decopath.git
+$ cd decopath
 $ docker image build -t decopath:latest .
 $ docker-compose up
 ```
 
-**Note**: If you wish to host DecoPath locally, you might need to change the ports in
+**Note**: If you wish to host DecoPath using your own domain, you might need to change the ports in
 the [docker-compose](./docker-compose.yaml)
-file to reflect your port-forwarding configuration.
+file to reflect your port-forwarding configuration ([Networking in Docker](https://docs.docker.com/compose/networking/)).
 
 ### For developers
 
