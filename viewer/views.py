@@ -6,20 +6,25 @@ import json
 import os.path
 import pickle
 
+import pandas as pd
 from celery.result import AsyncResult
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.contrib.sites.shortcuts import get_current_site
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import F
 from django.forms import formset_factory
 from django.http import HttpResponseBadRequest
 from django.shortcuts import render, redirect
+from django.utils.encoding import force_text
+from django.utils.http import urlsafe_base64_decode
 from django.utils.safestring import SafeString
 from pandas import DataFrame, notna
 
 from viewer.forms import *
+from viewer.glob_utils import verify_email
 from viewer.models import PathwayHierarchy, User, Pathway
 from viewer.src.constants import *
 from viewer.src.data_preprocessing import (
@@ -46,6 +51,7 @@ from viewer.src.handle_results import (
 from viewer.src.response_handler import *
 from viewer.src.utils import (map_results_to_hierarchy, _get_gmt_dict, handle_file_download, get_dc_pathway_resources,
                               del_user)
+from viewer.tokens import account_activation_token
 
 """HTML Pages"""
 
@@ -57,10 +63,9 @@ def home(request):
         'fold_changes_form': UploadFoldChangesForm(),
         'ora_db_form': ORADatabaseSelectionForm(),
         'ora_parameters_form': ORAParametersForm(),
-        'ora_form': OraOptions(),
-        'gsea_form': UploadGSEAForm(),
+        'ora_form': ORAOptions(),
         'gsea_db_form': GSEADatabaseSelectionForm(),
-        'gsea_parameters_form': GSEAParametersForm(),
+        'gsea_form': UploadGSEAForm(),
         'fold_changes_form_gsea': UploadFoldChangesFormGSEA(),
     }
     return render(request, "viewer/home.html", context)
@@ -75,9 +80,17 @@ def login_request(request):
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             if user is not None:
-                login(request, user)
-                messages.success(request, f"You are now logged in as {username}")
-                return redirect('/')
+                if user.is_verified():
+                    login(request, user)
+                    messages.success(request, f"You are now logged in as {username}")
+                    return redirect('/')
+                else:
+                    register_email = user.email
+                    domain = get_current_site(request).domain
+                    verify_email(domain=domain, register_email=register_email, user=user)
+
+                    messages.error(request,
+                                   "Your email is not verified. Please try again once you have verified your email.")
             else:
                 messages.error(request, "Invalid username or password.")
         else:
@@ -97,13 +110,36 @@ def register(request):
     if request.method == 'POST':
         form = UserCreationForm(data=request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            register_email = form.cleaned_data.get('email')
+            domain = get_current_site(request).domain
+
+            verify_email(domain=domain, register_email=register_email, user=user)
+
             messages.success(request, REGISTRATION_MSG)
-            return redirect('/')
+            return redirect('/login')
         else:
             messages.error(request, CHECK_DETS_MSG)
     form = UserCreationForm()
     return render(request=request, template_name='viewer/registration.html', context={'form': form})
+
+
+def account_activation(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(email__exact=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist) as e:
+        user = None
+
+    if user is not None and account_activation_token.check_token(user, token):
+        user.verified = True
+        user.save()
+        login(request, user)
+        messages.success(request, 'Your account has been confirmed.')
+        return redirect('/')
+    else:
+        messages.warning(request, 'The confirmation link was invalid, possibly because it has already been used.')
+        return redirect('/')
 
 
 def overview(request):
@@ -201,7 +237,8 @@ def run_decopath(request):
 
         # If form is not valid, return HttpResponseBadRequest
         if not results_form.is_valid():
-            return HttpResponseBadRequest(INVALID_RESULTS_FORM_MSG)
+            err = results_form.errors
+            return HttpResponseBadRequest(f'{err} {INVALID_RESULTS_FORM_MSG}')
 
         # If form is not valid, return HttpResponseBadRequest
         if not results_form_fc.is_valid():
@@ -219,7 +256,7 @@ def run_decopath(request):
 
         db_form = ORADatabaseSelectionForm(request.POST, request.FILES)
         parameters_form = ORAParametersForm(request.POST, request.FILES)
-        form = OraOptions(request.POST, request.FILES)  # dict
+        form = ORAOptions(request.POST, request.FILES)  # dict
 
         # Check if form is valid
         if not db_form.is_valid():
@@ -247,29 +284,25 @@ def run_decopath(request):
 
     # Check if user submits form to run GSEA
     else:
-        form = UploadGSEAForm(request.POST, request.FILES)
         db_form = GSEADatabaseSelectionForm(request.POST, request.FILES)
-        parameters_form = GSEAParametersForm(request.POST, request.FILES)
+        form = UploadGSEAForm(request.POST, request.FILES)
         fc_form = UploadFoldChangesFormGSEA(request.POST, request.FILES)
 
         # Check if form is valid
-        if not form.is_valid():
-            return HttpResponseBadRequest(FORM_COMPLETION_MSG)
-
-        # Check if form is valid
         if not db_form.is_valid():
-            return HttpResponseBadRequest(DB_SELECTION_MSG)
+            err = db_form.errors
+            return HttpResponseBadRequest(f'{err} {DB_SELECTION_MSG}')
 
-        # Check if form is valid
-        if not parameters_form.is_valid():
-            return HttpResponseBadRequest(MAX_MIN_GENES_MSG)
+        if not form.is_valid():
+            err = form.errors
+            return HttpResponseBadRequest(f'{err} {FORM_COMPLETION_MSG}')
 
-        # Check if form is valid
         if not fc_form.is_valid():
-            return HttpResponseBadRequest(INVALID_FOLD_CHANGES_MSG)
+            err = fc_form.errors
+            return HttpResponseBadRequest(f'{err} {INVALID_FOLD_CHANGES_MSG}')
 
         # If form is valid, process file data in request.FILES and throw HTTPBadRequest if improper submission
-        run_gsea_val = process_files_run_gsea(current_user, user_email, form, db_form, parameters_form, fc_form)
+        run_gsea_val = process_files_run_gsea(current_user, user_email, db_form, form, fc_form)
 
         if isinstance(run_gsea_val, str):
             return HttpResponseBadRequest(run_gsea_val)
@@ -331,7 +364,7 @@ def _update_job_user(request, current_user, job, task):
 
 
 @login_required
-def results(request, result_id):
+def results_ora(request, result_id):
     """Render results page."""
     current_user = request.user
 
@@ -342,7 +375,7 @@ def results(request, result_id):
     if isinstance(query_results_val, str):
         return HttpResponseBadRequest(query_results_val)
     else:
-        df, _, _, enrichment_method, data_filename, _ = query_results_val
+        df, _, _, enrichment_method, data_filename, _, _ = query_results_val
 
     # Get results table to display
     data = get_ranking_table(df)
@@ -354,11 +387,11 @@ def results(request, result_id):
         'data_filename': data_filename
     }
 
-    return render(request, 'viewer/results.html', context=context)
+    return render(request, 'viewer/results_ora.html', context=context)
 
 
 @login_required
-def gsea_results(request, result_id):
+def results_gsea(request, result_id):
     """Render results page."""
     current_user = request.user
 
@@ -369,20 +402,33 @@ def gsea_results(request, result_id):
     if isinstance(query_results_val, str):
         return HttpResponseBadRequest(query_results_val)
     else:
-        df, _, _, enrichment_method, data_filename, _ = query_results_val
+        df, _, _, enrichment_method, data_filename, _, _ = query_results_val
 
     # Get results table to display
-    data_dict, databases = get_ranking_table(df)
+    gsea_results = get_ranking_table(df)
 
-    context = {
-        'ranking_tables': data_dict,
-        'databases': databases,
-        'result_id': result_id,
-        'enrichment_method': enrichment_method,
-        'data_filename': data_filename,
-    }
+    if len(gsea_results) == 2:
+        data_dict, databases = gsea_results
 
-    return render(request, 'viewer/gsea_results.html', context=context)
+        context = {
+            'ranking_tables': data_dict,
+            'databases': databases,
+            'result_id': result_id,
+            'enrichment_method': enrichment_method,
+            'data_filename': data_filename,
+        }
+
+    else:
+        table = gsea_results
+
+        context = {
+            'ranking_table': table,
+            'result_id': result_id,
+            'enrichment_method': enrichment_method,
+            'data_filename': data_filename,
+        }
+
+    return render(request, 'viewer/results_gsea.html', context=context)
 
 
 @login_required
@@ -444,7 +490,7 @@ def consensus_ora(request, result_id):
     if isinstance(query_results_val, str):
         return HttpResponseBadRequest(query_results_val)
     else:
-        df, databases, significance_value, enrichment_method, data_filename, symbol_to_fold_change = query_results_val
+        df, databases, significance_value, enrichment_method, data_filename, symbol_to_fold_change, _ = query_results_val
 
     (table_header,
      table_body,
@@ -496,7 +542,7 @@ def consensus_gsea(request, result_id):
     if isinstance(query_results_val, str):
         return HttpResponseBadRequest(query_results_val)
     else:
-        df, databases, significance_value, enrichment_method, data_filename, symbol_to_fold_change = query_results_val
+        df, databases, significance_value, enrichment_method, data_filename, symbol_to_fold_change, _ = query_results_val
 
     (
         table_header,
@@ -552,7 +598,7 @@ def circles_viz(request, result_id):
     if isinstance(query_results_val, str):
         return HttpResponseBadRequest(query_results_val)
     else:
-        df, dbs, significance_value, enrichment_method, data_filename, symbol_to_fold_change = query_results_val
+        df, dbs, significance_value, enrichment_method, data_filename, symbol_to_fold_change, _ = query_results_val
 
     # Access pathway hierarchy
     try:
@@ -592,21 +638,28 @@ def zoom_in(request, result_id, pathway_id):
     """Render zoom-in page."""
     query_results_val = query_results_model(result_id, request.user)
 
-    # Check if file cannot be read and throw error
+    # Check if query cannot be made and throw error
     if isinstance(query_results_val, str):
         return HttpResponseBadRequest(query_results_val)
     else:
-        _, databases, _, _, _, symbol_to_fold_change = query_results_val
-    # Get changes
+        _, databases, _, _, _, symbol_to_fold_change, _ = query_results_val
+
+    # Get fold changes
     if symbol_to_fold_change:
+
         symbol_to_fold_change = pickle.loads(symbol_to_fold_change)
+
         if isinstance(symbol_to_fold_change, DataFrame):
+
             if 'log2FoldChange' in symbol_to_fold_change.columns:
                 symbol_to_fold_change.rename(columns={
                     'log2FoldChange': 'log2fc',
                 }, inplace=True)
 
-            symbol_to_fold_change = {
+            if 'gene_symbol' in symbol_to_fold_change.columns:
+                symbol_to_fold_change.set_index('gene_symbol', inplace=True)
+
+            symbol_to_fold_change_dict = {
                 gene_symbol: row['log2fc']
                 for gene_symbol, row in symbol_to_fold_change.iterrows()
                 if notna(row['log2fc'])
@@ -614,13 +667,12 @@ def zoom_in(request, result_id, pathway_id):
         else:
             raise ValueError('Something went wrong.')
     else:
-        symbol_to_fold_change = {}
+        symbol_to_fold_change_dict = {}
 
     venn_diagram_data = process_overlap_for_venn_diagram(
         pathway_id=pathway_id,
         databases=databases,
     )
-
     # Return HTTP bad request if pathway ID does not exist in equivalent pathway databases
     if isinstance(venn_diagram_data, str):
         return HttpResponseBadRequest(venn_diagram_data)
@@ -632,7 +684,70 @@ def zoom_in(request, result_id, pathway_id):
         "viewer/viz/zoom_in.html",
         context={
             'venn_diagram_data': SafeString(venn_diagram),
-            'fold_changes': symbol_to_fold_change,
+            'fold_changes': symbol_to_fold_change_dict,
+            'result_id': result_id,
+        }
+    )
+
+
+@login_required
+def export(request, result_id):
+    """Render export fold changes page."""
+    query_results_val = query_results_model(result_id, request.user)
+
+    # Check if query cannot be made and throw error
+    if isinstance(query_results_val, str):
+        return HttpResponseBadRequest(query_results_val)
+    else:
+        _, _, _, _, _, symbol_to_fold_change, fold_changes_filename = query_results_val
+
+    if not fold_changes_filename:
+        fold_changes_filename = ''
+
+    # Get fold changes
+    if symbol_to_fold_change:
+
+        fold_change_df = pickle.loads(symbol_to_fold_change)
+
+        if isinstance(fold_change_df, DataFrame):
+
+            if 'log2FoldChange' in fold_change_df.columns:
+                fold_change_df.rename(columns={
+                    'log2FoldChange': 'log2fc',
+                }, inplace=True)
+
+            if 'padj' in fold_change_df.columns:
+                fold_change_df.rename(columns={
+                    'padj': 'q_value',
+                }, inplace=True)
+
+            if 'gene_symbol' not in fold_change_df.columns:
+                fold_change_df.reset_index(inplace=True)
+
+            try:
+                fold_change_df = fold_change_df[['gene_symbol', 'log2fc', 'q_value']]
+
+            except KeyError:
+                return ('Something went wrong.')
+
+        else:
+            raise ValueError('Something went wrong.')
+
+    else:
+        fold_change_df = pd.Dataframe()
+
+    fc_df = fold_change_df.to_html(
+        classes='table',
+        render_links=True,
+        border=0,
+        header=True,
+    )
+    return render(
+        request,
+        "viewer/viz/export.html",
+        context={
+            'fold_change_df': fc_df,
+            'fold_changes_filename': fold_changes_filename
         }
     )
 

@@ -103,6 +103,7 @@ class User(AbstractBaseUser):
     has_exceeded_quota = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    verified = models.BooleanField(default=False)
 
     objects = UserManager()
 
@@ -124,6 +125,10 @@ class User(AbstractBaseUser):
 
     def is_quota_left(self):
         return not self.has_exceeded_quota
+
+    def is_verified(self):
+        """Returns a boolean value to indicate if the user's email verified"""
+        return self.verified
 
     def has_perm(self, perm, obj=None):
         """Does the user have a specific permission?"""
@@ -147,7 +152,7 @@ class EnrichmentResult(models.Model):
     result = models.BinaryField(null=True, blank=False)
     result_status = models.IntegerField(default=1)  # 0 means failed, 1 means processing and 2 is success
     error_message = models.CharField(max_length=1000, default="NA")
-    enrichment_method = models.CharField(max_length=360, default="NA")  # GSEA, ORA
+    enrichment_method = models.CharField(max_length=360, default="NA")  # GSEA, GSEA Pre-Ranked, ORA
     phenotype_classes = models.JSONField(default=list)
     data_filename = models.CharField(max_length=360, default="NA")
     class_filename = models.CharField(max_length=360, default="NA")
@@ -193,14 +198,14 @@ class EnrichmentResult(models.Model):
         if not df:
             return None
 
-        if 'log2FoldChange' in df.columns and 'gene_symbol' in df.columns:
+        if 'log2fc' in df.columns and 'gene_symbol' in df.columns:
             return {
                 row['gene_symbol']: df['log2fc']
                 for index, row in df.iterrows()
             }
-        # TODO: i would add here 'uniprot' or foldchange or whatever names you want to allow
         else:
-            raise ValueError('add more logic to catch other types of columns')
+            raise ValueError('Your file is missing some information. Please ensure the following columns exist: '
+                             'gene_symbol, log2fc and q-value. See the FAQs for more details.')
 
 
 class PathwayHierarchy(models.Model):

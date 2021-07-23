@@ -15,7 +15,8 @@ from viewer.src.constants import (
     ENRICHMENT_METHOD,
     CSV,
     TSV,
-    DECOPATH, DATABASES, REACTOME,
+    TXT,
+    DECOPATH
 )
 
 """User uploaded results forms."""
@@ -30,8 +31,8 @@ class UploadResultsForm(forms.Form):
 
     results_file = forms.FileField(
         label='Upload results',
-        validators=[validators.FileExtensionValidator([CSV, TSV])],
-        help_text="<strong>Supported file formats:</strong> *.csv or *.tsv."
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
+        help_text="<strong>Supported file formats:</strong> *.csv *.tsv or *.txt."
     )
 
     sig_threshold_results = forms.FloatField(
@@ -51,18 +52,18 @@ class UploadFoldChangesForm(forms.Form):
     read_counts_file = forms.FileField(
         label='Upload read counts',
         required=False,
-        validators=[validators.FileExtensionValidator([CSV, TSV])],
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
         help_text="<strong>Note:</strong> this field is optional. If you would like to perform differential gene "
                   "expression analysis, please ensure a class labels file is uploaded below with samples in the same "
-                  "order as the read counts file. The following file formats are supported: *.csv or *.tsv."
+                  "order as the read counts file. The following file formats are supported: *.csv *.tsv or *.txt."
     )
 
     class_file = forms.FileField(
         label='Upload class labels',
         required=False,
-        validators=[validators.FileExtensionValidator([CSV, TSV])],
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
         help_text="<strong>Note:</strong> this field is optional. Please ensure you have also uploaded a read counts"
-                  " matrix. The following file formats are supported: *.csv or *.tsv."
+                  " matrix. The following file formats are supported: *.csv *.tsv or *.txt."
     )
 
     significance_value_run = forms.FloatField(
@@ -79,10 +80,10 @@ class UploadFoldChangesForm(forms.Form):
     fold_changes_file = forms.FileField(
         label='Upload fold changes',
         required=False,
-        validators=[validators.FileExtensionValidator([CSV, TSV])],
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
         help_text="<strong>Note:</strong> this field is optional. If you are uploading GSEA results, please ensure the "
                   "fold changes correspond to the same samples from your GSEA run. The following file formats are "
-                  "supported: *.csv or *.tsv."
+                  "supported: *.csv *.tsv or *.txt."
     )
 
     significance_value_upload = forms.FloatField(
@@ -97,15 +98,8 @@ class UploadFoldChangesForm(forms.Form):
 
 class ORADatabaseSelectionForm(forms.Form):
     """Select databases to run ORA form class."""
-    queryset = PathwayDatabase.objects.exclude(database_name=DECOPATH)
-
-    choices = tuple([
-        (DATABASES[obj.database_name], DATABASES[obj.database_name])
-        for obj in queryset
-    ])
-
-    select_databases = forms.MultipleChoiceField(
-        choices=choices,
+    select_databases = forms.ModelMultipleChoiceField(
+        queryset=PathwayDatabase.objects.exclude(database_name=DECOPATH),
         widget=forms.CheckboxSelectMultiple,
         error_messages={
             'required': 'Please select at least two databases.'
@@ -117,7 +111,7 @@ class ORADatabaseSelectionForm(forms.Form):
 
 class ORAParametersForm(forms.Form):
     """ORA optional parameters form class."""
-    minimum_size = forms.IntegerField(
+    minimum_size_ora = forms.IntegerField(
         min_value=3,
         max_value=5000,
         label='Minimum number of genes in gene set',
@@ -125,7 +119,7 @@ class ORAParametersForm(forms.Form):
         help_text="<strong>Default:</strong> 10"
     )
 
-    maximum_size = forms.IntegerField(
+    maximum_size_ora = forms.IntegerField(
         min_value=3,
         max_value=10000,
         label='Maximum number of genes in gene set',
@@ -140,7 +134,7 @@ class ORAParametersForm(forms.Form):
     )
 
 
-class OraOptions(forms.Form):
+class ORAOptions(forms.Form):
     """Upload ORA form class."""
     upload_gene_list = forms.BooleanField(
         label='Upload gene list and run ORA',
@@ -149,9 +143,9 @@ class OraOptions(forms.Form):
 
     gene_list = forms.FileField(
         label='Upload gene list',
-        validators=[validators.FileExtensionValidator([CSV, TSV])],
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
         required=False,
-        help_text="<strong>Supported file formats:</strong> *.csv or *.tsv."
+        help_text="<strong>Supported file formats:</strong> *.csv *.tsv or *.txt."
     )
 
     run_dge_ora_genes = forms.BooleanField(
@@ -167,18 +161,18 @@ class OraOptions(forms.Form):
     read_counts_file_ora = forms.FileField(
         label='Upload read counts',
         required=False,
-        validators=[validators.FileExtensionValidator([CSV, TSV])],
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
         help_text="<strong>Note:</strong> this field is optional. If you would like to perform differential gene "
                   "expression analysis, please ensure a class labels file is uploaded below with samples in the same "
-                  "order as the read counts file. The following file formats are supported: *.csv or *.tsv."
+                  "order as the read counts file. The following file formats are supported: *.csv *.tsv or *.txt."
     )
 
     class_file_ora = forms.FileField(
         label='Upload class labels',
         required=False,
-        validators=[validators.FileExtensionValidator([CSV, TSV])],
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
         help_text="<strong>Note:</strong> this field is optional. Please ensure you have also uploaded a read counts"
-                  " matrix. The following file formats are supported: *.csv or *.tsv."
+                  " matrix. The following file formats are supported: *.csv *.tsv or *.txt."
     )
 
     significance_value_run_ora = forms.FloatField(
@@ -195,9 +189,9 @@ class OraOptions(forms.Form):
     fold_changes_file_ora = forms.FileField(
         label='Upload fold changes',
         required=False,
-        validators=[validators.FileExtensionValidator([CSV, TSV])],
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
         help_text="<strong>Note:</strong> this field is optional. The following file formats are "
-                  "supported: *.csv or *.tsv."
+                  "supported: *.csv *.tsv or *.txt."
     )
 
     significance_value_upload_ora = forms.FloatField(
@@ -212,23 +206,14 @@ class OraOptions(forms.Form):
 
 class GSEADatabaseSelectionForm(forms.Form):
     """Select databases to run GSEA form class."""
-    queryset = PathwayDatabase.objects.exclude(database_name=DECOPATH)
-
-    choices = tuple([
-        (f'{DATABASES[obj.database_name]}', f'{DATABASES[obj.database_name]}**')
-        if obj.database_name == REACTOME
-        else (DATABASES[obj.database_name], DATABASES[obj.database_name])
-        for obj in queryset
-    ])
-
-    select_databases = forms.MultipleChoiceField(
-        choices=choices,
+    select_databases = forms.ModelMultipleChoiceField(
+        queryset=PathwayDatabase.objects.exclude(database_name=DECOPATH),
         widget=forms.CheckboxSelectMultiple,
         error_messages={
             'required': 'Please select at least two databases.'
         },
         required=True,
-        help_text="<strong>*Note:</strong> Please select a minimum of two databases. <br><strong>**</strong> Due to the"
+        help_text="<strong>*Note:</strong> Please select a minimum of two databases. <br><strong>*</strong> Due to the"
                   " high computational cost of running GSEA on the Reactome database, only mapped pathways are included"
                   " in the analysis. See the <a href='https://decopath.scai.fraunhofer.de/user_guide'>User Guide</a> "
                   "for alternatives to run GSEA on the full database."
@@ -236,27 +221,51 @@ class GSEADatabaseSelectionForm(forms.Form):
 
 
 class UploadGSEAForm(forms.Form):
-    """Upload GSEA forms class."""
+    """Run GSEA form class."""
+    run_gsea = forms.BooleanField(
+        label='Run GSEA',
+        required=False,
+    )
+
+    # Upload expression dataset
     data_file = forms.FileField(
         label='Upload expression dataset',
-        validators=[validators.FileExtensionValidator([CSV, TSV])],
-        help_text="<strong>Supported file formats:</strong> *.csv or *.tsv."
-    )
-
-    class_file = forms.FileField(
-        label='Upload class labels',
-        validators=[validators.FileExtensionValidator([CSV, TSV])],
-        help_text="<strong>Supported file formats:</strong> *.csv or *.tsv."
-    )
-
-
-class GSEAParametersForm(forms.Form):
-    """GSEA optional parameters form class."""
-    permutation_num = forms.ChoiceField(
-        label='Number of permutations',
-        choices=PERMUTATION_NUM,
         required=False,
-        help_text="<strong>Default:</strong> 100"
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
+        help_text="<strong>Supported file formats:</strong> *.csv *.tsv or *.txt."
+    )
+
+    # Upload class labels
+    class_file_gsea = forms.FileField(
+        label='Upload class labels',
+        required=False,
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
+        help_text="<strong>Supported file formats:</strong> *.csv *.tsv or *.txt."
+    )
+
+    """Optional parameters GSEA"""
+
+    minimum_size_gsea = forms.IntegerField(
+        min_value=10,
+        max_value=3000,
+        label='Minimum number of genes in gene set',
+        required=False,
+        help_text="<strong>Default:</strong> 10"
+    )
+
+    maximum_size_gsea = forms.IntegerField(
+        min_value=10,
+        max_value=3000,
+        label='Maximum number of genes in gene set',
+        required=False,
+        help_text="<strong>Default:</strong> 500"
+    )
+
+    method = forms.ChoiceField(
+        label='Method for calculation of correlation or ranking',
+        choices=METHOD,
+        required=False,
+        help_text="<strong>Default:</strong> Signal to noise"
     )
 
     permutation_type = forms.ChoiceField(
@@ -266,14 +275,37 @@ class GSEAParametersForm(forms.Form):
         help_text="<strong>Default:</strong> Phenotype"
     )
 
-    method = forms.ChoiceField(
-        label='Method for calculation of correlation or ranking',
-        choices=METHOD,
+    permutation_num_gsea = forms.ChoiceField(
+        label='Number of permutations',
+        choices=PERMUTATION_NUM,
         required=False,
-        help_text="<strong>Default:</strong> Log2 ratio of classes"
+        help_text="<strong>Default:</strong> 100"
     )
 
-    minimum_size = forms.IntegerField(
+    sig_threshold_gsea = forms.FloatField(
+        label='Significance threshold (adjusted <i>p</i>-value)',
+        required=False,
+        help_text="Significance threshold to filter GSEA results. <strong>Default:</strong> 0.05"
+    )
+
+    """GSEA pre-ranked form"""
+
+    run_gsea_preranked = forms.BooleanField(
+        label='Run GSEA preranked',
+        required=False,
+    )
+
+    # Upload preranked list
+    preranked_file = forms.FileField(
+        label='Upload ranked list of genes',
+        required=False,
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
+        help_text="<strong>Supported file formats:</strong> *.csv or *.tsv."
+    )
+
+    """Optional parameters GSEA pre-ranked"""
+
+    minimum_size_gsea_prerank = forms.IntegerField(
         min_value=10,
         max_value=3000,
         label='Minimum number of genes in gene set',
@@ -281,7 +313,7 @@ class GSEAParametersForm(forms.Form):
         help_text="<strong>Default:</strong> 10"
     )
 
-    maximum_size = forms.IntegerField(
+    maximum_size_gsea_prerank = forms.IntegerField(
         min_value=10,
         max_value=3000,
         label='Maximum number of genes in gene set',
@@ -289,7 +321,14 @@ class GSEAParametersForm(forms.Form):
         help_text="<strong>Default:</strong> 500"
     )
 
-    sig_threshold_gsea = forms.FloatField(
+    permutation_num_prerank = forms.ChoiceField(
+        label='Number of permutations',
+        choices=PERMUTATION_NUM,
+        required=False,
+        help_text="<strong>Default:</strong> 100"
+    )
+
+    sig_threshold_prerank = forms.FloatField(
         label='Significance threshold (adjusted <i>p</i>-value)',
         required=False,
         help_text="Significance threshold to filter GSEA results. <strong>Default:</strong> 0.05"
@@ -306,10 +345,19 @@ class UploadFoldChangesFormGSEA(forms.Form):
     read_counts_file_gsea = forms.FileField(
         label='Upload read counts',
         required=False,
-        validators=[validators.FileExtensionValidator([CSV, TSV])],
-        help_text="<strong>Note:</strong> this field is optional. If you would like to perform differential gene "
-                  "expression analysis and are submitting GSEA results, please ensure the counts matrix corresponds "
-                  "to the class labels file above. The following file formats are supported: *.csv or *.tsv."
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
+        help_text="<strong>Note:</strong> If you would like to perform differential gene "
+                  "expression analysis and are running GSEA, please ensure the counts matrix corresponds "
+                  "to the class labels file above. The following file formats are supported: *.csv *.tsv or *.txt."
+    )
+
+    class_file_fc_gsea = forms.FileField(
+        label='Upload class labels',
+        required=False,
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
+        help_text="<strong>Note:</strong> If you are running GSEA and have already uploaded a class labels file, "
+                  "you can skip this step. If you are running GSEA preranked, Please ensure you have also uploaded a"
+                  " read counts matrix. The following file formats are supported: *.csv, *.tsv or *.txt."
     )
 
     significance_value_run_gsea = forms.FloatField(
@@ -319,17 +367,17 @@ class UploadFoldChangesFormGSEA(forms.Form):
     )
 
     upload_fold_changes_gsea = forms.BooleanField(
-        label='Upload differential gene expression analysis results',
+        label='Upload results of differential gene expression analysis',
         required=False,
     )
 
     fold_changes_file_gsea = forms.FileField(
         label='Upload fold changes',
         required=False,
-        validators=[validators.FileExtensionValidator([CSV, TSV])],
-        help_text="<strong>Note:</strong> this field is optional. If you are uploading GSEA results, please ensure the "
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
+        help_text="<strong>Note:</strong> If you are uploading GSEA results, please ensure the "
                   "fold changes correspond to the same samples from your GSEA run. The following file formats are "
-                  "supported: *.csv or *.tsv."
+                  "supported: *.csv *.tsv or *.txt."
     )
 
     significance_value_upload_gsea = forms.FloatField(
@@ -347,21 +395,22 @@ class UploadCustomDataForm(forms.Form):
     database = forms.CharField(label='Enter database name', validators=[validators.validate_slug])
     gene_set = forms.FileField(
         label='Gene set file',
-        validators=[validators.FileExtensionValidator([CSV, TSV])],
-        help_text="<strong>Supported file formats:</strong> *.csv or *.tsv."
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
+        help_text="<strong>Supported file formats:</strong> *.csv *.tsv or *.txt."
     )
 
 
 class UploadMappingsForm(forms.Form):
     """Upload custom mappings form class."""
     mapping_file = forms.FileField(
-        validators=[validators.FileExtensionValidator([CSV, TSV])],
-        help_text="<strong>Supported file formats:</strong> *.csv or *.tsv."
+        validators=[validators.FileExtensionValidator([CSV, TSV, TXT])],
+        help_text="<strong>Supported file formats:</strong> *.csv *.tsv or *.txt."
     )
 
 
 class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required fields, plus a repeated password."""
+    email = forms.EmailField(label='Enter email')
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
 
@@ -376,6 +425,13 @@ class UserCreationForm(forms.ModelForm):
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError("Passwords don't match")
         return password2
+
+    def clean_email(self):
+        email = self.cleaned_data['email'].lower()
+        r = User.objects.filter(email=email)
+        if r.count():
+            raise forms.ValidationError("Email already exists")
+        return email
 
     def save(self, commit=True):
         # Save the provided password in hashed format

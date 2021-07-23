@@ -9,23 +9,21 @@ import pandas as pd
 from billiard.exceptions import SoftTimeLimitExceeded
 from celery import shared_task, Task
 from cleanup_later.models import CleanupFile
-from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
 from django.db.models import F
 
 from viewer.models import User, EnrichmentResult
 from viewer.src.constants import make_gsea_export_directories, GENE_SYMBOL
-from viewer.src.gsea import perform_gsea
+from viewer.src.gsea import perform_gsea, perform_prerank
 from viewer.src.ora import run_ora
 from viewer.src.utils import read_data_file
 
 
 @shared_task
-def email(subject: str, message: str, sender: str, recipient_list: List[str]):
-    send_mail(subject=subject,
-              message=message,
-              from_email=sender,
-              recipient_list=recipient_list)
-
+def email(subject: str, text_content: str, html_content: str, sender: str, recipient_list: List[str]):
+    msg = EmailMultiAlternatives(subject, text_content, sender, recipient_list)
+    msg.attach_alternative(html_content, "text/html")
+    msg.send()
     return None
 
 
@@ -37,11 +35,11 @@ def deploy_gsea(
     class_filename: str,
     gmt_files: list,
     output_dir: str,
-    max_size: int,
     min_size: int,
+    max_size: int,
+    method: str,
     permutation_type: str,
     permutation_num: int,
-    method: str,
     user_mail: str,
     job_id: str,
     read_counts_path: Optional = None,
@@ -57,7 +55,7 @@ def deploy_gsea(
         # Check if quota has been reached
         if not current_user.is_quota_left():
             job.result_status = 0
-            job.error_message = "You have exceeded your quota for the number of experiments. " \
+            job.error_message = "You have exceeded your quota for the number of experiments that can be run. " \
                                 "Please cancel an existing experiment to start a new one."
 
             job.save()
@@ -109,7 +107,7 @@ def deploy_gsea(
 
             deseq = DeseqTask(
                 count_matrix=read_counts_df,
-                design_matrix=class_vector,
+                design_matrix=class_df,
                 design_formula='~ class_label',
                 gene_column=GENE_SYMBOL
             )
@@ -128,16 +126,140 @@ def deploy_gsea(
                 gmt=gmt_file,
                 class_vector=class_vector,
                 output_dir=output_dir,
-                max_size=max_size,
                 min_size=min_size,
+                max_size=max_size,
+                method=method,
                 permutation_type=permutation_type,
                 permutation_num=permutation_num,
-                method=method,
             )
 
             logging.info('Getting results...')
 
             results_df = gsea_results.res2d
+            results.append(results_df)
+
+        df = pd.concat(results)
+
+        job.result = pickle.dumps(df)
+        job.result_status = 2
+
+    except SoftTimeLimitExceeded:
+        job.result_status = 0
+        job.error_message = "The experiment exceeded the acceptable time limit (8 hours)"
+
+    except Exception as e:
+        err = e
+        job.result_status = 0
+        job.error_message = str(e)
+
+    finally:
+        User.objects.filter(email__exact=user_mail).update(num_of_jobs=F('num_of_jobs') - 1)
+        job.save()
+
+    return err
+
+
+@shared_task(soft_time_limit=28800)
+def deploy_prerank(
+    rnk_path: str,
+    rnk_filename: str,
+    gmt_files: list,
+    output_dir: str,
+    min_size: int,
+    max_size: int,
+    permutation_num: int,
+    user_mail: str,
+    job_id: str,
+    read_counts_path: Optional = None,
+    read_counts_filename: Optional = None,
+    class_labels_path: Optional = None,
+    class_filename: Optional = None,
+):
+    current_user = User.objects.filter(email=user_mail)[0]
+    job = EnrichmentResult.objects.filter(result_id=job_id)[0]
+    err = None
+
+    try:
+        make_gsea_export_directories()
+
+        # Check if quota has been reached
+        if not current_user.is_quota_left():
+            job.result_status = 0
+            job.error_message = "You have exceeded your quota for the number of experiments that can be run. " \
+                                "Please cancel an existing experiment to start a new one."
+
+            job.save()
+
+            return False
+
+        # Remove transient files
+        CleanupFile.register(rnk_path, timedelta(minutes=30))
+
+        logging.info(f'Loading preranked file {rnk_path}....')
+
+        try:
+            df = read_data_file(rnk_path, rnk_filename)
+        except:
+            raise ValueError(open(rnk_path, "r").read())
+
+        logging.info('Pre-ranked file has been loaded....')
+
+        # Run DESeq2
+        if read_counts_path:
+
+            CleanupFile.register(read_counts_path, timedelta(minutes=30))
+            CleanupFile.register(class_labels_path, timedelta(minutes=30))
+
+            logging.info(f'Loading read counts file {read_counts_filename}....')
+
+            try:
+                read_counts_df = read_data_file(read_counts_path, read_counts_filename)
+            except:
+                raise ValueError(open(read_counts_path, "r").read())
+
+            logging.info('Read counts file has been loaded....')
+
+            logging.info(f'Loading class labels file {class_filename}....')
+
+            try:
+                class_df = read_data_file(class_labels_path, class_filename)
+            except:
+                raise ValueError(open(class_labels_path, "r").read())
+
+            logging.info('Class labels file has been loaded....')
+
+            if read_counts_df.index.name == GENE_SYMBOL:
+                read_counts_df.reset_index(inplace=True)
+
+            deseq = DeseqTask(
+                count_matrix=read_counts_df,
+                design_matrix=class_df,
+                design_formula='~ class_label',
+                gene_column=GENE_SYMBOL
+            )
+
+            pd_from_r_df = deseq.run()
+
+            job.fold_change_results = pickle.dumps(pd_from_r_df)
+
+        results = []
+
+        for gmt_file in gmt_files:
+            logging.info(f'Running GSEA Pre-Ranked on gene sets from {gmt_file}')
+
+            prerank_results = perform_prerank(
+                rnk=df,
+                gmt=gmt_file,
+                output_dir=output_dir,
+                min_size=min_size,
+                max_size=max_size,
+                permutation_num=permutation_num,
+            )
+
+            logging.info('Getting results...')
+
+            results_df = prerank_results.res2d
+
             results.append(results_df)
 
         df = pd.concat(results)
