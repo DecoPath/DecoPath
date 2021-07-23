@@ -12,6 +12,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.11/c3.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.11/c3.min.js"></script>
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+
 
     <link href="{% static "css/custom.css" %}" rel="stylesheet">
     {% include "viewer/dependencies/datatables.html" %}
@@ -22,7 +24,7 @@
                 <br>
                 <h2><strong>ORA Consensus Results</strong></h2>
             </div>
-            <div class="card-body" style="margin-bottom: 50px;">
+            <div class="card-body">
                 <p>
                     View and download the consensus results for the file <i>{{ data_filename }}</i>
                 </p>
@@ -30,10 +32,11 @@
                     The table below shows the consensus results of over representation analysis (ORA) across
                     several databases. Pathways are considered over-represented if their <i>q</i>-value is below the
                     specified threshold (0.05 by default). Values reported in the table correspond to the
-                    <i>q</i>-value. See further details in the
+                    <i>q</i>-value. Click on these values to view the original pathway. See further details in the
                     <a data-toggle="modal"
                        type="button" data-target="#LegendModalORA" style="color: #0000cc">table legend.</a>
                 </p>
+
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col-8 text-center">
@@ -52,18 +55,24 @@
                     </p>
                 </div>
                 <hr>
-                <input type="text" id="tableInput" onkeyup="filterOraTable()" placeholder="Search pathways..."
-                       title="Type in a name" style="margin:auto;max-width:300px">&nbsp;
-
-                <i class="fa fa-search" style="font-size:22px; color:#999"></i>
-                <br><br>
+                <div class="container">
+                    <div class="row justify-content-start">
+                        <div class="col-6" style="margin-top: 20px; margin-bottom: 40px;">
+                            <input type="text" id="tableInput" onkeyup="filterOraTable()"
+                                   placeholder="Search pathways..."
+                                   title="Type in a name" style="margin:auto;max-width:300px">&nbsp<i
+                                class="fa fa-search" style="font-size:22px; color:#999"></i>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="table-outer" style="overflow-x:scroll; height: 100vh;">
 
-                    <table class="table table-hover table-bordered consensus-table-ora" id="consensus-table-ora">
+                    <table class="table table-hover table-bordered consensus-table-ora sortable"
+                           id="consensus-table-ora">
                         <thead>
                         {% for header in table_header %}
-                            <th id="thConsensus" scope="col">{{ header }}</th>
+                            <th id="thConsensus" scope="col">&#8595;{{ header }}</th>
                         {% endfor %}
                         </thead>
                         <tbody>
@@ -83,6 +92,7 @@
                         </tbody>
                     </table>
                 </div>
+            <br>
                 <footer>
                     <p style="font-size: 12px;">
                         <strong>Note: </strong>Pathways may be also reported as having no mappings if their gene set
@@ -180,8 +190,16 @@
         </div>
     </div>
 
+
     <script src="{% static 'js/consensus.js' %}"></script>
     <script type="text/javascript">
+
+        // Color schema for pie chart
+        var colorScheme = {
+            'Discordant': '#D94441',
+            'no-mappings': '#EFBA58',
+            'Concordant': '#7BCA71',
+        };
 
         var header = {{ header|safe }};
         var identifiers = {{ metadata_ids|safe }}; // array of db specific ids
@@ -202,6 +220,7 @@
                 data: {
                     columns: pie_chart_data,
                     type: 'pie',
+                    colors: colorScheme
                 },
                 size: {
                     width: 400,
@@ -244,7 +263,22 @@
                     },
                 ],
                 dom: 'B',
-                buttons: ['copy', 'excelHtml5', 'csvHtml5'],
+                buttons: [
+                    {
+                        extend: 'copy',
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        title: '',
+                        filename: 'consensus_ora_results'
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        title: '',
+                        filename: 'consensus_ora_results'
+
+                    }
+                ],
                 order: [[1, 'asc']], // order by NES or p-val
             });
         });

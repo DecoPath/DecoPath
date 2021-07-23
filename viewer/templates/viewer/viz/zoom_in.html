@@ -53,6 +53,7 @@
         {% include "viewer/dependencies/meta.html" %}
         {% include "viewer/dependencies/jquery.html" %}
         {% include "viewer/dependencies/bootstrap.html" %}
+
         <script type="text/javascript"
                 src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
@@ -195,7 +196,6 @@
                             .style("stroke-opacity", 0);
                     });
 
-
                 // Info box controller
                 /**
                  * Creates a new row in Node/Edge info table
@@ -230,7 +230,7 @@
                     if ("intersection" in data) {
                         tableObject["Pathway(s)"] = data["intersection"];
                     } else {
-                        tableObject["Pathway(s)"] = data["label"];
+                        tableObject["Pathway(s)"] = data["pathway_id"];
                     }
 
                     tableObject["Gene Set Size"] = data["size"];
@@ -251,7 +251,8 @@
                     populateInfoTable(d);
 
                     if (jQuery.isEmptyObject(foldChanges)) {
-                        alert('The distribution of fold changes will not be shown as the fold changes were not uploaded in the experiment')
+                        $("alert-text").html('The distribution of fold changes will not be shown as the fold changes' +
+                            ' were not uploaded in the experiment')
                     } else {
                         var foldChangesToPlot = []
 
@@ -264,7 +265,7 @@
                         if ((typeof foldChangesToPlot !== 'undefined' && foldChangesToPlot.length > 0)) {
                             plotDensity(foldChangesToPlot);
                         } else {
-                            alert('Your fold changes uploaded do not overlap with the part of the Venn diagram you want to visualize')
+                            $("alert-text").html('Your fold changes uploaded do not overlap with the part of the Venn diagram you want to visualize')
                         }
                     }
 
@@ -277,11 +278,10 @@
                     anchor.download = 'gene_set.txt';
                 }
             });
-
         </script>
     </head>
-    <body>
 
+    <body>
     <div class="container container-fluid" style="margin-bottom: 30px;">
         <br><br>
         <h1 class="text-center">Gene-Level Analysis</h1>
@@ -292,25 +292,43 @@
             </div>
             <div class="card-body">
                 <p>
-                    The interactive Venn Diagram below shows the overlap of genes for equivalent pathways. Double click
-                    on it to display the genes in the gene set. If you have uploaded fold changes of differentially
+                    The interactive Venn diagram below shows the overlap of genes for equivalent pathways.
+                </p>
+                <p>
+                    <b>
+                        Double click on the circles of the Venn diagram to display the genes in the gene set in the
+                        table directly below.
+                    </b>
+                </p>
+                <p>
+                    If you have uploaded fold changes of differentially
                     expressed genes or run differential gene expression analysis, you can also view the distribution of
                     fold changes of genes in your dataset below.
                 </p>
+
+                {% if fold_changes %}
+                    <hr>
+                    <div>
+                        <p>
+                            <a href="/export/{{ result_id }}" target="_blank">Download the results of differential gene
+                                expression analysis</a></p>
+                    </div>
+                {% endif %}
+
+                <p id="alert-text text-center"></p>
                 <hr>
                 <!-- ***** Venn diagram ***** -->
                 <div class="row">
                     <div id="venn-diagram"></div>
                 </div>
-                <table id="info-table" class="table table-bordered table-hover table-responsive"></table>
-                <!-- ***** Venn diagram ***** -->
+                <!-- ***** Info Table ***** -->
+                <table id="info-table" class="table table-bordered table-hover"></table>
+                <!-- ***** Histogram ***** -->
             </div>
             <div>
                 <svg id="density-plot" width="960" height="500"></svg>
             </div>
         </div>
-    </div>
-
 
     </body>
 

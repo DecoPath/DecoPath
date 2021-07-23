@@ -16,14 +16,16 @@
             <br>
             <p style="color: black">The status of the experiment is indicated in the "Status" column as follows:</p>
             <ul>
-                <li><span class="fas fa-check" style="color: #49e52d"></span>
+                <li style="font-size: 17.6px;"><span class="fas fa-check" style="color: #49e52d"></span>
                     The experiment has run successfully. Results are ready for viewing, exploring and downloading.
                 </li>
-                <li><span class="fas fa-redo" style="color: #fce702"></span> The experiment is in progress. <a
-                        href="#results-pending">*</a>
+                <li style="font-size: 17.6px;"><span class="fas fa-spinner" style="color: #fce702"></span> The
+                    experiment is in progress. <a
+                            href="#results-pending">*</a>
                 </li>
-                <li><span class="fas fa-times" style="color: #ff0000"></span>&nbsp; The experiment has failed. <a
-                        href="#analysis-failed">†</a>
+                <li style="font-size: 17.6px;"><span class="fas fa-times" style="color: #ff0000"></span>&nbsp; The
+                    experiment has failed. <a
+                            href="#analysis-failed">†</a>
                 </li>
             </ul>
         </div>
@@ -201,12 +203,21 @@
                     </tbody>
                 </table>
             </div>
+            <button type="button" class="btn btn-outline-primary" onclick="hide_info('{{ forloop.counter0 }}')"><i
+                    class='fas fa-arrow-left'></i>
+            </button>
         </div>
     {% endfor %}
     <div class="container" id="legendFooter">
-        <p id="results-pending" style="font-size: 14px;">* Please refresh this page to view the latest status. Note that
+        <p id="results-pending" style="font-size: 16px;">* Please refresh this page to view the latest status. Note that
             the analyses can take some time to run.</p>
-        <p id="analysis-failed" style="font-size: 14px;">† Please check the
+        <p style="font-size: 16px;">* Note the expected run times for an analysis:</p>
+        <ul style="font-size: 16px;">
+            <li>ORA: 0-10 minutes</li>
+            <li>GSEA: 10-120 minutes</li>
+            <li>DGE analysis: 5-30 minutes</li>
+        </ul>
+        <p id="analysis-failed" style="font-size: 16px;">† Please check the
             FAQs, tutorials page and the sample files to ensure correctly formatted data files were submitted.
             If GSEA was performed, you may have been timed out. In this case, consider uploading the results of
             GSEA to use the visualization and exploration tools. Contact the site administrator if the problem

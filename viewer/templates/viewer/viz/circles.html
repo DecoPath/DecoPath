@@ -79,26 +79,8 @@
                     .onClick(function (d, node) {
 
                         if (d !== undefined && d !== null) {
-                            $.confirm({
-                                title: 'Confirm you want to explore this pathway',
-                                content: '',
-                                buttons: {
-                                    confirm: {
-                                        text: 'Confirm',
-                                        btnClass: 'btn-primary',
-                                        action: function () {
-                                            var href = "/viz/zoom_in/" + resultId + "/" + d.id
-                                            window.open(href)
-                                        }
-                                    },
-                                    cancel: {
-                                        text: 'Take me back',
-                                        btnClass: 'btn-danger',
-                                        action: function () {
-                                        }
-                                    },
-                                },
-                            });
+                            var href = "/viz/zoom_in/" + resultId + "/" + d.id
+                            window.open(href)
                         }
                     })
                     (document.getElementById('circles-viz'));
@@ -180,27 +162,34 @@
         <br><br>
         <h1 class="text-center">Pathway Hierarchy</h1>
         <br>
-        <p>With the interactive visualization below, you can explore the results of {{ enrichment_method }} for
+        <p>With the interactive visualization below, you can explore the results of {{ enrichment_method|upper }} for
             <i>{{ data_filename }}</i>.
         </p>
         <p>
             The largest circles represent the 7 major categories that make up the pathway hierarchy:
             metabolism, immune, signaling, communication and transport, cell-death, disease, DNA repair and replication,
-            and others. Zoom in on the circles to explore the results yielded for each pathway in the hierarchy.
+            and others.
         </p>
-
+        <hr>
+        <p>
+            <strong>Zoom in</strong> on the circles to explore the results yielded for each pathway in the hierarchy.
+        </p>
+        <p>
+            <strong>Click</strong> on the circles for an in-depth, gene-level analysis.
+        </p>
+        <hr>
         <div id="circlesLegend">
             <h5>Legend</h5>
             <hr>
-            {% if enrichment_method == 'GSEA' %}
+            {% if enrichment_method == 'ora' %}
+                <div class="circle ora-max-legend"></div>Significantly enriched pathway<br>
+                <div class="circle gsea-no-mapping"></div>Pathway fails to pass significance threshold / Not included in
+                analysis<br>
+            {% else %}
                 <div class="circle gsea-max-legend"></div>Pathway enriched at bottom of ranked list<br>
                 <div class="circle gsea-min-legend"></div>Pathway enriched at top of ranked list<br>
                 <div class="circle gsea-insignificant-legend"></div>Pathway fails to pass significance threshold<br>
                 <div class="circle gsea-no-mapping"></div>Not included in analysis<br>
-            {% else %}
-                <div class="circle ora-max-legend"></div>Significantly enriched pathway<br>
-                <div class="circle gsea-no-mapping"></div>Pathway fails to pass significance threshold / Not included in
-                analysis<br>
             {% endif %}
         </div>
 
@@ -217,10 +206,10 @@
             </div>
         </div>
     </div>
-        <!-- ***** Circles Packing Viz ***** -->
-            <div class="container" id="circles-viz"></div>
-        </div>
-        <!-- ***** Circles Packing Viz ***** -->
+    <!-- ***** Circles Packing Viz ***** -->
+    <div class="container" id="circles-viz"></div>
+    </div>
+    <!-- ***** Circles Packing Viz ***** -->
 
     </body>
 

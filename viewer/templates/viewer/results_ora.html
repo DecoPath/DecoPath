@@ -13,36 +13,20 @@
     {% include "viewer/dependencies/datatables.html" %}
 
     <br><br>
-    <div class="container container-fluid choices" id="GseaResultsPage" style="margin-bottom: 30px;">
+    <div class="container container-fluid choices" id="ResultsPage" style="margin-bottom: 30px;">
         <div class="card">
             <div class="card-header" style="background-color: white">
                 <br>
-                <h2><strong>{{ enrichment_method }} Results</strong></h2>
+                <h2><strong>ORA Results</strong></h2>
             </div>
             <div class="card-body" style="margin-bottom: 50px;">
                 <p>
-                    Here, you can view and download the complete set of enrichment results for {{ enrichment_method }}
-                    for the file <i>{{ data_filename }}</i>.
+                    Here, you can view and download the complete set of enrichment results
+                    for over representation analysis (ORA) for the file <i>{{ data_filename }}</i>.
                 </p>
                 <hr>
-
-                <div class="row">
-                    <div class="btn-group col" role="group">
-                        {% for database in databases %}
-                            <button type="button" class="btn customButton"
-                                    value="{{ database }}">{{ database }}</button>
-                        {% endfor %}
-                    </div>
-                </div>
+                {{ ranking_table | safe }}
                 <hr>
-                <div class="ranking_table">
-                    {% for table_id, df_table in ranking_tables.items %}
-                        {{ df_table|safe }}
-                    {% endfor %}
-                </div>
-                <hr>
-                <p id="TableLegend"><strong>*ES: </strong>Enrichment Score</p>
-                <p id="TableLegend"><strong>*NES: </strong>Normalized Enrichment Score</p>
                 <p id="TableLegend"><strong><i>*p</i>-value: </strong>Significance value</p>
                 <p id="TableLegend"><strong><i>*q</i>-value: </strong>Adjusted <i>p</i>-value</p>
                 <hr>
@@ -52,20 +36,29 @@
 
     <script type="text/javascript">
 
-        var databases = {{ ranking_tables|safe }};
-
         $(document).ready(function () {
-            var dtable = $('.datatable-display').DataTable({
+            var dtable = $('#ranking_table').DataTable({
                 dom: '<"top"Blf>rt<"bottom"ip><"clear">',
-                buttons: ['copy', 'excelHtml5', 'csvHtml5'],
+                buttons: [
+                    {
+                        extend: 'copy',
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        title: '',
+                        filename: 'enrichment_results'
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        title: '',
+                        filename: 'enrichment_results'
+
+                    }
+                ],
                 order: [[1, 'asc']], // order by NES or p-val
                 "scrollX": true,
                 fixedHeader: true,
                 columnDefs: [
-                    {
-                        "targets": [2],
-                        "visible": false
-                    },
                     {
                         "targets": 0, // apply function to ID column to render hyperlinks
                         "render": function (data) {
@@ -84,25 +77,10 @@
                     },
                 ],
                 "initComplete": function () {
-                    $('.datatable-display').show();
+                    $("#ranking_table").show();
                 },
             });
             $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
-        });
-
-        var table_ids = Object.keys(databases);
-
-        $(".customButton").click(function (e, d) {
-
-            var database = $(this).val();
-
-            $(".datatable-display").each(function (index) {
-                if ($(this).attr('id') === database) {
-                    $('#' + $(this).attr('id') + '_wrapper').show();
-                } else {
-                    $('#' + $(this).attr('id') + '_wrapper').hide();
-                }
-            });
         });
 
     </script>

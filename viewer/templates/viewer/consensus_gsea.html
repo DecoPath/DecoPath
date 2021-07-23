@@ -13,6 +13,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.11/c3.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.11/c3.min.js"></script>
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 
     <link href="{% static "css/custom.css" %}" rel="stylesheet">
     {% include "viewer/dependencies/datatables.html" %}
@@ -21,15 +22,24 @@
         <div class="card">
             <div class="card-header" style="background-color: white">
                 <br>
-                <h2><strong>GSEA Consensus Results</strong></h2>
+                <h2><strong>
+
+                    {% if enrichment_method == 'gsea' %}
+                        {{ enrichment_method|upper }}
+                    {% else %}
+                        {{ enrichment_method }}
+                    {% endif %}
+
+                    Consensus Results</strong></h2>
             </div>
-            <div class="card-body" style="margin-bottom: 50px;">
+            <div class="card-body">
                 <p>
                     View and download the consensus results for the file <i>{{ data_filename }}</i>
                 </p>
                 <p class="justify-content">
                     The table below shows the consensus results of gene set enrichment analysis (GSEA) across
                     several databases. Values reported in the table correspond to a normalized enrichment score (NES).
+                    Click on the scores to view the original pathway.
                     See further details in the
                     <a data-toggle="modal"
                        type="button" data-target="#LegendModalGSEA" style="color: #0000cc">table legend.</a>
@@ -58,10 +68,11 @@
 
                 <div class="table-outer" style="overflow-x:scroll; height: 100vh;">
 
-                    <table class="table table-hover table-bordered consensus-table-gsea" id="consensus-table-gsea">
+                    <table class="table table-hover table-bordered consensus-table-gsea sortable"
+                           id="consensus-table-gsea">
                         <thead>
                         {% for header in table_header %}
-                            <th id="thConsensus" scope="col">{{ header }}</th>
+                            <th id="thConsensus" scope="col">&#8595;{{ header }}</th>
                         {% endfor %}
                         </thead>
                         <tbody>
@@ -81,10 +92,22 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+                <br>
+                <footer>
 
-            <!-- Modal -->
+                    <p style="font-size: 12px;">
+                        <strong>Note: </strong>Pathways may be also reported as having no mappings if their gene set
+                        sizes
+                        do not pass the size filter (default: maximum number of genes: 1000; minimum number of
+                        genes:
+                        10)
+                </footer>
+            </div>
         </div>
+    </div>
+
+    <!-- Modal -->
+    </div>
     </div>
     </div>
 
@@ -175,6 +198,13 @@
     <script src="{% static 'js/consensus.js' %}"></script>
     <script type="text/javascript">
 
+        // Color schema for pie chart
+        var colorScheme = {
+            'Discordant': '#D94441',
+            'no-mappings': '#EFBA58',
+            'Concordant': '#7BCA71',
+        };
+
         var header = {{ header|safe }};
         var identifiers = {{ metadata_ids|safe }}; // array of db specific ids
         var qvals = {{ metadata_qvals|safe }}; // array of q values for each score
@@ -196,6 +226,7 @@
                 data: {
                     columns: pie_chart_data,
                     type: 'pie',
+                    colors: colorScheme
                 },
                 size: {
                     width: 400,
@@ -238,8 +269,22 @@
                     },
                 ],
                 dom: 'B',
-                buttons: ['copy', 'excelHtml5', 'csvHtml5'],
-                order: [[1, 'asc']], // order by NES or p-val
+                buttons: [
+                    {
+                        extend: 'copy',
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        title: '',
+                        filename: 'consensus_gsea_results'
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        title: '',
+                        filename: 'consensus_gsea_results'
+
+                    }
+                ], order: [[1, 'asc']], // order by NES or p-val
             });
         });
 

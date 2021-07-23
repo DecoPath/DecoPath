@@ -14,12 +14,11 @@
     {% if not user.is_authenticated %}
         <div class="container">
             <br>
-            <p style="font-family: 'Poppins', sans-serif; font-weight: 250; text-align: justify;">
+            <p style="font-family: 'Poppins', sans-serif; font-weight: 250; text-align: center;">
                 Please <a href={% url 'login' %}>login</a> to run DecoPath. If this is your first time here, you can
                 take a look at the <a href={% url 'user_guide' %}>User Guide</a> and <a href={% url 'faqs' %}>FAQs</a>
-                for more information. You can also <a href={% url 'login' %}>login</a> as a test user to see some
-                examples of how this web server can be used. Once you are ready, you can register <a
-                    href={% url 'register' %}>here</a>.
+                for more information. Once you are ready, you can either register <a href={% url 'register' %}>here</a>
+                or login with a guest user account <a href={% url 'login' %}>here</a>.
             </p>
             <br>
         </div>
@@ -116,6 +115,7 @@
                 Upload Results
             </h1>
             <div class="card-body">
+
                 <h4>Step 1: Download gene set files and run pathway analysis</h4>
                 <hr>
                 <ul>
@@ -191,24 +191,20 @@
                     <hr>
                     {% csrf_token %}
                     {{ gsea_db_form|crispy }}
-                    <h4>Step 2: Upload files</h4>
+                    <h4>Step 2: Run GSEA</h4>
                     <hr>
                     {% csrf_token %}
                     {{ gsea_form|crispy }}
-                    <h4>Step 3: (Optional) Select parameters</h4>
-                    <hr>
-                    {% csrf_token %}
-                    {{ gsea_parameters_form|crispy }}
-                    <h4>Step 4: (Optional) Perform or upload results of differential gene expression analysis</h4>
+                    <h4>Step 3: (Optional) Perform or upload results of differential gene expression analysis</h4>
                     <hr>
                     {% csrf_token %}
                     {{ fold_changes_form_gsea|crispy }}
                     <button type="submit" class="btn btn-primary" name="run_gsea" value="Submit">Submit
                     </button>
                 </form>
-                <p style="color: #6c757d; padding-top: 10px"><strong>Note:</strong> GSEA experiments will be cancelled
-                    if they exceed
-                    the time limit.</p>
+                <p style="color: #6c757d; padding-top: 10px; font-size: 14px;">
+                    <strong>Note:</strong> GSEA experiments will be cancelled if they exceed the 8 hour time limit.
+                </p>
             </div>
         </div>
         </div>
@@ -217,9 +213,6 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            setTimeout(function () {
-                $(".alert").alert('close');
-            }, 3000);
             $("[data-toggle=popover]").popover();
         });
 
@@ -293,13 +286,51 @@
         });
 
         $(function () {
+            $("#div_id_data_file").hide()
+            $("#div_id_class_file_gsea").hide()
+            $("#div_id_minimum_size_gsea").hide()
+            $("#div_id_maximum_size_gsea").hide()
+            $("#div_id_method").hide()
+            $("#div_id_permutation_type").hide()
+            $("#div_id_permutation_num_gsea").hide()
+            $("#div_id_sig_threshold_gsea").hide()
+            $("#div_id_preranked_file").hide()
+            $("#div_id_minimum_size_gsea_prerank").hide()
+            $("#div_id_maximum_size_gsea_prerank").hide()
+            $("#div_id_permutation_num_prerank").hide()
+            $("#div_id_sig_threshold_prerank").hide()
+
+            $("#id_run_gsea").click(function () {
+                $("#div_id_data_file").toggle(this.checked);
+                $("#div_id_class_file_gsea").toggle(this.checked);
+                $("#div_id_minimum_size_gsea").toggle(this.checked);
+                $("#div_id_maximum_size_gsea").toggle(this.checked);
+                $("#div_id_method").toggle(this.checked);
+                $("#div_id_permutation_type").toggle(this.checked);
+                $("#div_id_permutation_num_gsea").toggle(this.checked);
+                $("#div_id_sig_threshold_gsea").toggle(this.checked);
+            });
+
+            $("#div_id_run_gsea_preranked").click(function () {
+                $("#div_id_preranked_file").toggle(this.checked);
+                $("#div_id_minimum_size_gsea_prerank").toggle(this.checked);
+                $("#div_id_maximum_size_gsea_prerank").toggle(this.checked);
+                $("#div_id_permutation_num_prerank").toggle(this.checked);
+                $("#div_id_sig_threshold_prerank").toggle(this.checked);
+
+            });
+        });
+
+        $(function () {
             $("#div_id_read_counts_file_gsea").hide()
+            $("#div_id_class_file_fc_gsea").hide()
             $("#div_id_fold_changes_file_gsea").hide()
             $("#div_id_significance_value_run_gsea").hide()
             $("#div_id_significance_value_upload_gsea").hide()
 
             $('#id_run_analysis_results_gsea').click(function () {
                 $("#div_id_read_counts_file_gsea").toggle(this.checked);
+                $("#div_id_class_file_fc_gsea").toggle(this.checked);
                 $("#div_id_significance_value_run_gsea").toggle(this.checked);
             });
 
