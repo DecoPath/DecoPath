@@ -255,18 +255,16 @@ thead th {
 }
 
 #div_id_upload_gene_list {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: #0e435b;
-    font-family: 'Roboto', Helvetica Neue, Arial, Sans-serif;
     line-height: 20px;
 }
 
 #div_id_run_dge_ora_genes {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: #0e435b;
-    font-family: 'Roboto', Helvetica Neue, Arial, Sans-serif;
     line-height: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -303,6 +301,43 @@ thead th {
 #div_id_significance_value_upload_ora {
     margin-left: 20px;
 }
+
+label[for="id_run_analysis"] {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0e435b;
+}
+
+label[for="id_upload_fold_changes"] {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0e435b;
+}
+
+label[for="id_run_gsea"] {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0e435b;
+}
+
+label[for="id_run_gsea_preranked"] {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0e435b;
+}
+
+label[for="id_run_analysis_results_gsea"] {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0e435b;
+}
+
+label[for="id_upload_fold_changes_gsea"] {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0e435b;
+}
+
 
 /*Account page CSS*/
 
@@ -494,6 +529,32 @@ thead th {
     font-size: 20px;
 }
 
+/* User guide */
+
+#workflowSubCaption {
+    text-align: center;
+    font-size: 20px;
+}
+
+#workflowCaption {
+    text-align: left;
+    font-size: 18px;
+}
+
+.centerImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#tutorialHeading {
+    height: 1px;
+    border-width: 0;
+    color: #28424f;
+    background-color: #28424f;
+}
+
 /* DC genesets */
 
 #thDCgeneset {
@@ -509,7 +570,7 @@ thead th {
 /* Results table */
 
 #ranking_table {
-    display: none;
+    width: 100% !important;
 }
 
 table.dataTable thead .sorting::after,
@@ -610,7 +671,6 @@ p {
     font-size: 17.6px;
     font-weight: 300;
     line-height: 1.7em;
-    color: #5f5f5f;
 }
 
 ul {
@@ -676,4 +736,18 @@ ul {
     color: #fff !important;
     background-color: #205f79;
     border-color: #fff;
+}
+
+
+/* Zoom-in page */
+
+a.export,
+a.export:visited {
+    display: inline-block;
+    color: #fff !important;
+    background-color: #24A0ED;
+    border-color: #fff;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 8px;
 }

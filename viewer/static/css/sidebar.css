@@ -11,7 +11,6 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #797979;
 }
 
 h2 {
@@ -79,7 +78,7 @@ ul ul a {
     left: 0;
     padding-top: 20px;
     padding-bottom: 30px;
-    height: 100vh;
+    height: 100%;
     z-index: 999;
     background: #28424f;
     color: #fff;
@@ -99,8 +98,8 @@ ul ul a {
 }
 
 main {
-  position: absolute;
-  top: 60px;
-  bottom: 0;
-  overflow-y: scroll;
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    overflow-y: scroll;
 }
