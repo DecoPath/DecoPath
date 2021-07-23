@@ -1,0 +1,11 @@
+Hello {{ register_email }},
+
+Thank you for joining DecoPath!
+
+We'd like to confirm that your account was created successfully. To access DecoPath click the link below,
+{{ act_url }}
+
+If you experience any issues logging into your account, reach out to us using GitHub issues page (https://github.com/DecoPath/DecoPath/issues).
+
+Best,
+The DecoPath team

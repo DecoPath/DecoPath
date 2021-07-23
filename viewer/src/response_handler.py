@@ -52,7 +52,8 @@ MAPPING_SELECTION_MSG = 'Please ensure mappings between selected databases have 
 
 EMAIL_SUBJECT = "DecoPath Account Confirmation"
 
-SENDER_EMAIL = 'noreply@decopath.scai.fraunhofer.de'
+# Update domain based on your settings
+SENDER_EMAIL = 'noreply@localhost'
 
 REGISTRATION_MSG = 'You have now successfully registered. Confirm you email address before logging in.'
 
