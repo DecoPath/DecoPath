@@ -61,6 +61,7 @@ DATABASES = {
 RESULTS = 'results'
 GSEA = 'gsea'
 ORA = 'ora'
+PRERANK = "GSEA Pre-Ranked"
 
 #: Database pairwise mappings
 KEGG_REACTOME = 'kegg_reactome'
@@ -184,12 +185,12 @@ PERMUTATION_TYPE = (
 #: Pathway enrichment methods
 ENRICHMENT_METHOD = (
     (GSEA, "GSEA"),
-    (ORA, "ORA")
+    (ORA, "ORA"),
 )
 
 #: GSEA methods
 METHOD = (
-    ("log2_ratio_of_classes", "default"),
+    ("signal_to_noise", "default"),
     ("log2_ratio_of_classes", "log2 ratio of classes"),
     ("signal_to_noise", "signal to noise"),
     ("t_test", "t test"),
@@ -209,7 +210,7 @@ METHOD_MAPPING = {
 #: Status of current job
 STATUS_CODE_MAPPING = {
     0: '<span class="fas fa-times"  style="color: #FF0000"></span>',  # failure
-    1: '<span class="fas fa-redo" style="color: #fce702"></span>',  # running
+    1: '<span class="fas fa-spinner" style="color: #fce702"></span>',  # running
     2: '<span class="fas fa-check" style="color: #49e52d"></span>',  # success
 }
 
@@ -259,6 +260,7 @@ COLORMAP_VALUES = [
 #: Separators
 CSV = 'csv'
 TSV = 'tsv'
+TXT = 'txt'
 
 """User submitted results columns"""
 

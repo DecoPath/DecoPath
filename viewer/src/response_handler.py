@@ -31,7 +31,16 @@ ORA_EMPTY_FORM_MSG = 'Looks like no files were uploaded to run ORA. Please ensur
 
 ORA_UPLOAD_MSG = 'To run ORA, please ensure only one of the following is uploaded: a file containing a list of genes,' \
                  ' files to run differential gene expression analysis or results of differential gene expression' \
-                 ' analysis. If the problem still persists, try refreshing the home page.'
+                 ' analysis. If the problem persists, try refreshing the home page.'
+
+GSEA_EMPTY_FORM_MSG = 'It seems you are missing some files to run GSEA or GSEA preranked. Please ensure appropriate ' \
+                      'files have been uploaded. See the FAQs section for more details. If the problem persists,' \
+                      ' try refreshing the home page.'
+
+GSEA_UPLOAD_MSG = 'To run GSEA, please ensure only the following 2 files are submitted: a dataset file and a class' \
+                  ' labels file. If you are ' \
+                  'running GSEA preranked, please upload only a single file of preranked genes. If the problem ' \
+                  'persists, try refreshing the home page.'
 
 """Database-related"""
 
@@ -40,6 +49,10 @@ DB_SELECTION_MSG = 'Please ensure at least two databases are selected to run Dec
 MAPPING_SELECTION_MSG = 'Please ensure mappings between selected databases have been uploaded.'
 
 """Other"""
+
+EMAIL_SUBJECT = "DecoPath Account Confirmation"
+
+SENDER_EMAIL = 'noreply@decopath.scai.fraunhofer.de'
 
 REGISTRATION_MSG = 'You have now successfully registered. Confirm you email address before logging in.'
 
@@ -96,4 +109,3 @@ CUSTOM_MAPPINGS_MSG = 'Something went wrong. Please ensure all fields are filled
 
 CUSTOM_MAPPING_DATABASES_MSG = 'It appears the database you added does not correspond to any mapping files. Please' \
                                ' ensure mappings are available across each database pair.'
-

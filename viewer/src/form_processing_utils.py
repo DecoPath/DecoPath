@@ -6,6 +6,7 @@ import pickle
 from typing import List, Tuple, Union
 
 import pandas as pd
+from django.db.models import QuerySet
 
 from viewer.models import Pathway, PathwayDatabase
 from viewer.src.constants import *
@@ -18,7 +19,7 @@ from viewer.src.response_handler import MAPPING_SELECTION_MSG, RUN_DGE_ANALYSIS_
 from viewer.src.utils import concatenate_files, get_missing_columns
 
 
-def get_genesets(databases: List, method: str) -> Union[str, Tuple[bool, List, str]]:
+def get_genesets(selected_database: QuerySet, method: str) -> Union[str, Tuple[bool, List, str]]:
     """Process forms submitted by user and generate gene sets."""
     # Check if mappings are valid
     mapping_is_valid = True
@@ -28,14 +29,17 @@ def get_genesets(databases: List, method: str) -> Union[str, Tuple[bool, List, s
 
     # Flatten list of tuples to list of pathway databases in mapping table
     mapping_pathways = list(sum(pathway_mapping_databases, ()))
+    databases = [DECOPATH]
     gmt_files_path = set()
 
-    # Ensure databases selected exist in mapping table
-    for db in databases:
-        if db not in mapping_pathways:
-            return MAPPING_SELECTION_MSG
+    # Cast Pathway Database model database_name field as string and get list of user-selected pathway databases
+    for database in selected_database:
+        selection = str(database)
+        databases.append(selection)
 
-    databases.append(DECOPATH)
+        # Ensure databases selected exist in mapping table
+        if selection not in mapping_pathways:
+            return MAPPING_SELECTION_MSG
 
     # Get queryset of PathwayDatabase objects filtered by selected databases
     pathway_database_queryset = PathwayDatabase.objects.filter(database_name__in=databases)
@@ -107,17 +111,14 @@ def _check_fold_changes_form(
     significance_val_analysis,
     clean_fold_changes,
     significance_val_results,
-    **kwargs,
+    class_labels,
 ):
     """Check fold change forms validity."""
-    if 'class_labels' in kwargs:
-        run_dge = [read_counts, kwargs['class_labels'], significance_val_analysis]
-    else:
-        run_dge = [read_counts, significance_val_analysis]
+    run_dge = [read_counts, class_labels, significance_val_analysis]
 
     upload_fc = [clean_fold_changes, significance_val_results]
 
-    # Ensure user optionally submits files to only run fold change analysis or submit fold changes results but not both
+    # Ensure user optionally either submits results file or files to run analysis but not both
     if not all(i is None for i in run_dge) and not all(i is None for i in upload_fc):
         return DGE_OPTIONS_MSG
 
@@ -133,53 +134,45 @@ def _check_fold_changes_form(
 
         return fold_changes, significance_val_results
 
-    if 'class_labels' in kwargs:
-        # If user submits read counts file, ensure class label file is also submitted (and vice versa) or throw error
-        if read_counts and kwargs['class_labels'] is None or kwargs['class_labels'] and read_counts is None:
-            return RUN_DGE_ANALYSIS_MSG
+    # If user submits read counts file, ensure class label file is also submitted or throw error
+    if read_counts and class_labels is None:
+        return RUN_DGE_ANALYSIS_MSG
 
     if read_counts:
 
-        # Get paths to temporary uploaded files
-        data_path = read_counts.transient_file_path()
+        # Get path to temporary uploaded counts file
+        counts_path = read_counts.transient_file_path()
 
         # Check if expression data is valid
-        expression_file_val = process_data_file(data_path, str(read_counts))
+        expression_file_val = process_data_file(counts_path, str(read_counts))
 
         if isinstance(expression_file_val, str):
             return expression_file_val
 
         read_counts_df = expression_file_val
 
-        if 'class_labels' in kwargs:
+        # Get path to temporary uploaded class labels file
+        class_path = class_labels.transient_file_path()
 
-            class_path = kwargs['class_labels'].transient_file_path()
+        # Check if class labels file is valid
+        class_file = check_text_file(class_path, str(class_labels))
 
-            # Check if class labels file is valid
-            class_file = check_text_file(class_path, str(kwargs['class_labels']))
+        # Check if file cannot be read and throw error
+        if isinstance(class_file, str):
+            return class_file
 
-            # Check if file cannot be read and throw error
-            if isinstance(class_file, str):
-                return class_file
+        class_label_df = class_file
 
-            class_label_df = class_file
+        # Get list of class labels in order corresponding to read counts file
+        class_labels = check_label_compliance(read_counts_df, class_label_df)
 
-            # Get list of class labels in order corresponding to read counts file
-            class_labels = check_label_compliance(read_counts_df, class_label_df)
-
-            if isinstance(class_labels, str):
-                return class_labels
-
-        else:
-            class_labels = ['NA']
-            class_path = ""
+        if isinstance(class_labels, str):
+            return class_labels
 
         if significance_val_analysis is None:
             significance_val_analysis = PADJ
 
-        return data_path, significance_val_analysis, class_labels, class_path
-
-    return None
+        return counts_path, significance_val_analysis, class_labels, class_path
 
 
 def process_fold_changes_upload(clean_fold_changes) -> Union[pd.DataFrame, str]:

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""This module runs GSEA."""
+"""This module runs GSEA and pre-ranked GSEA."""
 
 from typing import List, Union
 
@@ -13,8 +13,8 @@ def perform_gsea(
     gmt: str,
     class_vector: List,
     output_dir: str,
-    max_size: int,
     min_size: int,
+    max_size: int,
     permutation_type: str,
     permutation_num: int,
     method: str
@@ -24,14 +24,33 @@ def perform_gsea(
         data=data,
         gene_sets=gmt,
         cls=class_vector,
-        max_size=max_size,
         min_size=min_size,
-        # set permutation_type to phenotype if samples >=15
-        permutation_type=permutation_type,
+        max_size=max_size,
+        permutation_type=permutation_type,  # set permutation_type to phenotype if samples >=15
         permutation_num=permutation_num,  # reduce number to speed up test
         method=method,
         outdir=output_dir,
         no_plot=True,  # Skip plotting
         processes=1,
-        format='png',
+    )
+
+
+def perform_prerank(
+    rnk: pd.DataFrame,
+    gmt: str,
+    output_dir: str,
+    min_size: int,
+    max_size: int,
+    permutation_num: int,
+):
+    """Run GSEA on a pre-ranked list of genes."""
+    return gseapy.prerank(
+        rnk=rnk,
+        gene_sets=gmt,
+        min_size=min_size,
+        max_size=max_size,
+        permutation_num=permutation_num,
+        outdir=output_dir,
+        no_plot=True,  # Skip plotting
+        processes=1,
     )

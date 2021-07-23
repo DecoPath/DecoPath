@@ -22,8 +22,8 @@ def check_consensus(value_list: List, threshold: float, max_num_of_mappings: int
 
     # All databases are in consensus
     elif all(i > threshold for i in value_list) or all(
-            i < threshold for i in value_list) or all(
-            i == threshold for i in value_list):
+        i < threshold for i in value_list) or all(
+        i == threshold for i in value_list):
         return 2
 
     # Databases are in disagreement
@@ -60,13 +60,29 @@ def process_database_names(df: pd.DataFrame, header: List) -> Tuple[List, List, 
     return header, databases, db_order_dict
 
 
+def get_database_by_pathway_id(pathway_id: str):
+    """Get pathway database by pathway ID."""
+    if pathway_id.startswith('hsa'):
+        return DATABASES[KEGG]
+    elif pathway_id.startswith('PW'):
+        return DATABASES[PATHBANK]
+    elif pathway_id.startswith('R-HSA'):
+        return DATABASES[REACTOME]
+    elif pathway_id.startswith('WP'):
+        return DATABASES[WIKIPATHWAYS]
+    elif pathway_id.startswith('DC'):
+        return DATABASES[DECOPATH]
+
+    return CUSTOM
+
+
 def get_consensus_gsea(
-        row: List,
-        scores: List,
-        fdr_list: List,
-        significance_value: float,
-        dc_fdr: Optional[float],
-        dc_nes: Optional[float]
+    row: List,
+    scores: List,
+    fdr_list: List,
+    significance_value: float,
+    dc_fdr: Optional[float],
+    dc_nes: Optional[float]
 ) -> Tuple[int, int]:
     """Check if all mappings are in consensus."""
     score_consensus = check_consensus(scores, threshold=0, max_num_of_mappings=2)
@@ -89,8 +105,8 @@ def get_consensus_gsea(
         dc_db_consensus = 1  # no mappings
 
     elif dc_fdr < significance_value and all(
-            fdr_val < significance_value for fdr_val in fdr_list) or dc_fdr > significance_value and all(
-            fdr_val > significance_value for fdr_val in fdr_list):
+        fdr_val < significance_value for fdr_val in fdr_list) or dc_fdr > significance_value and all(
+        fdr_val > significance_value for fdr_val in fdr_list):
 
         if dc_nes > 0 and all(score > 0 for score in scores):
             dc_db_consensus = 2  # consensus green
@@ -106,13 +122,13 @@ def get_consensus_gsea(
 
 
 def get_dc_info_gsea(
-        obj: object,
-        df: pd.DataFrame,
-        databases: List,
-        database_order: dict,
-        row: List,
-        identifiers: List,
-        qvals: List,
+    obj: object,
+    df: pd.DataFrame,
+    databases: List,
+    database_order: dict,
+    row: List,
+    identifiers: List,
+    qvals: List,
 ) -> Tuple[List, List, List, Optional[float], Optional[float]]:
     """Get DecoPath pathway info if mapping exists for GSEA."""
     dc_nes = None
@@ -158,12 +174,12 @@ def get_dc_info_gsea(
 
 
 def get_dc_info_ora(
-        obj: object,
-        df: pd.DataFrame,
-        databases: List,
-        database_order: dict,
-        row: List,
-        identifiers: List,
+    obj: object,
+    df: pd.DataFrame,
+    databases: List,
+    database_order: dict,
+    row: List,
+    identifiers: List,
 ) -> Tuple[List, List, Optional[float]]:
     """Get DecoPath pathway info if mapping exists for ORA."""
     dc_fdr = None

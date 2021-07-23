@@ -24,6 +24,9 @@ def _read_text_file(file_path: str, filename, index_col: int = 0) -> Union[pd.Da
         elif file_path.endswith(TSV):
             df = pd.read_csv(file_path, sep="\t", index_col=index_col)
 
+        else:
+            df = pd.read_csv(file_path, index_col=index_col, sep=None, engine='python')
+
     except pd.errors.ParserError:
         return f'There is a problem with your {filename} file. please ensure it contains the correct number of columns.'
 

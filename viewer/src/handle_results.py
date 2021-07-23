@@ -18,7 +18,7 @@ from viewer.src.results_utils import (
     round_float,
     process_database_names,
     get_dc_info_gsea,
-    get_consensus_gsea, get_dc_info_ora,
+    get_consensus_gsea, get_dc_info_ora, get_database_by_pathway_id,
 )
 from viewer.src.utils import get_database_by_id, spliterate
 
@@ -38,9 +38,10 @@ def create_summary_table(current_user):
 
     for index, obj in enumerate(query_results):
 
-        gsea_method = obj.calculation_method
+        enrichment_method = obj.enrichment_method
 
         for class_label in obj.get_phenotypes():
+
             if isinstance(class_label, int):
                 classes = '|'.join(str(label) for label in obj.get_phenotypes())
             elif len(class_label) == 1:
@@ -50,17 +51,29 @@ def create_summary_table(current_user):
                 classes = '|'.join(obj.get_phenotypes())
 
         if obj.result_status != 2:
-            results_link = f'<a href="/results/{obj.result_id}" class="button disabled">Load Results</a>'
-            consensus_link = f'<a href="/consensus_{obj.enrichment_method.lower()}/{obj.result_id}" class="button disabled">Load Consensus Table</a>'
-            circles_link = f'<a href="/viz/circles/{obj.result_id}" class="button disabled">Visualize Consensus</a>'
-        else:
-            if obj.calculation_method in METHOD_MAPPING.values():
-                results_link = f'<a href="/gsea_results/{obj.result_id}" class="button">Load Results</a>'
-            else:
-                results_link = f'<a href="/results/{obj.result_id}" class="button">Load Results</a>'
 
-            consensus_link = f'<a href="/consensus_{obj.enrichment_method.lower()}/{obj.result_id}" class="button">Load Consensus Table</a>'
+            if enrichment_method == ORA:
+                results_link = f'<a href="/results_{ORA}/{obj.result_id}" class="button disabled">Load Results</a>'
+                consensus_link = f'<a href="/consensus_{ORA}/{obj.result_id}" class="button disabled">Load Consensus Table</a>'
+            else:
+                results_link = f'<a href="/results_{GSEA}/{obj.result_id}" class="button disabled">Load Results</a>'
+                consensus_link = f'<a href="/consensus_{GSEA}/{obj.result_id}" class="button disabled">Load Consensus Table</a>'
+
+            circles_link = f'<a href="/viz/circles/{obj.result_id}" class="button disabled">Visualize Consensus</a>'
+
+        else:
+
+            if enrichment_method == ORA:
+                results_link = f'<a href="/results_{ORA}/{obj.result_id}" class="button">Load Results</a>'
+                consensus_link = f'<a href="/consensus_{ORA}/{obj.result_id}" class="button">Load Consensus Table</a>'
+            else:
+                results_link = f'<a href="/results_{GSEA}/{obj.result_id}" class="button">Load Results</a>'
+                consensus_link = f'<a href="/consensus_{GSEA}/{obj.result_id}" class="button">Load Consensus Table</a>'
+
             circles_link = f'<a href="/viz/circles/{obj.result_id}" class="button">Visualize Consensus</a>'
+
+        if enrichment_method != PRERANK:
+            enrichment_method = obj.enrichment_method.upper()
 
         row = [
             index + 1,
@@ -70,13 +83,13 @@ def create_summary_table(current_user):
             results_link,
             consensus_link,
             circles_link,
-            obj.enrichment_method.upper(),
+            enrichment_method,
             ' '.join([DATABASES[database] for database in sorted(obj.get_databases())]),
             obj.data_filename,
             classes,
             obj.class_filename,
             clean_none_values(obj.sample_number),
-            gsea_method,
+            obj.calculation_method,
             clean_none_values(obj.max_genes),
             clean_none_values(obj.min_genes),
             clean_none_values(obj.significance_threshold),
@@ -238,7 +251,7 @@ def get_results_circle_viz(results_df: pd.DataFrame, databases: List, enrichment
 
     geneset_size_dict = get_genesets(databases, size=True)
 
-    if enrichment_method == ORA.upper():
+    if enrichment_method == ORA:
         # ensure same order in dataframe
         df = df[['Identifier', 'p_value', 'q_value', 'Pathway', 'Database']]
 
@@ -250,7 +263,7 @@ def get_results_circle_viz(results_df: pd.DataFrame, databases: List, enrichment
 
             pathway_dict[pathway_id] = metadata
 
-    # method is GSEA
+    # method is GSEA or GSEA preranked
     else:
         if 'geneset_size' in df:
             df = df[['Identifier', 'Pathway', 'Database', 'nes', 'fdr', 'geneset_size']]
@@ -277,15 +290,15 @@ def get_results_circle_viz(results_df: pd.DataFrame, databases: List, enrichment
 
                 pathway_dict[pathway_id] = metadata
 
-    if enrichment_method == GSEA.upper():
+    if enrichment_method == ORA:
         pathway_results = [
-            (metadata['database'], pathway_id, metadata['nes'], metadata['fdr'], metadata['geneset_size'])
+            (metadata['database'], pathway_id, None, metadata['fdr'], metadata['geneset_size'])
             for pathway_id, metadata in pathway_dict.items()
         ]
 
     else:
         pathway_results = [
-            (metadata['database'], pathway_id, None, metadata['fdr'], metadata['geneset_size'])
+            (metadata['database'], pathway_id, metadata['nes'], metadata['fdr'], metadata['geneset_size'])
             for pathway_id, metadata in pathway_dict.items()
         ]
 
@@ -386,12 +399,14 @@ def process_overlap_for_venn_diagram(
 
     # Get geneset information for each equivalent pathway
     for pathway_id, gene_set in equivalent_genesets.items():
+        database = get_database_by_pathway_id(pathway_id)
+
         overlaps_venn_diagram.append(
             {
                 'sets': [index],
                 'size': len(gene_set),
                 'pathway_id': pathway_id,
-                'label': id_name_mappings[pathway_id],
+                'label': f'{id_name_mappings[pathway_id]} ({database})',
                 'gene_set': list(gene_set),
             }
         )
@@ -683,7 +698,10 @@ def generate_consensus_table_ora(results_df: pd.DataFrame, significance_value):
             metadata_consensus.append(sig_consensus)
             metadata_dc_consensus.append(dc_db_consensus)
 
-            pathway_data.append((row[:2] + list(sum(list(zip(identifiers, row[2:])), ()))))
+            # Get pathway row with pathway name, consensus info and fdr vals
+            pathway_data.append(
+                (row[:2] + list(sum(list(zip(identifiers, row[2:])), ())))
+            )
 
     row_db = []
 
@@ -739,5 +757,6 @@ def query_results_model(result_id, current_user):
     enrichment_method = result_object.enrichment_method
     data_filename = result_object.data_filename
     symbol_to_fold_change = result_object.fold_change_results
+    fc_filename = result_object.fold_changes_filename
 
-    return df, databases, significance_value, enrichment_method, data_filename, symbol_to_fold_change
+    return df, databases, significance_value, enrichment_method, data_filename, symbol_to_fold_change, fc_filename

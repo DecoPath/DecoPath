@@ -54,6 +54,9 @@ def read_data_file(file_path: str, filename: str) -> Union[pd.DataFrame, str]:
         elif file_path.endswith(TSV):
             return pd.read_csv(file_path, sep="\t")
 
+        else:
+            return pd.read_csv(file_path, sep=None, engine='python')
+
     except IOError:
         logger.error(f"Failed to read {filename} {file_path}. File exists: {os.path.isfile(file_path)}")
         return f'There is a problem with your file {filename}. please check that it meets the criteria.'
@@ -324,11 +327,10 @@ def map_results_to_hierarchy(
 
         if pathway_id not in network_hierarchy:
             continue
-
-        if enrichment_method.lower() == ORA:
+        if enrichment_method == ORA:
             node_to_score[pathway_id] = fdr
 
-        elif enrichment_method.lower() == GSEA:
+        elif enrichment_method == GSEA or enrichment_method == PRERANK:
             node_to_score[pathway_id] = score
             fdr_dict[pathway_id] = fdr
 
@@ -348,18 +350,19 @@ def map_results_to_hierarchy(
     nx.set_node_attributes(network_hierarchy, geneset_size_mapping, 'geneset_size')
     nx.set_node_attributes(network_hierarchy, node_to_score, 'direction')
 
-    if enrichment_method.lower() == GSEA:
+    if enrichment_method == ORA:
+        nx.set_node_attributes(
+            network_hierarchy,
+            _add_pvalue_cmap(network_hierarchy.nodes(), node_to_score, significance_value),
+            'color',
+        )
+
+    #: GSEA or GSEA prerank
+    else:
         nx.set_node_attributes(network_hierarchy, fdr_dict, 'fdr')
         nx.set_node_attributes(
             network_hierarchy,
             _add_gsea_cmap(network_hierarchy.nodes(), node_to_score, fdr_dict, significance_value),
-            'color',
-        )
-    #: ORA
-    else:
-        nx.set_node_attributes(
-            network_hierarchy,
-            _add_pvalue_cmap(network_hierarchy.nodes(), node_to_score, significance_value),
             'color',
         )
 
@@ -638,6 +641,7 @@ class TransientFileUploadHandler(FileUploadHandler):
     """
     Upload handler that streams data into a temporary file.
     """
+
     def new_file(self, *args, **kwargs):
         """
         Create the file object to append to as data is coming in.
@@ -658,6 +662,7 @@ class TransientUploadedFile(UploadedFile):
     """
     A file uploaded to a temporary location (i.e. stream-to-disk).
     """
+
     def __init__(self, name, content_type, size, charset, content_type_extra=None):
         _, ext = os.path.splitext(name)
         temp_name = ''.join(random.choices(string.ascii_letters + string.digits, k=16))
