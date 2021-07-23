@@ -53,7 +53,7 @@ MAPPING_SELECTION_MSG = 'Please ensure mappings between selected databases have 
 EMAIL_SUBJECT = "DecoPath Account Confirmation"
 
 # Update domain based on your settings
-SENDER_EMAIL = 'noreply@localhost'
+SENDER_EMAIL = 'noreply'
 
 REGISTRATION_MSG = 'You have now successfully registered. Confirm you email address before logging in.'
 

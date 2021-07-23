@@ -28,7 +28,7 @@ def verify_email(domain: str, user: User, register_email: str):
         subject=EMAIL_SUBJECT,
         text_content=text_content,
         html_content=html_content,
-        sender=SENDER_EMAIL,
+        sender=f"{SENDER_EMAIL}@{domain}",
         recipient_list=[register_email]
     )
     return None
