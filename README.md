@@ -29,11 +29,11 @@ $ docker-compose up
 
 **Note**: If you wish to host DecoPath using your own domain, you might need to change the ports in
 the [docker-compose](./docker-compose.yaml)
-file to reflect your port-forwarding configuration ([Networking in Docker](https://docs.docker.com/compose/networking/)).
+file to reflect your port-forwarding configuration (See [Networking in Docker](https://docs.docker.com/compose/networking/)).
 
 ### For developers
 
-You can clone the repository from [GitHub](https://github.com/decopath/decopath).
+DecoPath is provided as a Python 3.7 package. You can clone the repository from [GitHub](https://github.com/decopath/decopath).
 
 ```bash
 $ git clone https://github.com/decopath/decopath.git
