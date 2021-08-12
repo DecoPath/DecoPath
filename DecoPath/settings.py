@@ -19,12 +19,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '***REMOVED***'
+# FIXME: Generate and add the secret key here. (Refer README.md)
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['decopath.scai.fraunhofer.de', 'localhost', '127.0.0.1']
+# CHANGE THE DOMAIN NAME
+ALLOWED_HOSTS = ['domain.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
