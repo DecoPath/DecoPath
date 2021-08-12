@@ -134,3 +134,6 @@ CELERY_BROKER_URL = 'amqp://user:password@localhost:5672/vhost'
 
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
+
+EMAIL_HOST = "postfix"
+EMAIL_PORT = 587

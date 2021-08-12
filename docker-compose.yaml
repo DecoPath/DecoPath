@@ -35,3 +35,11 @@ services:
         working_dir: /opt/decopath
         depends_on:
             - rabbitmq
+
+    postfix:
+        container_name: decopath-postfix
+        image: boky/postfix:latest
+        environment:
+            ALLOWED_SENDER_DOMAINS: localhost domain.com # CHANGE THE DOMAIN NAME
+        ports:
+            - "587:587"

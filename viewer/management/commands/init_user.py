@@ -38,10 +38,12 @@ class Command(BaseCommand):
         if admin_mail:
             if not User.objects.filter(email__exact=admin_mail).exists():
                 admin = User.objects.create_superuser(admin_mail, password='admin')
+                admin.verified = True
                 admin.save()
 
         # Add default user
         user_mail = getattr(settings, "USER_EMAIL", 'testuser@user.com')
         if not User.objects.filter(email__exact=user_mail).exists():
             user = User.objects.create_user(user_mail, password='password')
+            user.verified = True
             user.save()
