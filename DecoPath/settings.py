@@ -132,7 +132,7 @@ LOGOUT_REDIRECT_URL = 'home'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-CELERY_BROKER_URL = 'amqp://user:password@localhost:5672/vhost'
+CELERY_BROKER_URL = 'amqp://user:password@rabbitmq:5672/vhost'
 
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
