@@ -17,7 +17,7 @@ services:
         volumes:
             - ${PWD}/local.sqlite3:/opt/decopath/db.sqlite3
         ports:
-            - 8000:8000
+            - "8000:8000"
 
     rabbitmq:
         container_name: rabbitmq
@@ -27,8 +27,8 @@ services:
             RABBITMQ_DEFAULT_PASS: password
             RABBITMQ_DEFAULT_VHOST: vhost
         ports:
-            - 5672:5672
-            - 8080:15672
+            - "5672:5672"
+            - "8080:15672"
 
     worker:
         container_name: celery-worker
