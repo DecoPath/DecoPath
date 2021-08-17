@@ -51,8 +51,8 @@ $ docker-compose up -d
 with the credentials:
    - **username:** user@domain.com
    - **password:** admin
-   
-Alternatively, if you changed the admin email address, login with your chosen username and the default password (admin).
+
+   Alternatively, if you changed the admin email address, login with your chosen username and the default password (admin).
 
 At this point, you should be all set to host DecoPath locally.
 
