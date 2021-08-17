@@ -48,7 +48,7 @@ $ docker image build -t decopath:latest .
 $ docker-compose up -d
 ```
 6. If you are not using a domain name, navigate to the local host (e.g., localhost:8000) from your browser and login 
-with the credentials:
+with the following credentials (note this step may take some time, and you may need to refresh the page): 
    - **username:** user@domain.com
    - **password:** admin
 
