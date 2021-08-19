@@ -1,4 +1,4 @@
-version: "3.7"
+version: "2.4"
 services:
     decopath:
         container_name: decopath
@@ -35,6 +35,8 @@ services:
         image: decopath:latest
         command: bash -c "python3.7 -m celery -A DecoPath worker -l info"
         working_dir: /opt/decopath
+        volumes_from:
+            - decopath
         depends_on:
             - rabbitmq
 
