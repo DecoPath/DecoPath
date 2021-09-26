@@ -123,9 +123,10 @@ on [GitHub](https://github.com/DecoPath/DecoPath/issues/new).
 
 If you have found DecoPath useful in your work, please consider citing:
 
-Mubeen, S., Bharadhwaj, V.S., Gadiya, Y., Hofmann-Apitius, M., Kodamullil, A.T., & Domingo-Fernández, D. (2021). 
-DecoPath: A web application for decoding pathway enrichment analysis. bioRxiv. 
-https://doi.org/10.1101/2021.05.22.445243
+Mubeen S., Bharadhwaj, V.S., Gadiya Y., Hofmann-Apitius M., T Kodamullil A.T., & Domingo-Fernández D. (2021).
+DecoPath: a web application for decoding pathway enrichment analysis. NAR Genomics and Bioinformatics, 3(3). 
+https://doi.org/10.1093/nargab/lqab087
+
 
 ## Disclaimer
 
